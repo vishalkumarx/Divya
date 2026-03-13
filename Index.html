@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Dr. Divya Sharma | Psychologist</title>
+
+<!-- GOOGLE FONTS (FIXED) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#fff8fb;
+color:#444;
+}
+
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 8%;
+background:#ffe6f2;
+}
+
+nav h2{
+font-family:'Playfair Display',serif;
+color:#c76aa4;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+}
+
+nav ul li{
+margin-left:25px;
+}
+
+nav a{
+text-decoration:none;
+color:#555;
+font-weight:500;
+}
+
+/* HERO */
+
+.hero{
+height:85vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+background:linear-gradient(rgba(255,255,255,.75),rgba(255,255,255,.75)),
+url("https://image2url.com/r2/default/images/1773402579311-3a8354d5-cc0c-44a2-b223-8678a451e0fd.jpg");
+background-size:cover;
+background-position:center;
+padding:40px;
+}
+
+.hero h1{
+font-size:48px;
+color:#c76aa4;
+font-family:'Playfair Display',serif;
+}
+
+.hero p{
+margin-top:20px;
+font-size:18px;
+}
+
+.hero button{
+margin-top:30px;
+padding:12px 30px;
+border:none;
+background:#f4a7c5;
+color:white;
+border-radius:30px;
+cursor:pointer;
+font-size:16px;
+}
+
+/* ABOUT */
+
+.about{
+padding:80px 10%;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+
+.about img{
+width:100%;
+border-radius:20px;
+}
+
+.about h2{
+color:#c76aa4;
+margin-bottom:15px;
+font-family:'Playfair Display',serif;
+}
+
+/* SERVICES */
+
+.services{
+background:#fff0f7;
+padding:80px 10%;
+text-align:center;
+}
+
+.services h2{
+color:#c76aa4;
+margin-bottom:40px;
+font-family:'Playfair Display',serif;
+}
+
+.service-box{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.service{
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+
+.service h3{
+color:#d87cab;
+margin-bottom:10px;
+font-family:'Playfair Display',serif;
+}
+
+/* TESTIMONIALS */
+
+.testimonials{
+padding:80px 10%;
+text-align:center;
+}
+
+.testimonials h2{
+color:#c76aa4;
+margin-bottom:40px;
+font-family:'Playfair Display',serif;
+}
+
+.testimonial{
+background:#fff0f7;
+padding:25px;
+margin:15px auto;
+max-width:600px;
+border-radius:15px;
+}
+
+/* CONTACT */
+
+.contact{
+background:#ffe6f2;
+padding:80px 10%;
+text-align:center;
+}
+
+.contact h2{
+color:#c76aa4;
+margin-bottom:30px;
+font-family:'Playfair Display',serif;
+}
+
+form{
+max-width:500px;
+margin:auto;
+display:flex;
+flex-direction:column;
+}
+
+input,textarea{
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
+font-family:'Poppins',sans-serif;
+}
+
+button.submit{
+background:#f4a7c5;
+color:white;
+border:none;
+padding:12px;
+border-radius:20px;
+cursor:pointer;
+font-size:16px;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:20px;
+background:#ffd6e7;
+margin-top:40px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.about{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:34px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+<h2>Dr. Divya Sharma</h2>
+
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">About</a></li>
+<li><a href="#">Services</a></li>
+<li><a href="#">Testimonials</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
+</nav>
+
+<section class="hero">
+<div>
+<h1>Compassionate Mental Health Care</h1>
+<p>A safe space for healing, emotional wellbeing, and personal growth.</p>
+<button>Book Appointment</button>
+</div>
+</section>
+
+<section class="about">
+
+<img src="https://image2url.com/r2/default/images/1773402156838-20514dbf-8282-4caf-af68-1442560eff0d.jpeg">
+
+<div>
+<h2>About Dr. Divya Sharma</h2>
+
+<p>
+Dr. Divya Sharma is a compassionate psychologist dedicated to helping
+individuals overcome emotional challenges and discover inner strength.
+She specializes in anxiety therapy, relationship counseling,
+stress management, and personal growth.
+</p>
+
+<p>
+Her therapeutic approach combines empathy and evidence-based techniques
+to provide a safe environment where clients can heal and grow.
+</p>
+
+</div>
+
+</section>
+
+<section class="services">
+
+<h2>Therapy Services</h2>
+
+<div class="service-box">
+
+<div class="service">
+<h3>Anxiety Therapy</h3>
+<p>Learn effective techniques to manage anxiety and restore calmness.</p>
+</div>
+
+<div class="service">
+<h3>Relationship Counseling</h3>
+<p>Improve communication and emotional connection.</p>
+</div>
+
+<div class="service">
+<h3>Stress Management</h3>
+<p>Healthy strategies to cope with daily stress.</p>
+</div>
+
+<div class="service">
+<h3>Personal Growth</h3>
+<p>Build confidence and emotional resilience.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="testimonials">
+
+<h2>Client Testimonials</h2>
+
+<div class="testimonial">
+<p>"Dr. Divya Sharma helped me understand my emotions and regain confidence."</p>
+<strong>- Client</strong>
+</div>
+
+<div class="testimonial">
+<p>"A warm and supportive therapist who truly listens."</p>
+<strong>- Client</strong>
+</div>
+
+</section>
+
+<section class="contact">
+
+<h2>Book an Appointment</h2>
+
+<form>
+
+<input type="text" placeholder="Your Name">
+
+<input type="email" placeholder="Email">
+
+<textarea rows="4" placeholder="Your Message"></textarea>
+
+<button class="submit">Send Message</button>
+
+</form>
+
+</section>
+
+<footer>
+<p>© 2026 Dr. Divya Sharma | Psychologist</p>
+</footer>
+
+</body>
+</html>

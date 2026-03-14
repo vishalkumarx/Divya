@@ -11,6 +11,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
 
@@ -113,9 +114,51 @@ gap:40px;
 align-items:center;
 }
 
-.about img{
+.about-images{
+position:relative;
 width:100%;
+overflow:hidden;
 border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.carousel-slide{
+display:flex;
+transition:transform 0.5s ease-in-out;
+}
+
+.carousel-slide img{
+width:100%;
+height:550px;
+object-fit:cover;
+object-position:top;
+flex-shrink:0;
+}
+
+.carousel-btn{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(255,255,255,0.8);
+border:none;
+font-size:20px;
+padding:10px 14px;
+cursor:pointer;
+border-radius:50%;
+color:#c76aa4;
+transition:0.3s;
+}
+
+.carousel-btn:hover{
+background:white;
+}
+
+.carousel-btn.prev{
+left:10px;
+}
+
+.carousel-btn.next{
+right:10px;
 }
 
 .about h2{
@@ -157,6 +200,12 @@ margin-bottom:10px;
 font-family:'Playfair Display',serif;
 }
 
+.service i{
+font-size:35px;
+color:#f4a7c5;
+margin-bottom:15px;
+}
+
 /* TESTIMONIALS */
 
 .testimonials{
@@ -170,12 +219,76 @@ margin-bottom:40px;
 font-family:'Playfair Display',serif;
 }
 
-.testimonial{
-background:#fff0f7;
-padding:25px;
-margin:15px auto;
-max-width:600px;
+.testimonial-slider{
+width:100%;
+overflow:hidden;
+position:relative;
+padding:20px 0;
+}
+
+.testimonial-track{
+display:flex;
+gap:25px;
+width:max-content;
+animation:scrollTestimonials 30s linear infinite;
+}
+
+.testimonial-track:hover{
+animation-play-state:paused;
+}
+
+@keyframes scrollTestimonials {
+0% { transform:translateX(0); }
+100% { transform:translateX(calc(-250px * 10 - 25px * 10)); }
+}
+
+.testimonial-screenshot{
+width:250px;
+flex-shrink:0;
 border-radius:15px;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+transition:0.3s;
+cursor:pointer;
+}
+
+.testimonial-screenshot:hover{
+transform:scale(1.02);
+}
+
+/* LIGHTBOX MODAL */
+.lightbox-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.lightbox-modal.show {
+  display: flex;
+}
+.lightbox-content {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: white;
+  font-size: 45px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.lightbox-close:hover {
+  color: #f4a7c5;
 }
 
 /* BLOG */
@@ -356,7 +469,7 @@ font-size:16px;
 <ul id="menu">
 <li><a href="#">Home</a></li>
 <li><a href="#">About</a></li>
-<li><a href="#">Services</a></li>
+<li><a href="#">Specializations</a></li>
 <li><a href="#">Testimonials</a></li>
 <li><a href="#">Blog</a></li>
 <li><a href="#">Contact</a></li>
@@ -374,7 +487,15 @@ font-size:16px;
 
 <section class="about">
 
-<img src="https://image2url.com/r2/default/images/1773402156838-20514dbf-8282-4caf-af68-1442560eff0d.jpeg">
+<div class="about-images">
+<div class="carousel-slide" id="aboutCarousel">
+<img src="https://image2url.com/r2/default/images/1773402156838-20514dbf-8282-4caf-af68-1442560eff0d.jpeg" alt="Dr Divya Sharma Profile">
+<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&q=80" alt="Consultation">
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Therapy Session">
+</div>
+<button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+<button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+</div>
 
 <div>
 <h2>About Dr. Divya Sharma</h2>
@@ -397,28 +518,68 @@ to provide a safe environment where clients can heal and grow.
 
 <section class="services">
 
-<h2>Therapy Services</h2>
+<h2>Areas of Specialization</h2>
 
 <div class="service-box">
 
 <div class="service">
-<h3>Anxiety Therapy</h3>
-<p>Learn effective techniques to manage anxiety and restore calmness.</p>
+<i class="fa-solid fa-hands-holding-circle"></i>
+<h3>De-addiction</h3>
+<p>Professional support to break harmful cycles and build a healthier, independent lifestyle.</p>
 </div>
 
 <div class="service">
-<h3>Relationship Counseling</h3>
-<p>Improve communication and emotional connection.</p>
+<i class="fa-solid fa-cloud-rain"></i>
+<h3>Anxiety</h3>
+<p>Explore the root causes of anxiety and develop coping strategies to restore a sense of calm.</p>
 </div>
 
 <div class="service">
-<h3>Stress Management</h3>
-<p>Healthy strategies to cope with daily stress.</p>
+<i class="fa-solid fa-brain"></i>
+<h3>Overthinking</h3>
+<p>Techniques to quiet a racing mind, reduce mental clutter, and improve focus and clarity.</p>
 </div>
 
 <div class="service">
-<h3>Personal Growth</h3>
-<p>Build confidence and emotional resilience.</p>
+<i class="fa-solid fa-people-roof"></i>
+<h3>Family Counselling</h3>
+<p>Mediate conflicts, improve communication, and rebuild stronger, healthier family dynamics.</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-heart-crack"></i>
+<h3>Relationship/Separation</h3>
+<p>Guidance for couples navigating difficulties, or individuals healing and transitioning after a breakup.</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-fire-flame-curved"></i>
+<h3>Anger/Emotion Management</h3>
+<p>Learn to process, express, and manage intense emotions in constructive and healthy ways.</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-briefcase"></i>
+<h3>Career Counselling</h3>
+<p>Identify your strengths and interests to make informed, fulfilling professional choices.</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-people-group"></i>
+<h3>Group/Individual Counselling</h3>
+<p>Personalized 1-on-1 therapy, or finding connection and shared healing in a safe group setting.</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-graduation-cap"></i>
+<h3>Student Counselling</h3>
+<p>Support for academic pressure, peer issues, and emotional changes unique to young adults.</p>
+</div>
+
+<div class="service">
+<i class="fa-solid fa-stopwatch"></i>
+<h3>Time & Stress Management</h3>
+<p>Practical organizational skills and mental tools to reduce burnout and improve work-life balance.</p>
 </div>
 
 </div>
@@ -427,16 +588,33 @@ to provide a safe environment where clients can heal and grow.
 
 <section class="testimonials">
 
-<h2>Client Testimonials</h2>
+<h2>Client Reviews</h2>
 
-<div class="testimonial">
-<p>"Dr. Divya Sharma helped me understand my emotions and regain confidence."</p>
-<strong>- Client</strong>
+<div class="testimonial-slider">
+<div class="testimonial-track">
+<!-- Set 1 (10 images) -->
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 1">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 2">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 3">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 4">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 5">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 6">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 7">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 8">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 9">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 10">
+<!-- Set 2 (Duplicated for infinite scroll loop) -->
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 1">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 2">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 3">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 4">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 5">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 6">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 7">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 8">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 9">
+<img class="testimonial-screenshot" src="https://images.unsplash.com/photo-1620288627223-53302f4e8c74?w=400&q=80" alt="Review 10">
 </div>
-
-<div class="testimonial">
-<p>"A warm and supportive therapist who truly listens."</p>
-<strong>- Client</strong>
 </div>
 
 </section>
@@ -496,6 +674,12 @@ to provide a safe environment where clients can heal and grow.
 
 </section>
 
+<!-- Lightbox Modal for Testimonials -->
+<div id="testimonialLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
+<span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
+<img class="lightbox-content" id="lightboxImage">
+</div>
+
 <footer>
 <p>© 2026 Dr. Divya Sharma | Psychologist</p>
 </footer>
@@ -504,6 +688,57 @@ to provide a safe environment where clients can heal and grow.
 
 function toggleMenu(){
 document.getElementById("menu").classList.toggle("show");
+}
+
+let slideIndex = 0;
+let autoSlideTimer;
+
+function startAutoSlide() {
+  autoSlideTimer = setInterval(() => {
+    moveSlide(1);
+  }, 3000); // Auto-scrolls every 3 seconds
+}
+
+function resetAutoSlide() {
+  clearInterval(autoSlideTimer);
+  startAutoSlide(); // Restart the timer so it doesn't double-scroll if user clicks
+}
+
+function moveSlide(step) {
+  const slides = document.querySelectorAll('#aboutCarousel img');
+  const slideContainer = document.getElementById("aboutCarousel");
+  slideIndex += step;
+  
+  if (slideIndex >= slides.length) {
+    slideIndex = 0;
+  } else if (slideIndex < 0) {
+    slideIndex = slides.length - 1;
+  }
+  
+  slideContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+  resetAutoSlide();
+}
+
+// Start auto-scrolling when the page loads
+startAutoSlide();
+
+// Lightbox Logic
+document.addEventListener("DOMContentLoaded", () => {
+  const screenshots = document.querySelectorAll(".testimonial-screenshot");
+  screenshots.forEach(img => {
+    img.addEventListener("click", () => {
+      const lightbox = document.getElementById("testimonialLightbox");
+      const lightboxImg = document.getElementById("lightboxImage");
+      lightboxImg.src = img.src;
+      lightbox.classList.add("show");
+    });
+  });
+});
+
+function closeLightbox(e) {
+  if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {
+    document.getElementById("testimonialLightbox").classList.remove("show");
+  }
 }
 
 </script>

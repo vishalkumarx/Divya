@@ -27,6 +27,12 @@
             --white: #ffffff;
             --radius: 24px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Decoration Colors */
+            --bubble-pink: rgba(255, 182, 193, 0.4);
+            --bubble-blue: rgba(173, 216, 230, 0.4);
+            --bubble-yellow: rgba(255, 253, 208, 0.6);
+            --bubble-green: rgba(189, 225, 200, 0.4);
         }
 
         html {
@@ -593,6 +599,55 @@
             transform: scale(1.02);
         }
 
+        /* DECORATIONS & ANIMATIONS */
+        .decoration-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 20s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 50px) scale(1.2); }
+        }
+
+        .blob-decoration {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(20px);
+        }
+
+        /* Entrance Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Specific Bubbles */
+        .bubble-1 { width: 400px; height: 400px; background: var(--bubble-green); top: -100px; left: -100px; }
+        .bubble-2 { width: 300px; height: 300px; background: var(--bubble-pink); bottom: 10%; right: -50px; animation-delay: -5s; }
+        .bubble-3 { width: 350px; height: 350px; background: var(--bubble-blue); top: 40%; left: -150px; animation-delay: -10s; }
+        .bubble-4 { width: 250px; height: 250px; background: var(--bubble-yellow); bottom: -50px; left: 20%; animation-delay: -15s; }
+
         /* FOOTER */
         footer {
             text-align: center;
@@ -758,6 +813,13 @@
 
 <body>
 
+    <div class="decoration-container">
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+    </div>
+
     <nav>
 
         <h2>Psychologist Divya Sharma</h2>
@@ -775,7 +837,7 @@
 
     </nav>
 
-    <section id="hero" class="hero">
+    <section id="hero" class="hero reveal">
         <div class="hero-content">
             <div class="hero-tags">
                 <span class="hero-tag">Psychologist</span>
@@ -802,10 +864,14 @@
                 <h4>10+ Years</h4>
                 <p>Helping people <br>around the region</p>
             </div>
+            <!-- SVG Blob Illustration -->
+            <svg class="blob-decoration" style="bottom:-50px; right:-20px; width:200px; height:200px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#BDE1C8" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+            </svg>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="about reveal">
 
         <div class="about-images">
             <div class="carousel-slide" id="aboutCarousel">
@@ -848,7 +914,7 @@
 
     </section>
 
-    <section id="services" class="services">
+    <section id="services" class="services reveal">
 
         <h2>Areas of Specialization</h2>
 
@@ -952,7 +1018,7 @@
 
     </section>
 
-    <section id="testimonials" class="testimonials">
+    <section id="testimonials" class="testimonials reveal">
 
         <h2>Client Reviews</h2>
 
@@ -977,7 +1043,7 @@
 
     </section>
 
-    <section id="blog" class="blog">
+    <section id="blog" class="blog reveal">
 
         <h2>Mental Health Blog</h2>
 
@@ -1243,6 +1309,19 @@
             });
         }
 
+    </script>
+
+    <script>
+        // REVEAL ON SCROLL
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 
     <a href="https://wa.me/917973477917?text=Hello%20Divya%20%2C%20I%20would%20like%20to%20book%20a%20consultation%2E%20Please%20let%20me%20know%20the%20available%20time%20slots%2E" class="whatsapp-fab" target="_blank">

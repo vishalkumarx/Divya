@@ -292,7 +292,16 @@
         }
 
         .about-img-item:nth-child(2n) {
-            transform: translateY(20px);
+            margin-top: 30px;
+        }
+        
+        /* Ensure reveal works with staggered items */
+        .about-img-item.reveal {
+            transition-property: opacity, transform, filter;
+        }
+        
+        .about-img-item.reveal.active:nth-child(2n) {
+            transform: translateY(0); /* Reset for active state */
         }
 
         .about h2 {
@@ -653,13 +662,23 @@
         /* Entrance Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(50px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(30px) scale(0.9);
+            filter: blur(10px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+        }
+
+        .about, .about-img-item {
+            visibility: hidden;
+        }
+
+        .about.active, .about-img-item.active {
+            visibility: visible;
         }
         
         .hero, .about, .services, .testimonials, .blog, .contact {

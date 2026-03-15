@@ -245,31 +245,27 @@
 
         .testimonial-slider {
             width: 100%;
-            overflow: hidden;
+            overflow-x: auto;
             position: relative;
             padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            scroll-behavior: smooth;
+        }
+
+        .testimonial-slider::-webkit-scrollbar {
+            display: none;
         }
 
         .testimonial-track {
             display: flex;
             gap: 25px;
             width: max-content;
-            animation: scrollTestimonials 30s linear infinite;
+            padding: 0 10%;
         }
 
-        .testimonial-track:hover {
-            animation-play-state: paused;
-        }
 
-        @keyframes scrollTestimonials {
-            0% {
-                transform: translateX(0);
-            }
-
-            100% {
-                transform: translateX(calc(-250px * 9 - 25px * 9));
-            }
-        }
 
         .testimonial-screenshot {
             width: 250px;
@@ -278,6 +274,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: 0.3s;
             cursor: pointer;
+            scroll-snap-align: center;
         }
 
         .testimonial-screenshot:hover {
@@ -649,16 +646,7 @@
                 <img class="testimonial-screenshot" src="assets/07.jpg" alt="Review 7">
                 <img class="testimonial-screenshot" src="assets/08.jpg" alt="Review 8">
                 <img class="testimonial-screenshot" src="assets/09.jpg" alt="Review 9">
-                <!-- Set 2 (Duplicated for infinite scroll loop) -->
-                <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review 1">
-                <img class="testimonial-screenshot" src="assets/02.jpg" alt="Review 2">
-                <img class="testimonial-screenshot" src="assets/003.jpg" alt="Review 3">
-                <img class="testimonial-screenshot" src="assets/04.jpg" alt="Review 4">
-                <img class="testimonial-screenshot" src="assets/05.jpg" alt="Review 5">
-                <img class="testimonial-screenshot" src="assets/06.jpg" alt="Review 6">
-                <img class="testimonial-screenshot" src="assets/07.jpg" alt="Review 7">
-                <img class="testimonial-screenshot" src="assets/08.jpg" alt="Review 8">
-                <img class="testimonial-screenshot" src="assets/09.jpg" alt="Review 9">
+
             </div>
         </div>
 

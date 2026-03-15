@@ -856,6 +856,10 @@
             }
             .service { padding: 40px 25px; border-radius: 30px; }
 
+            .video-intro { padding: 40px 5% !important; }
+            .video-container { border-radius: 20px; }
+            .video-intro h2 { font-size: 28px; margin-bottom: 20px; }
+
             .contact-info { grid-template-columns: 1fr; }
             .booking-grid { grid-template-columns: 1fr; gap: 15px; }
         }
@@ -1510,6 +1514,14 @@
 
         // Start the infinite sequence
         setInterval(triggerFlip, 3000); // Flip one card every 3 seconds
+
+        // Ensure Video Autoplay
+        const introVideo = document.querySelector('#video-intro video');
+        if (introVideo) {
+            introVideo.play().catch(error => {
+                console.log("Autoplay prevented by browser, waiting for interaction or reveal.");
+            });
+        }
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>

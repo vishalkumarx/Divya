@@ -858,22 +858,24 @@
 
         // Testimonial Auto-scroll & Navigation
         let testiIndex = 0;
-        const testiSlider = document.getElementById("testimonialSlider");
-        const testiImages = document.querySelectorAll(".testimonial-screenshot");
         let testiAutoTimer;
 
         function startTestiAuto() {
+            stopTestiAuto();
             testiAutoTimer = setInterval(() => {
                 moveTestimonials(1);
             }, 4000);
         }
 
-        function resetTestiAuto() {
-            clearInterval(testiAutoTimer);
-            startTestiAuto();
+        function stopTestiAuto() {
+            if (testiAutoTimer) clearInterval(testiAutoTimer);
         }
 
         function moveTestimonials(step) {
+            const testiSlider = document.getElementById("testimonialSlider");
+            const testiImages = document.querySelectorAll(".testimonial-screenshot");
+            if (!testiSlider || testiImages.length === 0) return;
+
             testiIndex += step;
             if (testiIndex >= testiImages.length) {
                 testiIndex = 0;
@@ -881,21 +883,28 @@
                 testiIndex = testiImages.length - 1;
             }
 
-            const imgWidth = testiImages[0].offsetWidth + 25; // width + gap
+            const targetImage = testiImages[testiIndex];
+            const scrollPos = targetImage.offsetLeft - (testiSlider.offsetWidth / 2) + (targetImage.offsetWidth / 2);
+            
             testiSlider.scrollTo({
-                left: testiIndex * imgWidth,
+                left: scrollPos,
                 behavior: 'smooth'
             });
-            resetTestiAuto();
+            startTestiAuto(); // Restarts the timer
         }
 
-        startTestiAuto();
-
-        // Pause auto-scroll on hover or touch
-        testiSlider.addEventListener('mouseenter', () => clearInterval(testiAutoTimer));
-        testiSlider.addEventListener('mouseleave', startTestiAuto);
-        testiSlider.addEventListener('touchstart', () => clearInterval(testiAutoTimer));
-        testiSlider.addEventListener('touchend', startTestiAuto);
+        document.addEventListener("DOMContentLoaded", () => {
+            const testiSlider = document.getElementById("testimonialSlider");
+            if (testiSlider) {
+                startTestiAuto();
+                
+                // Pause auto-scroll on interaction
+                testiSlider.addEventListener('mouseenter', stopTestiAuto);
+                testiSlider.addEventListener('mouseleave', startTestiAuto);
+                testiSlider.addEventListener('touchstart', stopTestiAuto, {passive: true});
+                testiSlider.addEventListener('touchend', startTestiAuto, {passive: true});
+            }
+        });
 
         function closeLightbox(e) {
             if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {

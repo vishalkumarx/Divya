@@ -522,6 +522,14 @@
             transform: translateY(-50%) scale(1.1);
         }
 
+        .testi-nav-btn.prev { left: -20px; }
+        .testi-nav-btn.next { right: -20px; }
+
+        @media(max-width: 1024px) {
+            .testi-nav-btn { display: none; } /* Hide on mobile/tablets to prevent overflow */
+            .testimonial-track { padding: 0 20px; }
+        }
+
         .testimonial-screenshot {
             width: 250px;
             flex-shrink: 0;

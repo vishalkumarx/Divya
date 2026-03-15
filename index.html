@@ -58,16 +58,17 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 8%;
-            background: var(--bg-primary);
+            padding: 16px 8%;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         nav h2 {
             font-family: 'Playfair Display', serif;
-            color: var(--accent-dark-green);
+            color: var(--white);
             font-size: 24px;
             font-weight: 600;
         }
@@ -84,14 +85,15 @@
 
         nav a {
             text-decoration: none;
-            color: var(--text-muted);
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
             transition: var(--transition);
             font-size: 15px;
         }
 
         nav a:hover {
-            color: var(--accent-dark-green);
+            color: var(--white);
+            transform: translateY(-2px);
         }
 
         .nav-btn {
@@ -113,6 +115,7 @@
             display: none;
             font-size: 26px;
             cursor: pointer;
+            color: var(--white);
         }
 
         /* HERO */
@@ -271,24 +274,45 @@
         }
 
         .about-img-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius);
+            width: 100%;
             aspect-ratio: 1;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            border-radius: var(--radius);
+        }
+
+        .flip-card-inner.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .flip-front, .flip-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: var(--radius);
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: var(--transition);
         }
 
-        .about-img-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-        }
-
-        .about-img-item img {
+        .flip-front img, .flip-back img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            object-position: center;
+        }
+
+        .flip-back {
+            transform: rotateY(180deg);
         }
 
         .about-img-item:nth-child(2n) {
@@ -727,7 +751,7 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background: var(--bg-primary);
+                background: linear-gradient(135deg, #1e3a8a, #3b82f6);
                 flex-direction: column;
                 align-items: center;
                 max-height: 0;
@@ -917,24 +941,42 @@
 
     <section id="about" class="about reveal">
 
-        <div class="about-images">
-            <div class="about-img-item reveal" style="transition-delay: 0.1s;">
-                <img src="assets/about/photo_2026-03-15_20-45-08.jpg" alt="Dr. Divya Sharma">
+        <div class="about-images" id="flipGrid">
+            <div class="about-img-item reveal">
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="assets/about/photo_2026-03-15_20-45-08.jpg" alt="About"></div>
+                    <div class="flip-back"><img src="assets/about/photo_2026-03-15_20-45-15.jpg" alt="About"></div>
+                </div>
             </div>
-            <div class="about-img-item reveal" style="transition-delay: 0.2s;">
-                <img src="assets/about/photo_2026-03-15_20-45-13.jpg" alt="About Dr. Divya Sharma">
+            <div class="about-img-item reveal">
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="assets/about/photo_2026-03-15_20-45-13.jpg" alt="About"></div>
+                    <div class="flip-back"><img src="assets/about/photo_2026-03-15_20-45-15 (2).jpg" alt="About"></div>
+                </div>
             </div>
-            <div class="about-img-item reveal" style="transition-delay: 0.3s;">
-                <img src="assets/about/photo_2026-03-15_20-45-13 (2).jpg" alt="Dr. Divya Sharma Session">
+            <div class="about-img-item reveal">
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="assets/about/photo_2026-03-15_20-45-13 (2).jpg" alt="About"></div>
+                    <div class="flip-back"><img src="assets/about/photo_2026-03-15_20-45-16.jpg" alt="About"></div>
+                </div>
             </div>
-            <div class="about-img-item reveal" style="transition-delay: 0.4s;">
-                <img src="assets/about/photo_2026-03-15_20-45-14.jpg" alt="Therapy Session">
+            <div class="about-img-item reveal">
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="assets/about/photo_2026-03-15_20-45-14.jpg" alt="About"></div>
+                    <div class="flip-back"><img src="assets/about/photo_2026-03-15_20-45-16 (2).jpg" alt="About"></div>
+                </div>
             </div>
-            <div class="about-img-item reveal" style="transition-delay: 0.5s;">
-                <img src="assets/about/photo_2026-03-15_20-45-15.jpg" alt="Compassionate Care">
+            <div class="about-img-item reveal">
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="assets/about/photo_2026-03-15_20-45-15.jpg" alt="About"></div>
+                    <div class="flip-back"><img src="assets/about/photo_2026-03-15_20-45-17.jpg" alt="About"></div>
+                </div>
             </div>
-            <div class="about-img-item reveal" style="transition-delay: 0.6s;">
-                <img src="assets/about/photo_2026-03-15_20-45-15 (2).jpg" alt="Dr. Divya Sharma">
+            <div class="about-img-item reveal">
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="assets/about/photo_2026-03-15_20-45-15 (2).jpg" alt="About"></div>
+                    <div class="flip-back"><img src="assets/about/photo_2026-03-15_20-45-19.jpg" alt="About"></div>
+                </div>
             </div>
         </div>
 
@@ -1379,6 +1421,50 @@
                 }
             });
         }, { threshold: 0.1 });
+
+        // INFINITE FLIP GRID LOGIC
+        const allPhotos = [
+            "assets/about/photo_2026-03-15_20-45-08.jpg",
+            "assets/about/photo_2026-03-15_20-45-13.jpg",
+            "assets/about/photo_2026-03-15_20-45-13 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-14.jpg",
+            "assets/about/photo_2026-03-15_20-45-15.jpg",
+            "assets/about/photo_2026-03-15_20-45-15 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-16.jpg",
+            "assets/about/photo_2026-03-15_20-45-16 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-17.jpg",
+            "assets/about/photo_2026-03-15_20-45-19.jpg",
+            "assets/about/photo_2026-03-15_20-45-20.jpg",
+            "assets/about/photo_2026-03-15_20-45-20 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-21.jpg",
+            "assets/about/photo_2026-03-15_20-45-22.jpg",
+            "assets/about/photo_2026-03-15_20-45-24.jpg"
+        ];
+
+        let availablePhotos = [...allPhotos];
+        
+        function getNextPhoto() {
+            if (availablePhotos.length === 0) availablePhotos = [...allPhotos];
+            const randomIndex = Math.floor(Math.random() * availablePhotos.length);
+            return availablePhotos.splice(randomIndex, 1)[0];
+        }
+
+        function triggerFlip() {
+            const gridItems = document.querySelectorAll('.about-img-item');
+            const randomItem = gridItems[Math.floor(Math.random() * gridItems.length)];
+            const inner = randomItem.querySelector('.flip-card-inner');
+            const isFlipped = inner.classList.contains('flipped');
+            
+            // Get the face that is NOT visible
+            const nextImg = getNextPhoto();
+            const backFace = isFlipped ? inner.querySelector('.flip-front img') : inner.querySelector('.flip-back img');
+            
+            backFace.src = nextImg;
+            inner.classList.toggle('flipped');
+        }
+
+        // Start the infinite sequence
+        setInterval(triggerFlip, 3000); // Flip one card every 3 seconds
 
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>

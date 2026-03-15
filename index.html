@@ -243,6 +243,14 @@
             font-family: 'Playfair Display', serif;
         }
 
+        .testimonial-slider-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+            display: flex;
+            align-items: center;
+        }
+
         .testimonial-slider {
             width: 100%;
             overflow-x: auto;
@@ -262,7 +270,41 @@
             display: flex;
             gap: 25px;
             width: max-content;
-            padding: 0 10%;
+            padding: 0 40px;
+        }
+
+        .testi-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: #c76aa4;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .testi-nav-btn:hover {
+            background: white;
+            color: #d87cab;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .testi-nav-btn.prev {
+            left: 5px;
+        }
+
+        .testi-nav-btn.next {
+            right: 5px;
         }
 
 
@@ -669,20 +711,23 @@
 
         <h2>Client Reviews</h2>
 
-        <div class="testimonial-slider">
-            <div class="testimonial-track">
-                <!-- Set 1 (9 images) -->
-                <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review 1">
-                <img class="testimonial-screenshot" src="assets/02.jpg" alt="Review 2">
-                <img class="testimonial-screenshot" src="assets/003.jpg" alt="Review 3">
-                <img class="testimonial-screenshot" src="assets/04.jpg" alt="Review 4">
-                <img class="testimonial-screenshot" src="assets/05.jpg" alt="Review 5">
-                <img class="testimonial-screenshot" src="assets/06.jpg" alt="Review 6">
-                <img class="testimonial-screenshot" src="assets/07.jpg" alt="Review 7">
-                <img class="testimonial-screenshot" src="assets/08.jpg" alt="Review 8">
-                <img class="testimonial-screenshot" src="assets/09.jpg" alt="Review 9">
-
+        <div class="testimonial-slider-container">
+            <button class="testi-nav-btn prev" onclick="moveTestimonials(-1)">&#10094;</button>
+            <div class="testimonial-slider" id="testimonialSlider">
+                <div class="testimonial-track">
+                    <!-- Set 1 (9 images) -->
+                    <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review 1">
+                    <img class="testimonial-screenshot" src="assets/02.jpg" alt="Review 2">
+                    <img class="testimonial-screenshot" src="assets/003.jpg" alt="Review 3">
+                    <img class="testimonial-screenshot" src="assets/04.jpg" alt="Review 4">
+                    <img class="testimonial-screenshot" src="assets/05.jpg" alt="Review 5">
+                    <img class="testimonial-screenshot" src="assets/06.jpg" alt="Review 6">
+                    <img class="testimonial-screenshot" src="assets/07.jpg" alt="Review 7">
+                    <img class="testimonial-screenshot" src="assets/08.jpg" alt="Review 8">
+                    <img class="testimonial-screenshot" src="assets/09.jpg" alt="Review 9">
+                </div>
             </div>
+            <button class="testi-nav-btn next" onclick="moveTestimonials(1)">&#10095;</button>
         </div>
 
     </section>
@@ -810,6 +855,47 @@
                 });
             });
         });
+
+        // Testimonial Auto-scroll & Navigation
+        let testiIndex = 0;
+        const testiSlider = document.getElementById("testimonialSlider");
+        const testiImages = document.querySelectorAll(".testimonial-screenshot");
+        let testiAutoTimer;
+
+        function startTestiAuto() {
+            testiAutoTimer = setInterval(() => {
+                moveTestimonials(1);
+            }, 4000);
+        }
+
+        function resetTestiAuto() {
+            clearInterval(testiAutoTimer);
+            startTestiAuto();
+        }
+
+        function moveTestimonials(step) {
+            testiIndex += step;
+            if (testiIndex >= testiImages.length) {
+                testiIndex = 0;
+            } else if (testiIndex < 0) {
+                testiIndex = testiImages.length - 1;
+            }
+
+            const imgWidth = testiImages[0].offsetWidth + 25; // width + gap
+            testiSlider.scrollTo({
+                left: testiIndex * imgWidth,
+                behavior: 'smooth'
+            });
+            resetTestiAuto();
+        }
+
+        startTestiAuto();
+
+        // Pause auto-scroll on hover or touch
+        testiSlider.addEventListener('mouseenter', () => clearInterval(testiAutoTimer));
+        testiSlider.addEventListener('mouseleave', startTestiAuto);
+        testiSlider.addEventListener('touchstart', () => clearInterval(testiAutoTimer));
+        testiSlider.addEventListener('touchend', startTestiAuto);
 
         function closeLightbox(e) {
             if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {

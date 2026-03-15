@@ -361,6 +361,17 @@
             gap: 24px;
         }
 
+        .service {
+            padding: 50px 40px;
+            border-radius: 40px;
+            text-align: left;
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .service:nth-child(odd) { background: #E0F2F1; } /* Mint */
         .service:nth-child(even) { background: #F3E5F5; } /* Lavender */
         .service:nth-child(3n) { background: #FFF3E0; } /* Peach */
@@ -804,7 +815,7 @@
             .service-box {
                 grid-template-columns: 1fr;
             }
-            .service { padding: 30px 20px; }
+            .service { padding: 40px 25px; border-radius: 30px; }
 
             .contact-info { grid-template-columns: 1fr; }
             .booking-grid { grid-template-columns: 1fr; gap: 15px; }

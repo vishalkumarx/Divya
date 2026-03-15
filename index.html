@@ -274,6 +274,22 @@
             margin: 0;
         }
 
+        .hero-foreground {
+            position: absolute;
+            bottom: -30px;
+            left: -40px;
+            width: 180px;
+            z-index: 10;
+            pointer-events: none;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            animation: float-soft 6s infinite ease-in-out;
+        }
+
+        @keyframes float-soft {
+            0%, 100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+
 
         /* ABOUT */
         .about {
@@ -1159,6 +1175,9 @@
                 <h4>10+ Years</h4>
                 <p>Helping people <br>around the region</p>
             </div>
+            
+            <!-- Foreground Decoration -->
+            <img src="assets/foreground.png" class="hero-foreground" alt="Decoration">
             <!-- SVG Blob Illustration -->
             <svg class="blob-decoration" style="bottom:-50px; right:-20px; width:200px; height:200px;"
                 viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">

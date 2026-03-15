@@ -27,7 +27,7 @@
             --white: #ffffff;
             --radius: 24px;
             --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            
+
             /* Decoration Colors */
             --bubble-pink: rgba(255, 182, 193, 0.4);
             --bubble-blue: rgba(173, 216, 230, 0.4);
@@ -146,9 +146,20 @@
             font-weight: 500;
         }
 
-        .hero-tag:nth-child(1) { background: #fee7d1; color: #b45309; }
-        .hero-tag:nth-child(2) { background: #dcfce7; color: #15803d; }
-        .hero-tag:nth-child(3) { background: #dbeafe; color: #1d4ed8; }
+        .hero-tag:nth-child(1) {
+            background: #fee7d1;
+            color: #b45309;
+        }
+
+        .hero-tag:nth-child(2) {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .hero-tag:nth-child(3) {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
 
         .hero h1 {
             font-size: clamp(32px, 5vw, 56px);
@@ -214,7 +225,7 @@
             font-size: 12px;
             color: var(--accent-dark-green);
             border: 3px solid var(--white);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
 
         .hero-image-container {
@@ -247,13 +258,21 @@
             background: var(--white);
             padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             text-align: left;
             z-index: 5;
         }
 
-        .stat-card h4 { font-size: 20px; color: var(--text-main); }
-        .stat-card p { font-size: 12px; color: var(--text-muted); margin: 0; }
+        .stat-card h4 {
+            font-size: 20px;
+            color: var(--text-main);
+        }
+
+        .stat-card p {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin: 0;
+        }
 
 
         /* ABOUT */
@@ -294,7 +313,8 @@
             transform: rotateY(180deg);
         }
 
-        .flip-front, .flip-back {
+        .flip-front,
+        .flip-back {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -302,10 +322,11 @@
             backface-visibility: hidden;
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
-        .flip-front img, .flip-back img {
+        .flip-front img,
+        .flip-back img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -318,14 +339,15 @@
         .about-img-item:nth-child(2n) {
             margin-top: 30px;
         }
-        
+
         /* Ensure reveal works with staggered items */
         .about-img-item.reveal {
             transition-property: opacity, transform, filter;
         }
-        
+
         .about-img-item.reveal.active:nth-child(2n) {
-            transform: translateY(0); /* Reset for active state */
+            transform: translateY(0);
+            /* Reset for active state */
         }
 
         .about h2 {
@@ -366,21 +388,41 @@
             border-radius: 40px;
             text-align: left;
             transition: var(--transition);
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .service:nth-child(odd) { background: #E0F2F1; } /* Mint */
-        .service:nth-child(even) { background: #F3E5F5; } /* Lavender */
-        .service:nth-child(3n) { background: #FFF3E0; } /* Peach */
-        .service:nth-child(4n) { background: #E3F2FD; } /* Blue */
-        .service:nth-child(5n) { background: #FFEBEE; } /* Rose */
+        .service:nth-child(odd) {
+            background: #E0F2F1;
+        }
+
+        /* Mint */
+        .service:nth-child(even) {
+            background: #F3E5F5;
+        }
+
+        /* Lavender */
+        .service:nth-child(3n) {
+            background: #FFF3E0;
+        }
+
+        /* Peach */
+        .service:nth-child(4n) {
+            background: #E3F2FD;
+        }
+
+        /* Blue */
+        .service:nth-child(5n) {
+            background: #FFEBEE;
+        }
+
+        /* Rose */
 
         .service:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
         .service i {
@@ -412,10 +454,16 @@
         }
 
         @media(max-width:900px) {
-            .service-highlight { grid-column: span 1; padding: 30px 20px; }
+            .service-highlight {
+                grid-column: span 1;
+                padding: 30px 20px;
+            }
         }
 
-        .highlight-content h3 { font-size: 28px; }
+        .highlight-content h3 {
+            font-size: 28px;
+        }
+
         .highlight-arrow {
             width: 50px;
             height: 50px;
@@ -522,12 +570,23 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .testi-nav-btn.prev { left: -20px; }
-        .testi-nav-btn.next { right: -20px; }
+        .testi-nav-btn.prev {
+            left: -20px;
+        }
+
+        .testi-nav-btn.next {
+            right: -20px;
+        }
 
         @media(max-width: 1024px) {
-            .testi-nav-btn { display: none; } /* Hide on mobile/tablets to prevent overflow */
-            .testimonial-track { padding: 0 20px; }
+            .testi-nav-btn {
+                display: none;
+            }
+
+            /* Hide on mobile/tablets to prevent overflow */
+            .testimonial-track {
+                padding: 0 20px;
+            }
         }
 
         .testimonial-screenshot {
@@ -575,7 +634,7 @@
         .blog-card:hover {
             transform: translateY(-10px);
             background: var(--white);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
         .blog-card img {
@@ -632,9 +691,10 @@
             gap: 15px;
         }
 
-        input, textarea {
+        input,
+        textarea {
             padding: 18px;
-            border: 1px solid rgba(0,0,0,0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
             border-radius: 15px;
             font-family: 'Poppins', sans-serif;
             background: var(--white);
@@ -642,7 +702,8 @@
             transition: var(--transition);
         }
 
-        input:focus, textarea:focus {
+        input:focus,
+        textarea:focus {
             outline: none;
             border-color: var(--accent-green);
             box-shadow: 0 0 0 4px rgba(189, 225, 200, 0.2);
@@ -688,8 +749,13 @@
         }
 
         @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.2); }
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(100px, 50px) scale(1.2);
+            }
         }
 
         .blob-decoration {
@@ -713,23 +779,53 @@
             filter: blur(0);
         }
 
-        .about, .about-img-item {
+        .about,
+        .about-img-item {
             visibility: hidden;
         }
 
-        .about.active, .about-img-item.active {
+        .about.active,
+        .about-img-item.active {
             visibility: visible;
         }
-        
-        .hero, .about, .services, .testimonials, .blog, .contact {
+
+        .hero,
+        .about,
+        .services,
+        .testimonials,
+        .blog,
+        .contact {
             position: relative;
             z-index: 1;
         }
 
         /* Specific Bubbles */
-        .bubble-1 { width: 400px; height: 400px; background: var(--bubble-green); top: -100px; left: -100px; }
-        .bubble-2 { width: 300px; height: 300px; background: var(--bubble-pink); bottom: 10%; right: -50px; animation-delay: -5s; }
-        .bubble-3 { width: 350px; height: 350px; background: var(--bubble-blue); top: 40%; left: -150px; animation-delay: -10s; }
+        .bubble-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--bubble-green);
+            top: -100px;
+            left: -100px;
+        }
+
+        .bubble-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--bubble-pink);
+            bottom: 10%;
+            right: -50px;
+            animation-delay: -5s;
+        }
+
+        .bubble-3 {
+            width: 350px;
+            height: 350px;
+            background: var(--bubble-blue);
+            top: 40%;
+            left: -150px;
+            animation-delay: -10s;
+        }
+
         /* VIDEO SECTION */
         .video-intro {
             padding: 80px 8%;
@@ -788,15 +884,26 @@
         }
 
         @media(max-width:768px) {
-            body { font-size: 14px; overflow-x: hidden; }
-            section { padding: 40px 5% !important; }
+            body {
+                font-size: 14px;
+                overflow-x: hidden;
+            }
+
+            section {
+                padding: 40px 5% !important;
+            }
 
             .menu-toggle {
                 display: block;
             }
 
-            nav { padding: 12px 5%; }
-            nav h2 { font-size: 20px; }
+            nav {
+                padding: 12px 5%;
+            }
+
+            nav h2 {
+                font-size: 20px;
+            }
 
             nav ul {
                 position: absolute;
@@ -809,7 +916,7 @@
                 max-height: 0;
                 overflow: hidden;
                 transition: 0.4s;
-                border-bottom: 1px solid rgba(0,0,0,0.1);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
 
             nav ul li {
@@ -829,15 +936,41 @@
                 gap: 30px;
             }
 
-            .hero h1 { font-size: 32px; line-height: 1.2; }
-            .hero-content { text-align: center; }
-            .hero-tags { justify-content: center; flex-wrap: wrap; }
-            .hero-actions { flex-direction: column; width: 100%; }
-            .hero-actions button { width: 100%; }
+            .hero h1 {
+                font-size: 32px;
+                line-height: 1.2;
+            }
 
-            .hero-image-container { display: flex; flex-direction: column; align-items: center; }
-            .hero-img-frame { max-width: 100%; height: auto; border-radius: 20px; }
-            
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-tags {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-actions button {
+                width: 100%;
+            }
+
+            .hero-image-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-img-frame {
+                max-width: 100%;
+                height: auto;
+                border-radius: 20px;
+            }
+
             .stat-card {
                 position: relative;
                 top: -20px;
@@ -847,21 +980,50 @@
                 transform: none !important;
             }
 
-            .about { gap: 40px; }
-            .about-images { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .about-img-item:nth-child(2n) { margin-top: 15px; }
+            .about {
+                gap: 40px;
+            }
+
+            .about-images {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .about-img-item:nth-child(2n) {
+                margin-top: 15px;
+            }
 
             .service-box {
                 grid-template-columns: 1fr;
             }
-            .service { padding: 40px 25px; border-radius: 30px; }
 
-            .video-intro { padding: 40px 5% !important; }
-            .video-container { border-radius: 20px; max-width: 100%; }
-            .video-intro h2 { font-size: 28px; margin-bottom: 20px; }
+            .service {
+                padding: 40px 25px;
+                border-radius: 30px;
+            }
 
-            .contact-info { grid-template-columns: 1fr; }
-            .booking-grid { grid-template-columns: 1fr; gap: 15px; }
+            .video-intro {
+                padding: 40px 5% !important;
+            }
+
+            .video-container {
+                border-radius: 20px;
+                max-width: 100%;
+            }
+
+            .video-intro h2 {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+
+            .booking-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
         }
 
         /* LIGHTBOX MODAL */
@@ -919,7 +1081,7 @@
             justify-content: center;
             align-items: center;
             font-size: 35px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             text-decoration: none;
             transition: 0.3s;
@@ -928,7 +1090,7 @@
         .whatsapp-fab:hover {
             transform: scale(1.1);
             background-color: #20b858;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         @media(max-width:768px) {
@@ -990,15 +1152,18 @@
         </div>
         <div class="hero-image-container">
             <div class="hero-img-frame">
-                <img src="assets/about/photo_2026-03-15_20-45-08.jpg" alt="Dr. Divya Sharma">
+                <img src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Dr. Divya Sharma">
             </div>
             <div class="stat-card">
                 <h4>10+ Years</h4>
                 <p>Helping people <br>around the region</p>
             </div>
             <!-- SVG Blob Illustration -->
-            <svg class="blob-decoration" style="bottom:-50px; right:-20px; width:200px; height:200px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#BDE1C8" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+            <svg class="blob-decoration" style="bottom:-50px; right:-20px; width:200px; height:200px;"
+                viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#BDE1C8"
+                    d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z"
+                    transform="translate(100 100)" />
             </svg>
         </div>
     </section>
@@ -1010,10 +1175,14 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        
+
         <!-- Decoration Blob -->
-        <svg class="blob-decoration" style="top:50%; left:50%; width:500px; height:500px; transform: translate(-50%, -50%); opacity: 0.2; filter: blur(40px);" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#BDE1C8" d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z" transform="translate(100 100)" />
+        <svg class="blob-decoration"
+            style="top:50%; left:50%; width:500px; height:500px; transform: translate(-50%, -50%); opacity: 0.2; filter: blur(40px);"
+            viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#BDE1C8"
+                d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z"
+                transform="translate(100 100)" />
         </svg>
     </section>
 
@@ -1074,8 +1243,11 @@
             </p>
 
             <!-- Abstract Figure Illustration -->
-            <svg class="blob-decoration" style="bottom:10px; left:-30px; width:150px; height:150px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#FFF9D7" d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z" transform="translate(100 100)" />
+            <svg class="blob-decoration" style="bottom:10px; left:-30px; width:150px; height:150px;"
+                viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFF9D7"
+                    d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z"
+                    transform="translate(100 100)" />
             </svg>
 
         </div>
@@ -1094,35 +1266,40 @@
                     <p>If you or someone you know is struggling, you are not alone. Professional help is just a click
                         away.</p>
                 </div>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20am%20looking%20for%20some%20support%20regarding%20my%20mental%20health%2E" class="highlight-arrow" target="_blank">↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20am%20looking%20for%20some%20support%20regarding%20my%20mental%20health%2E"
+                    class="highlight-arrow" target="_blank">↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-hands-holding-circle"></i>
                 <h3>De-addiction</h3>
                 <p>Professional support to break harmful cycles and build a healthier, independent lifestyle.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20De-addiction%20therapy%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20De-addiction%20therapy%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-cloud-rain"></i>
                 <h3>Anxiety</h3>
                 <p>Explore the root causes of anxiety and develop coping strategies to restore a sense of calm.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anxiety%20management%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anxiety%20management%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-brain"></i>
                 <h3>Overthinking</h3>
                 <p>Techniques to quiet a racing mind, reduce mental clutter, and improve focus and clarity.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Overthinking%20challenges%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Overthinking%20challenges%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-people-roof"></i>
                 <h3>Family Counselling</h3>
                 <p>Mediate conflicts, improve communication, and rebuild stronger, healthier family dynamics.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Family%20Counselling%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Family%20Counselling%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
@@ -1130,62 +1307,76 @@
                 <h3>Relationship/Separation</h3>
                 <p>Guidance for couples navigating difficulties, or individuals healing and transitioning after a
                     breakup.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Relationship/Separation%20counselling%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Relationship/Separation%20counselling%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-fire-flame-curved"></i>
                 <h3>Anger/Emotion Management</h3>
                 <p>Learn to process, express, and manage intense emotions in constructive and healthy ways.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anger%20or%20Emotion%20Management%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anger%20or%20Emotion%20Management%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-briefcase"></i>
                 <h3>Career Counselling</h3>
                 <p>Identify your strengths and interests to make informed, fulfilling professional choices.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Career%20Counselling%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Career%20Counselling%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-people-group"></i>
                 <h3>Group/Individual Counselling</h3>
                 <p>Personalized 1-on-1 therapy, or finding connection and shared healing in a safe group setting.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Group%20or%20Individual%20Counselling%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Group%20or%20Individual%20Counselling%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-graduation-cap"></i>
                 <h3>Student Counselling</h3>
                 <p>Support for academic pressure, peer issues, and emotional changes unique to young adults.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Student%20Counselling%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Student%20Counselling%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-stopwatch"></i>
                 <h3>Time & Stress Management</h3>
                 <p>Practical organizational skills and mental tools to reduce burnout and improve work-life balance.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Time%20and%20Stress%20Management%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Time%20and%20Stress%20Management%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-ghost"></i>
                 <h3>Phobia Healing</h3>
-                <p>Overcome irrational fears and reclaim your freedom with personalized exposure and mindset techniques.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Phobia%20Healing%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <p>Overcome irrational fears and reclaim your freedom with personalized exposure and mindset techniques.
+                </p>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Phobia%20Healing%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <div class="service">
                 <i class="fa-solid fa-arrows-rotate"></i>
                 <h3>Obsessive Compulsive Disorder</h3>
-                <p>Effective strategies to manage intrusive thoughts and repetitive behaviors, helping you find mental peace.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20OCD%20Specialization%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
+                <p>Effective strategies to manage intrusive thoughts and repetitive behaviors, helping you find mental
+                    peace.</p>
+                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20OCD%20Specialization%2E"
+                    class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
             <!-- More Abstract Figures -->
-            <div style="position: absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; z-index: -1; overflow:hidden;">
-                <svg class="blob-decoration" style="top:10%; right:-80px; width:300px; height:300px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#DBEAFE" d="M42.7,-74.1C55.9,-68.3,67.6,-58.5,75.4,-46C83.2,-33.5,87.1,-18.2,85.7,-3.4C84.3,11.5,77.5,25.8,68.2,38.1C58.8,50.4,46.8,60.7,33.1,68.4C19.3,76.1,3.8,81.1,-11.4,79.5C-26.6,77.9,-41.5,69.7,-53.6,58.8C-65.7,47.9,-75.1,34.4,-78.7,19.6C-82.3,4.8,-80.1,-11.3,-74,-26.2C-67.8,-41.2,-57.8,-54.9,-44.6,-60.7C-31.4,-66.6,-15.7,-64.5,-0.6,-63.4C14.5,-62.4,29.5,-79.8,42.7,-74.1Z" transform="translate(100 100)" />
+            <div
+                style="position: absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; z-index: -1; overflow:hidden;">
+                <svg class="blob-decoration" style="top:10%; right:-80px; width:300px; height:300px;"
+                    viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#DBEAFE"
+                        d="M42.7,-74.1C55.9,-68.3,67.6,-58.5,75.4,-46C83.2,-33.5,87.1,-18.2,85.7,-3.4C84.3,11.5,77.5,25.8,68.2,38.1C58.8,50.4,46.8,60.7,33.1,68.4C19.3,76.1,3.8,81.1,-11.4,79.5C-26.6,77.9,-41.5,69.7,-53.6,58.8C-65.7,47.9,-75.1,34.4,-78.7,19.6C-82.3,4.8,-80.1,-11.3,-74,-26.2C-67.8,-41.2,-57.8,-54.9,-44.6,-60.7C-31.4,-66.6,-15.7,-64.5,-0.6,-63.4C14.5,-62.4,29.5,-79.8,42.7,-74.1Z"
+                        transform="translate(100 100)" />
                 </svg>
             </div>
 
@@ -1195,8 +1386,12 @@
 
     <section id="testimonials" class="testimonials reveal">
         <!-- Decoration Blob -->
-        <svg class="blob-decoration" style="top:-20px; left:-50px; width:200px; height:200px; transform: rotate(180deg);" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#FFF9D7" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+        <svg class="blob-decoration"
+            style="top:-20px; left:-50px; width:200px; height:200px; transform: rotate(180deg);" viewBox="0 0 200 200"
+            xmlns="http://www.w3.org/2000/svg">
+            <path fill="#FFF9D7"
+                d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z"
+                transform="translate(100 100)" />
         </svg>
 
         <h2>Client Reviews</h2>
@@ -1345,7 +1540,7 @@
 
             const targetImage = testiImages[testiIndex];
             const scrollPos = targetImage.offsetLeft - (testiSlider.offsetWidth / 2) + (targetImage.offsetWidth / 2);
-            
+
             testiSlider.scrollTo({
                 left: scrollPos,
                 behavior: 'smooth'
@@ -1357,12 +1552,12 @@
             const testiSlider = document.getElementById("testimonialSlider");
             if (testiSlider) {
                 startTestiAuto();
-                
+
                 // Pause auto-scroll on interaction
                 testiSlider.addEventListener('mouseenter', stopTestiAuto);
                 testiSlider.addEventListener('mouseleave', startTestiAuto);
-                testiSlider.addEventListener('touchstart', stopTestiAuto, {passive: true});
-                testiSlider.addEventListener('touchend', startTestiAuto, {passive: true});
+                testiSlider.addEventListener('touchstart', stopTestiAuto, { passive: true });
+                testiSlider.addEventListener('touchend', startTestiAuto, { passive: true });
             }
         });
 
@@ -1490,7 +1685,7 @@
         ];
 
         let availablePhotos = [...allPhotos];
-        
+
         function getNextPhoto() {
             if (availablePhotos.length === 0) availablePhotos = [...allPhotos];
             const randomIndex = Math.floor(Math.random() * availablePhotos.length);
@@ -1502,11 +1697,11 @@
             const randomItem = gridItems[Math.floor(Math.random() * gridItems.length)];
             const inner = randomItem.querySelector('.flip-card-inner');
             const isFlipped = inner.classList.contains('flipped');
-            
+
             // Get the face that is NOT visible
             const nextImg = getNextPhoto();
             const backFace = isFlipped ? inner.querySelector('.flip-front img') : inner.querySelector('.flip-back img');
-            
+
             backFace.src = nextImg;
             inner.classList.toggle('flipped');
         }
@@ -1525,7 +1720,8 @@
         document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     </script>
 
-    <a href="https://wa.me/917973477917?text=Hello%20Divya%20%2C%20I%20would%20like%20to%20book%20a%20consultation%2E%20Please%20let%20me%20know%20the%20available%20time%20slots%2E" class="whatsapp-fab" target="_blank">
+    <a href="https://wa.me/917973477917?text=Hello%20Divya%20%2C%20I%20would%20like%20to%20book%20a%20consultation%2E%20Please%20let%20me%20know%20the%20available%20time%20slots%2E"
+        class="whatsapp-fab" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 </body>

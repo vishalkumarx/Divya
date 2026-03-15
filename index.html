@@ -122,7 +122,7 @@
             grid-template-columns: 1.2fr 1fr;
             align-items: center;
             padding: 40px 8%;
-            background: var(--bg-primary);
+            background: transparent;
             gap: 40px;
         }
 
@@ -260,21 +260,39 @@
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
-            background: var(--bg-primary);
+            background: transparent;
         }
 
         .about-images {
-            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
             width: 100%;
-            overflow: hidden;
-            border-radius: var(--radius);
         }
 
-        .carousel-slide img {
+        .about-img-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            aspect-ratio: 1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .about-img-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .about-img-item img {
             width: 100%;
-            height: 500px;
+            height: 100%;
             object-fit: cover;
             object-position: center;
+        }
+
+        .about-img-item:nth-child(2n) {
+            transform: translateY(20px);
         }
 
         .about h2 {
@@ -292,7 +310,7 @@
 
         /* SERVICES / SPECIALIZATIONS */
         .services {
-            background: var(--bg-primary);
+            background: transparent;
             padding: 80px 8%;
             text-align: center;
         }
@@ -403,7 +421,7 @@
         .testimonials {
             padding: 100px 8%;
             text-align: center;
-            background: var(--white);
+            background: transparent;
         }
 
         .testimonials h2 {
@@ -480,7 +498,7 @@
         /* BLOG */
         .blog {
             padding: 100px 8%;
-            background: var(--bg-primary);
+            background: transparent;
             text-align: center;
         }
 
@@ -607,15 +625,17 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 0;
             overflow: hidden;
         }
 
         .bubble {
             position: absolute;
             border-radius: 50%;
-            filter: blur(40px);
-            animation: float 20s infinite alternate ease-in-out;
+            filter: blur(60px);
+            opacity: 0.8;
+            animation: float 15s infinite alternate ease-in-out;
+            z-index: 0;
         }
 
         @keyframes float {
@@ -633,13 +653,18 @@
         /* Entrance Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
+            transform: translateY(50px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
+        }
+        
+        .hero, .about, .services, .testimonials, .blog, .contact {
+            position: relative;
+            z-index: 1;
         }
 
         /* Specific Bubbles */
@@ -874,25 +899,24 @@
     <section id="about" class="about reveal">
 
         <div class="about-images">
-            <div class="carousel-slide" id="aboutCarousel">
+            <div class="about-img-item reveal" style="transition-delay: 0.1s;">
                 <img src="assets/about/photo_2026-03-15_20-45-08.jpg" alt="Dr. Divya Sharma">
-                <img src="assets/about/photo_2026-03-15_20-45-13.jpg" alt="About Dr. Divya Sharma">
-                <img src="assets/about/photo_2026-03-15_20-45-13 (2).jpg" alt="Dr. Divya Sharma Session">
-                <img src="assets/about/photo_2026-03-15_20-45-14.jpg" alt="Therapy Session">
-                <img src="assets/about/photo_2026-03-15_20-45-15.jpg" alt="Compassionate Care">
-                <img src="assets/about/photo_2026-03-15_20-45-15 (2).jpg" alt="Dr. Divya Sharma">
-                <img src="assets/about/photo_2026-03-15_20-45-16.jpg" alt="About Dr. Divya Sharma">
-                <img src="assets/about/photo_2026-03-15_20-45-16 (2).jpg" alt="Dr. Divya Sharma Session">
-                <img src="assets/about/photo_2026-03-15_20-45-17.jpg" alt="Therapy Session">
-                <img src="assets/about/photo_2026-03-15_20-45-19.jpg" alt="Compassionate Care">
-                <img src="assets/about/photo_2026-03-15_20-45-20.jpg" alt="Dr. Divya Sharma">
-                <img src="assets/about/photo_2026-03-15_20-45-20 (2).jpg" alt="About Dr. Divya Sharma">
-                <img src="assets/about/photo_2026-03-15_20-45-21.jpg" alt="Dr. Divya Sharma Session">
-                <img src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Therapy Session">
-                <img src="assets/about/photo_2026-03-15_20-45-24.jpg" alt="Compassionate Care">
             </div>
-            <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+            <div class="about-img-item reveal" style="transition-delay: 0.2s;">
+                <img src="assets/about/photo_2026-03-15_20-45-13.jpg" alt="About Dr. Divya Sharma">
+            </div>
+            <div class="about-img-item reveal" style="transition-delay: 0.3s;">
+                <img src="assets/about/photo_2026-03-15_20-45-13 (2).jpg" alt="Dr. Divya Sharma Session">
+            </div>
+            <div class="about-img-item reveal" style="transition-delay: 0.4s;">
+                <img src="assets/about/photo_2026-03-15_20-45-14.jpg" alt="Therapy Session">
+            </div>
+            <div class="about-img-item reveal" style="transition-delay: 0.5s;">
+                <img src="assets/about/photo_2026-03-15_20-45-15.jpg" alt="Compassionate Care">
+            </div>
+            <div class="about-img-item reveal" style="transition-delay: 0.6s;">
+                <img src="assets/about/photo_2026-03-15_20-45-15 (2).jpg" alt="Dr. Divya Sharma">
+            </div>
         </div>
 
         <div>
@@ -909,6 +933,11 @@
                 Her therapeutic approach combines empathy and evidence-based techniques
                 to provide a safe environment where clients can heal and grow.
             </p>
+
+            <!-- Abstract Figure Illustration -->
+            <svg class="blob-decoration" style="bottom:10px; left:-30px; width:150px; height:150px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFF9D7" d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z" transform="translate(100 100)" />
+            </svg>
 
         </div>
 
@@ -1014,11 +1043,22 @@
                 <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20OCD%20Specialization%2E" class="get-help-btn" target="_blank">Get Help ↗</a>
             </div>
 
+            <!-- More Abstract Figures -->
+            <div style="position: absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; z-index: -1; overflow:hidden;">
+                <svg class="blob-decoration" style="top:10%; right:-80px; width:300px; height:300px;" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#DBEAFE" d="M42.7,-74.1C55.9,-68.3,67.6,-58.5,75.4,-46C83.2,-33.5,87.1,-18.2,85.7,-3.4C84.3,11.5,77.5,25.8,68.2,38.1C58.8,50.4,46.8,60.7,33.1,68.4C19.3,76.1,3.8,81.1,-11.4,79.5C-26.6,77.9,-41.5,69.7,-53.6,58.8C-65.7,47.9,-75.1,34.4,-78.7,19.6C-82.3,4.8,-80.1,-11.3,-74,-26.2C-67.8,-41.2,-57.8,-54.9,-44.6,-60.7C-31.4,-66.6,-15.7,-64.5,-0.6,-63.4C14.5,-62.4,29.5,-79.8,42.7,-74.1Z" transform="translate(100 100)" />
+                </svg>
+            </div>
+
         </div>
 
     </section>
 
     <section id="testimonials" class="testimonials reveal">
+        <!-- Decoration Blob -->
+        <svg class="blob-decoration" style="top:-20px; left:-50px; width:200px; height:200px; transform: rotate(180deg);" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#FFF9D7" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
+        </svg>
 
         <h2>Client Reviews</h2>
 

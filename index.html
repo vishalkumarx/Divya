@@ -730,7 +730,38 @@
         .bubble-1 { width: 400px; height: 400px; background: var(--bubble-green); top: -100px; left: -100px; }
         .bubble-2 { width: 300px; height: 300px; background: var(--bubble-pink); bottom: 10%; right: -50px; animation-delay: -5s; }
         .bubble-3 { width: 350px; height: 350px; background: var(--bubble-blue); top: 40%; left: -150px; animation-delay: -10s; }
-        .bubble-4 { width: 250px; height: 250px; background: var(--bubble-yellow); bottom: -50px; left: 20%; animation-delay: -15s; }
+        /* VIDEO SECTION */
+        .video-intro {
+            padding: 80px 8%;
+            text-align: center;
+            background: transparent;
+            position: relative;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: auto;
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            background: var(--white);
+            aspect-ratio: 16 / 9;
+            z-index: 2;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-intro h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            color: var(--text-main);
+        }
 
         /* FOOTER */
         footer {
@@ -966,6 +997,21 @@
                 <path fill="#BDE1C8" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z" transform="translate(100 100)" />
             </svg>
         </div>
+    </section>
+
+    <section id="video-intro" class="video-intro reveal">
+        <h2>Watch Introduction</h2>
+        <div class="video-container">
+            <video controls loop muted autoplay playsinline>
+                <source src="assets/video/001.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        
+        <!-- Decoration Blob -->
+        <svg class="blob-decoration" style="top:50%; left:50%; width:500px; height:500px; transform: translate(-50%, -50%); opacity: 0.2; filter: blur(40px);" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#BDE1C8" d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z" transform="translate(100 100)" />
+        </svg>
     </section>
 
     <section id="about" class="about reveal">

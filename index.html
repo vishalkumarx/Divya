@@ -765,11 +765,44 @@
             transition: var(--transition);
         }
 
+        .contact input,
+        .contact select,
+        .contact textarea {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            border: 1px solid var(--accent-green);
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .contact select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232d4f3c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 16px;
+            cursor: pointer;
+        }
+
         input:focus,
         textarea:focus {
             outline: none;
             border-color: var(--accent-green);
             box-shadow: 0 0 0 4px rgba(189, 225, 200, 0.2);
+        }
+
+        .contact input:focus,
+        .contact select:focus,
+        .contact textarea:focus {
+            outline: none;
+            border-color: var(--accent-dark-green);
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
         button.submit {
@@ -1045,10 +1078,11 @@
             }
 
             .hero-foreground {
-                width: 140px;
-                bottom: -10px;
-                left: 5%;
-                z-index: 5; /* Behind the stat card */
+                width: 130px;
+                bottom: -20px;
+                right: -10px; /* Shifted to right */
+                left: auto;
+                z-index: 20; /* Above the stat card */
             }
 
             .session-badge {
@@ -1563,6 +1597,12 @@
 
             <input type="tel" id="bookPhone" placeholder="Phone Number" required>
 
+            <select id="bookSession" required>
+                <option value="" disabled selected>Select Session Type</option>
+                <option value="Online">Online Session (Video Call)</option>
+                <option value="Offline">Offline Session (In-Person)</option>
+            </select>
+
             <textarea id="bookMessage" rows="4" placeholder="Your Message" required></textarea>
 
             <button type="submit" class="submit">Send Message</button>
@@ -1702,6 +1742,7 @@
                 const nameInput = document.getElementById("bookName").value;
                 const emailInput = document.getElementById("bookEmail").value;
                 const phoneInput = document.getElementById("bookPhone").value;
+                const sessionTypeInput = document.getElementById("bookSession").value;
                 const messageInput = document.getElementById("bookMessage").value;
 
                 try {
@@ -1710,6 +1751,7 @@
                         name: nameInput,
                         email: emailInput,
                         phone: phoneInput,
+                        sessionType: sessionTypeInput,
                         message: messageInput,
                         timestamp: new Date()
                     });
@@ -1726,6 +1768,7 @@
                                 name: nameInput,
                                 email: emailInput,
                                 phone: phoneInput,
+                                sessionType: sessionTypeInput,
                                 message: messageInput,
                                 source: "Website Booking Form"
                             })

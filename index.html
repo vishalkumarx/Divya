@@ -1783,7 +1783,7 @@
                 submitBtn.textContent = "Sending...";
                 submitBtn.disabled = true;
 
-                const nameInput = document.getElementById("bookName").value;
+                const nameInput = document.getElementById("bookName").value.trim();
                 const emailInput = document.getElementById("bookEmail").value.trim();
                 const countryCode = document.getElementById("countryCode").value;
                 const phoneInput = document.getElementById("bookPhone").value.trim();
@@ -1791,6 +1791,8 @@
                 const sessionTypeInput = document.getElementById("bookSession").value;
                 const messageInput = document.getElementById("bookMessage").value.trim();
                 const fullMessage = `Session Mode: ${sessionTypeInput}\n\n${messageInput}`;
+
+                console.log("Submitting Booking:", { nameInput, emailInput, fullPhone, sessionTypeInput, fullMessage });
 
                 // Validate 10 digit phone
                 if (phoneInput.length !== 10) {
@@ -1810,11 +1812,11 @@
                         message: fullMessage,
                         timestamp: new Date()
                     });
+                    console.log("Firestore document created successfully.");
 
                     // Webhook Trigger for Automations (Make.com, Zapier, etc)
                     try {
-                        // ** IMPORTANT: Replace the URL below with your new Webhook URL from Make.com **
-                        await fetch("https://hook.eu1.make.com/o7lzd709z0ng4wkftbgjrvybp6m3nvib", {
+                        const response = await fetch("https://hook.eu1.make.com/o7lzd709z0ng4wkftbgjrvybp6m3nvib", {
                             method: "POST",
                             headers: {
                                 "Content-Type": "application/json"
@@ -1828,8 +1830,14 @@
                                 source: "Website Booking Form"
                             })
                         });
+                        
+                        if (response.ok) {
+                            console.log("Webhook triggered successfully.");
+                        } else {
+                            console.error("Webhook returned an error:", response.status, response.statusText);
+                        }
                     } catch (webhookError) {
-                        console.error("Webhook failed to trigger:", webhookError);
+                        console.error("Webhook fetch failed:", webhookError);
                     }
 
                     // Success feedback

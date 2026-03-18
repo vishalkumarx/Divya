@@ -279,7 +279,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             z-index: 20;
             animation: badge-float 4s infinite ease-in-out;
             white-space: nowrap;
@@ -289,7 +289,8 @@
             background: #e0f2fe;
             color: #0369a1;
             top: 15%;
-            left: -100px; /* Pushed further left */
+            left: -100px;
+            /* Pushed further left */
             animation-delay: 0s;
         }
 
@@ -297,7 +298,8 @@
             background: #fef3c7;
             color: #b45309;
             bottom: 25%;
-            right: -100px; /* Pushed further right */
+            right: -100px;
+            /* Pushed further right */
             animation-delay: -2s;
         }
 
@@ -306,8 +308,15 @@
         }
 
         @keyframes badge-float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
         .hero-foreground {
@@ -317,13 +326,20 @@
             width: 180px;
             z-index: 10;
             pointer-events: none;
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
             animation: float-soft 6s infinite ease-in-out;
         }
 
         @keyframes float-soft {
-            0%, 100% { transform: translateY(0) rotate(0); }
-            50% { transform: translateY(-10px) rotate(5deg); }
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(5deg);
+            }
         }
 
 
@@ -1074,15 +1090,12 @@
                 width: 90%;
                 margin: auto;
                 transform: none !important;
-                z-index: 15; /* Ensure text is above flowers */
+                z-index: 15;
+                /* Ensure text is above flowers */
             }
 
             .hero-foreground {
-                width: 130px;
-                bottom: -20px;
-                right: -10px; /* Shifted to right */
-                left: auto;
-                z-index: 20; /* Above the stat card */
+                display: none;
             }
 
             .session-badge {
@@ -1092,12 +1105,14 @@
 
             .session-badge.online {
                 left: 10px;
-                top: -30px; /* Moved above image */
+                top: -30px;
+                /* Moved above image */
             }
 
             .session-badge.offline {
                 right: 10px;
-                bottom: -30px; /* Moved below image */
+                bottom: -30px;
+                /* Moved below image */
             }
 
             .about {
@@ -1278,7 +1293,7 @@
                 <h4>10+ Years</h4>
                 <p>Helping people <br>around the region</p>
             </div>
-            
+
             <!-- Session Availability Badges -->
             <div class="session-badge online">
                 <i class="fa-solid fa-video"></i> Online Sessions Available
@@ -1286,7 +1301,7 @@
             <div class="session-badge offline">
                 <i class="fa-solid fa-house-chimney-medical"></i> Offline Sessions Available
             </div>
-            
+
             <!-- Foreground Decoration -->
             <img src="assets/foreground.png" class="hero-foreground" alt="Decoration">
             <!-- SVG Blob Illustration -->
@@ -1359,10 +1374,10 @@
         </div>
 
         <div>
-            <h2>About Dr. Divya Sharma</h2>
+            <h2>About Divya Sharma</h2>
 
             <p>
-                Dr. Divya Sharma is a compassionate psychologist dedicated to helping
+                Divya Sharma is a compassionate psychologist dedicated to helping
                 individuals overcome emotional challenges and discover inner strength.
                 She specializes in anxiety therapy, relationship counseling,
                 stress management, and personal growth.

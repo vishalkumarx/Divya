@@ -821,6 +821,22 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         }
 
+        .phone-input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .phone-input-group select {
+            width: 100px;
+            margin-bottom: 0;
+        }
+
+        .phone-input-group input {
+            flex: 1;
+            margin-bottom: 0;
+        }
+
         button.submit {
             background: var(--accent-green);
             color: var(--accent-dark-green);
@@ -1610,7 +1626,20 @@
 
             <input type="email" id="bookEmail" placeholder="Email" required>
 
-            <input type="tel" id="bookPhone" placeholder="Phone Number" required>
+            <div class="phone-input-group">
+                <select id="countryCode" required>
+                    <option value="+91" selected>+91 (IN)</option>
+                    <option value="+1">+1 (US)</option>
+                    <option value="+44">+44 (UK)</option>
+                    <option value="+61">+61 (AU)</option>
+                    <option value="+971">+971 (UAE)</option>
+                    <option value="+1">+1 (CA)</option>
+                </select>
+                <input type="tel" id="bookPhone" placeholder="10-digit Phone Number" 
+                       pattern="[0-9]{10}" maxlength="10" 
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                       required>
+            </div>
 
             <select id="bookSession" required>
                 <option value="" disabled selected>Select Session Type</option>
@@ -1755,18 +1784,28 @@
                 submitBtn.disabled = true;
 
                 const nameInput = document.getElementById("bookName").value;
-                const emailInput = document.getElementById("bookEmail").value;
-                const phoneInput = document.getElementById("bookPhone").value;
+                const emailInput = document.getElementById("bookEmail").value.trim();
+                const countryCode = document.getElementById("countryCode").value;
+                const phoneInput = document.getElementById("bookPhone").value.trim();
+                const fullPhone = countryCode + " " + phoneInput;
                 const sessionTypeInput = document.getElementById("bookSession").value;
-                const messageInput = document.getElementById("bookMessage").value;
+                const messageInput = document.getElementById("bookMessage").value.trim();
                 const fullMessage = `Session Mode: ${sessionTypeInput}\n\n${messageInput}`;
+
+                // Validate 10 digit phone
+                if (phoneInput.length !== 10) {
+                    alert("Please enter a valid 10-digit phone number.");
+                    submitBtn.textContent = "Send Message";
+                    submitBtn.disabled = false;
+                    return;
+                }
 
                 try {
                     // Add a new document to the "appointments" collection
                     await addDoc(collection(db, "appointments"), {
                         name: nameInput,
                         email: emailInput,
-                        phone: phoneInput,
+                        phone: fullPhone,
                         sessionType: sessionTypeInput,
                         message: fullMessage,
                         timestamp: new Date()
@@ -1783,7 +1822,7 @@
                             body: JSON.stringify({
                                 name: nameInput,
                                 email: emailInput,
-                                phone: phoneInput,
+                                phone: fullPhone,
                                 sessionType: sessionTypeInput,
                                 message: fullMessage,
                                 source: "Website Booking Form"

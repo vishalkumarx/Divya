@@ -1759,6 +1759,7 @@
                 const phoneInput = document.getElementById("bookPhone").value;
                 const sessionTypeInput = document.getElementById("bookSession").value;
                 const messageInput = document.getElementById("bookMessage").value;
+                const fullMessage = `Session Mode: ${sessionTypeInput}\n\n${messageInput}`;
 
                 try {
                     // Add a new document to the "appointments" collection
@@ -1767,7 +1768,7 @@
                         email: emailInput,
                         phone: phoneInput,
                         sessionType: sessionTypeInput,
-                        message: messageInput,
+                        message: fullMessage,
                         timestamp: new Date()
                     });
 
@@ -1784,7 +1785,7 @@
                                 email: emailInput,
                                 phone: phoneInput,
                                 sessionType: sessionTypeInput,
-                                message: messageInput,
+                                message: fullMessage,
                                 source: "Website Booking Form"
                             })
                         });

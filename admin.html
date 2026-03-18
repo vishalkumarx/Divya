@@ -79,6 +79,8 @@ tr:last-child td { border-bottom: none; }
         <tr>
           <th>Date</th>
           <th>Name</th>
+          <th>Phone</th>
+          <th>Mode</th>
           <th>Email</th>
           <th>Message</th>
           <th>Action</th>
@@ -152,32 +154,36 @@ tr:last-child td { border-bottom: none; }
 
   // Fetch Data Function
   async function fetchAppointments() {
-    appointmentsList.innerHTML = '<tr><td colspan="5" class="empty-state">Loading appointments...</td></tr>';
+    appointmentsList.innerHTML = '<tr><td colspan="7" class="empty-state">Loading appointments...</td></tr>';
     
     try {
       const q = query(collection(db, "appointments"), orderBy("timestamp", "desc"));
       const querySnapshot = await getDocs(q);
       
       if (querySnapshot.empty) {
-        appointmentsList.innerHTML = '<tr><td colspan="5" class="empty-state">No appointments found.</td></tr>';
+        appointmentsList.innerHTML = '<tr><td colspan="7" class="empty-state">No appointments found.</td></tr>';
         return;
       }
 
       appointmentsList.innerHTML = '';
-      querySnapshot.forEach((docSnap) => {
-        const data = docSnap.data();
-        const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : 'N/A';
-        
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${date}</td>
-          <td><strong>${data.name}</strong></td>
-          <td><a href="mailto:${data.email}" style="color:#c76aa4;">${data.email}</a></td>
-          <td style="max-width:300px;">${data.message}</td>
-          <td><button class="btn-delete" data-id="${docSnap.id}">Delete</button></td>
-        `;
-        appointmentsList.appendChild(tr);
-      });
+        querySnapshot.forEach((docSnap) => {
+          const data = docSnap.data();
+          const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : 'N/A';
+          const sessionMode = data.sessionType || 'Not Specified';
+          const phone = data.phone || 'N/A';
+          
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${date}</td>
+            <td><strong>${data.name}</strong></td>
+            <td>${phone}</td>
+            <td><span style="padding:4px 10px; border-radius:12px; font-size:12px; background:${sessionMode === 'Online' ? '#e0f2fe' : '#fef3c7'}; color:${sessionMode === 'Online' ? '#0369a1' : '#b45309'}; font-weight:600;">${sessionMode}</span></td>
+            <td><a href="mailto:${data.email}" style="color:#c76aa4;">${data.email}</a></td>
+            <td style="max-width:250px;">${data.message}</td>
+            <td><button class="btn-delete" data-id="${docSnap.id}">Delete</button></td>
+          `;
+          appointmentsList.appendChild(tr);
+        });
 
       // Attach delete listeners
       document.querySelectorAll('.btn-delete').forEach(btn => {
@@ -192,7 +198,7 @@ tr:last-child td { border-bottom: none; }
 
     } catch (error) {
       console.error("Error fetching data:", error);
-      appointmentsList.innerHTML = '<tr><td colspan="5" class="empty-state" style="color:red;">Error loading data. Check console.</td></tr>';
+      appointmentsList.innerHTML = '<tr><td colspan="7" class="empty-state" style="color:red;">Error loading data. Check console.</td></tr>';
     }
   }
 

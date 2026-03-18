@@ -263,15 +263,51 @@
             z-index: 5;
         }
 
-        .stat-card h4 {
-            font-size: 20px;
-            color: var(--text-main);
-        }
-
         .stat-card p {
             font-size: 12px;
             color: var(--text-muted);
             margin: 0;
+        }
+
+        /* Session Badges */
+        .session-badge {
+            position: absolute;
+            padding: 10px 18px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            z-index: 20;
+            animation: badge-float 4s infinite ease-in-out;
+            white-space: nowrap;
+        }
+
+        .session-badge.online {
+            background: #e0f2fe;
+            color: #0369a1;
+            top: 15%;
+            left: -60px;
+            animation-delay: 0s;
+        }
+
+        .session-badge.offline {
+            background: #fef3c7;
+            color: #b45309;
+            bottom: 25%;
+            right: -60px;
+            animation-delay: -2s;
+        }
+
+        .session-badge i {
+            font-size: 14px;
+        }
+
+        @keyframes badge-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
         }
 
         .hero-foreground {
@@ -1015,6 +1051,21 @@
                 z-index: 5; /* Behind the stat card */
             }
 
+            .session-badge {
+                padding: 8px 14px;
+                font-size: 12px;
+            }
+
+            .session-badge.online {
+                left: -10px;
+                top: 10%;
+            }
+
+            .session-badge.offline {
+                right: -10px;
+                bottom: 15%;
+            }
+
             .about {
                 gap: 40px;
             }
@@ -1192,6 +1243,14 @@
             <div class="stat-card">
                 <h4>10+ Years</h4>
                 <p>Helping people <br>around the region</p>
+            </div>
+            
+            <!-- Session Availability Badges -->
+            <div class="session-badge online">
+                <i class="fa-solid fa-video"></i> Online Sessions Available
+            </div>
+            <div class="session-badge offline">
+                <i class="fa-solid fa-house-chimney-medical"></i> Offline Sessions Available
             </div>
             
             <!-- Foreground Decoration -->

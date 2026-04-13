@@ -1303,7 +1303,7 @@
         </div>
         <div class="hero-image-container">
             <div class="hero-img-frame">
-                <img src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Dr. Divya Sharma">
+                <img id="dynamic-hero-img" src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Dr. Divya Sharma">
             </div>
             <div class="stat-card">
                 <h4>10+ Years</h4>
@@ -1561,17 +1561,9 @@
         <div class="testimonial-slider-container">
             <button class="testi-nav-btn prev" onclick="moveTestimonials(-1)">&#10094;</button>
             <div class="testimonial-slider" id="testimonialSlider">
-                <div class="testimonial-track">
-                    <!-- Set 1 (9 images) -->
-                    <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review 1">
-                    <img class="testimonial-screenshot" src="assets/02.jpg" alt="Review 2">
-                    <img class="testimonial-screenshot" src="assets/003.jpg" alt="Review 3">
-                    <img class="testimonial-screenshot" src="assets/04.jpg" alt="Review 4">
-                    <img class="testimonial-screenshot" src="assets/05.jpg" alt="Review 5">
-                    <img class="testimonial-screenshot" src="assets/06.jpg" alt="Review 6">
-                    <img class="testimonial-screenshot" src="assets/07.jpg" alt="Review 7">
-                    <img class="testimonial-screenshot" src="assets/08.jpg" alt="Review 8">
-                    <img class="testimonial-screenshot" src="assets/09.jpg" alt="Review 9">
+                <div class="testimonial-track" id="dynamic-testimonial-track">
+                    <!-- Images will be populated dynamically -->
+                    <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review Loading...">
                 </div>
             </div>
             <button class="testi-nav-btn next" onclick="moveTestimonials(1)">&#10095;</button>
@@ -1927,6 +1919,75 @@
         class="whatsapp-fab" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
-</body>
+    <!-- SUPABASE SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script>
+      // Supabase Initialization
+      const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviv.supabase.co';
+      const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
+      
+      let supabaseClient = null;
+      if(SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
 
+      async function fetchDynamicImages() {
+        if(!supabaseClient) return;
+        
+        try {
+          const { data: images, error } = await supabaseClient.from('site_images').select('*');
+          if (error) throw error;
+          if (!images || images.length === 0) return;
+
+          // Process Hero Image
+          const heroImages = images.filter(img => img.section === 'hero');
+          if(heroImages.length > 0) {
+            document.getElementById('dynamic-hero-img').src = heroImages[0].image_url;
+          }
+
+          // Process About Section
+          const aboutImages = images.filter(img => img.section === 'about');
+          if(aboutImages.length > 0) {
+            const flipGrid = document.getElementById('flipGrid');
+            flipGrid.innerHTML = '';
+            
+            // Create pairs for flip cards
+            for(let i = 0; i < aboutImages.length; i += 2) {
+              const frontImg = aboutImages[i].image_url;
+              const backImg = aboutImages[i+1] ? aboutImages[i+1].image_url : frontImg;
+              
+              const div = document.createElement('div');
+              div.className = 'about-img-item reveal active';
+              div.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="flip-front"><img src="${frontImg}" alt="About"></div>
+                    <div class="flip-back"><img src="${backImg}" alt="About"></div>
+                </div>
+              `;
+              flipGrid.appendChild(div);
+            }
+          }
+
+          // Process Testimonials
+          const testimonialImages = images.filter(img => img.section === 'testimonial');
+          if(testimonialImages.length > 0) {
+            const track = document.getElementById('dynamic-testimonial-track');
+            track.innerHTML = '';
+            testimonialImages.forEach(img => {
+              const imgEl = document.createElement('img');
+              imgEl.className = 'testimonial-screenshot';
+              imgEl.src = img.image_url;
+              imgEl.alt = 'Review';
+              track.appendChild(imgEl);
+            });
+          }
+
+        } catch (err) {
+          console.error("Failed to load dynamic images from Supabase:", err);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', fetchDynamicImages);
+    </script>
+</body>
 </html>

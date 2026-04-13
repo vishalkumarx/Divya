@@ -654,6 +654,8 @@ tr:hover td { background: #fafcf8; }
           const date = new Date(data.created_at).toLocaleString();
           const sessionMode = data.session_type || 'Not Specified';
           const phone = data.phone || 'N/A';
+          const cleanPhone = phone.replace(/\D/g, '');
+          const waLink = `https://wa.me/${cleanPhone}?text=Hello ${encodeURIComponent(data.name)}, this is Dr. Divya Sharma's office regarding your appointment request.`;
           
           const tr = document.createElement('tr');
           tr.innerHTML = `
@@ -663,7 +665,12 @@ tr:hover td { background: #fafcf8; }
             <td><span style="padding:4px 10px; border-radius:12px; font-size:12px; background:${sessionMode === 'Online' ? '#e0f2fe' : '#fef3c7'}; color:${sessionMode === 'Online' ? '#0369a1' : '#b45309'}; font-weight:600;">${sessionMode}</span></td>
             <td><a href="mailto:${data.email}" style="color:#2d4f3c;">${data.email}</a></td>
             <td style="max-width:250px;">${data.message}</td>
-            <td><button class="btn-delete appointment-del" data-id="${data.id}">Delete</button></td>
+            <td style="white-space:nowrap;">
+              <a href="${waLink}" target="_blank" class="btn-chat" style="display:inline-block; background:#25d366; color:white; padding:6px 12px; border-radius:8px; text-decoration:none; font-size:12px; font-weight:600; margin-right:5px;">
+                <i class="fab fa-whatsapp"></i> Chat
+              </a>
+              <button class="btn-delete appointment-del" data-id="${data.id}" style="padding:6px 12px; font-size:12px; width:auto; margin-top:0;">Delete</button>
+            </td>
           `;
           appointmentsList.appendChild(tr);
         });

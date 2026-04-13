@@ -282,10 +282,9 @@ tr:last-child td { border-bottom: none; }
   };
 </script>
 
-<!-- FIREBASE SDK -->
+<!-- FIREBASE SDK (For Firestore Only) -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
   import { getFirestore, collection, getDocs, deleteDoc, doc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
   const firebaseConfig = {
@@ -298,7 +297,6 @@ tr:last-child td { border-bottom: none; }
   };
 
   const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
   const db = getFirestore(app);
 
   const loginSection = document.getElementById('login-section');
@@ -308,9 +306,9 @@ tr:last-child td { border-bottom: none; }
   const logoutBtn = document.getElementById('logout-btn');
   const appointmentsList = document.getElementById('appointments-list');
 
-  // Monitor Auth State
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
+  // Monitor Supabase Auth State
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (session) {
       loginSection.style.display = 'none';
       dashboardSection.style.display = 'block';
       fetchAppointments();
@@ -321,23 +319,26 @@ tr:last-child td { border-bottom: none; }
     }
   });
 
-  // Login Function
+  // Supabase Login Function
   loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      loginError.style.display = 'none';
-    } catch (error) {
+    
+    // Attempt Supabase Sign In
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    
+    if (error) {
       loginError.style.display = 'block';
       loginError.innerText = error.message;
+    } else {
+      loginError.style.display = 'none';
     }
   });
 
-  // Logout Function
-  logoutBtn.addEventListener('click', () => {
-    signOut(auth);
+  // Supabase Logout Function
+  logoutBtn.addEventListener('click', async () => {
+    await supabase.auth.signOut();
   });
 
   // Fetch Data Function

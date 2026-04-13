@@ -1807,20 +1807,25 @@
 
                         console.log("Supabase record created successfully.");
 
-                        // 2. Immediate Webhook Trigger (Email Fallback)
-                        fetch("https://hook.eu1.make.com/o7lzd709z0ng4wkftbgjrvybp6m3nvib", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                name: nameInput,
-                                email: emailInput,
-                                phone: fullPhone,
-                                to: fullPhone, // Added to fix Make.com 'missing parameter to' error
-                                sessionType: sessionTypeInput,
-                                message: fullMessage,
-                                source: "Website Booking Form (Restored)"
-                            })
-                        }).catch(err => console.error("Webhook fallback failed:", err));
+                        // 2. ntfy.sh Instant Mobile Notification
+                        try {
+                            const ntfyTopic = "divya_booking_alerts_79734"; // Unique secret topic
+                            const message = `Name: ${nameInput}\nPhone: ${fullPhone}\nSession: ${sessionTypeInput}\n\nMessage: ${messageInput}`;
+                            
+                            await fetch(`https://ntfy.sh/${ntfyTopic}`, {
+                                method: "POST",
+                                body: message,
+                                headers: {
+                                    "Title": "New Booking Received!",
+                                    "Priority": "high",
+                                    "Tags": "calendar,sparkles",
+                                    "Click": "https://vishalkumarx.github.io/Divya/admin.html"
+                                }
+                            });
+                            console.log("ntfy.sh notification sent.");
+                        } catch (notifyError) {
+                            console.error("Notification failed:", notifyError);
+                        }
 
                         // Success feedback
                         alert("Thank you! Your appointment request has been submitted successfully.");

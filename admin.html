@@ -147,7 +147,7 @@ tr:last-child td { border-bottom: none; }
   // Initialize Supabase (User placeholders)
   const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
   // Tab switching logic
   function switchTab(tabId) {
@@ -175,7 +175,7 @@ tr:last-child td { border-bottom: none; }
     }
 
     if(SUPABASE_URL === 'YOUR_SUPABASE_URL') {
-      statusText.innerText = "Error: Please replace YOUR_SUPABASE_URL and YOUR_SUPABASE_ANON_KEY in admin.html.";
+      statusText.innerText = "Error: Please configure Supabase keys.";
       statusText.style.color = "red";
       return;
     }
@@ -191,21 +191,21 @@ tr:last-child td { border-bottom: none; }
 
     try {
       // 1. Upload to Storage
-      const { data: uploadData, error: uploadError } = await supabase.storage
+      const { data: uploadData, error: uploadError } = await window.supabaseClient.storage
         .from('website-images')
         .upload(filePath, file);
 
       if(uploadError) throw uploadError;
 
       // 2. Get Public URL
-      const { data: publicUrlData } = supabase.storage
+      const { data: publicUrlData } = window.supabaseClient.storage
         .from('website-images')
         .getPublicUrl(filePath);
 
       const publicUrl = publicUrlData.publicUrl;
 
       // 3. Save to Database
-      const { error: dbError } = await supabase
+      const { error: dbError } = await window.supabaseClient
         .from('site_images')
         .insert([{ section: sectionSelect.value, storage_path: filePath, image_url: publicUrl }]);
 
@@ -236,7 +236,7 @@ tr:last-child td { border-bottom: none; }
     }
 
     try {
-      const { data: images, error } = await supabase
+      const { data: images, error } = await window.supabaseClient
         .from('site_images')
         .select('*')
         .order('created_at', { ascending: false });
@@ -271,9 +271,9 @@ tr:last-child td { border-bottom: none; }
 
     try {
       // Delete from DB
-      await supabase.from('site_images').delete().eq('id', id);
+      await window.supabaseClient.from('site_images').delete().eq('id', id);
       // Delete from Storage
-      await supabase.storage.from('website-images').remove([storagePath]);
+      await window.supabaseClient.storage.from('website-images').remove([storagePath]);
       
       fetchImages(); // Refresh
     } catch (err) {
@@ -307,7 +307,7 @@ tr:last-child td { border-bottom: none; }
   const appointmentsList = document.getElementById('appointments-list');
 
   // Monitor Supabase Auth State
-  supabase.auth.onAuthStateChange((event, session) => {
+  window.supabaseClient.auth.onAuthStateChange((event, session) => {
     if (session) {
       loginSection.style.display = 'none';
       dashboardSection.style.display = 'block';
@@ -326,7 +326,7 @@ tr:last-child td { border-bottom: none; }
     const password = document.getElementById('password').value;
     
     // Attempt Supabase Sign In
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await window.supabaseClient.auth.signInWithPassword({ email, password });
     
     if (error) {
       loginError.style.display = 'block';
@@ -338,7 +338,7 @@ tr:last-child td { border-bottom: none; }
 
   // Supabase Logout Function
   logoutBtn.addEventListener('click', async () => {
-    await supabase.auth.signOut();
+    await window.supabaseClient.auth.signOut();
   });
 
   // Fetch Data Function

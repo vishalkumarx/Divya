@@ -57,10 +57,186 @@ tr:last-child td { border-bottom: none; }
 .image-upload-card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-bottom: 30px; }
 .image-upload-card select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; font-family: 'Poppins', sans-serif;}
 .image-upload-card input[type="file"] { margin: 10px 0; }
-.image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-.image-card { background: white; padding: 15px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; }
-.image-card img { width: 100%; height: 150px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
-.image-card .badge { display: inline-block; padding: 4px 10px; border-radius: 12px; font-size: 12px; background: #ffe6f2; color: #c76aa4; font-weight: 600; margin-bottom: 10px; }
+
+/* Filter Toolbar */
+.image-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+}
+.filter-chip {
+  background: white;
+  border: 2px solid #ffe6f2;
+  color: #888;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: auto;
+  margin: 0;
+}
+.filter-chip:hover { border-color: #c76aa4; color: #c76aa4; background: #fff8fb; }
+.filter-chip.active { background: #ffe6f2; border-color: #c76aa4; color: #c76aa4; font-weight: 600; }
+.filter-chip .chip-count {
+  display: inline-block;
+  background: #c76aa4;
+  color: white;
+  border-radius: 10px;
+  font-size: 11px;
+  padding: 1px 7px;
+  margin-left: 5px;
+  font-weight: 600;
+}
+.filter-chip.active .chip-count { background: #c76aa4; }
+
+/* Section Row */
+.section-row { margin-bottom: 35px; }
+.section-row-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffe6f2;
+}
+.section-row-header h4 {
+  font-family: 'Playfair Display', serif;
+  color: #c76aa4;
+  font-size: 18px;
+  margin: 0;
+}
+.section-count-badge {
+  background: #ffe6f2;
+  color: #c76aa4;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.section-icon { font-size: 20px; }
+
+/* Image Grid */
+.image-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+
+/* Image Card */
+.image-card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.image-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(199,106,164,0.15); }
+.image-card-thumb {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: #fef0f8;
+}
+.image-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.image-card:hover .image-card-thumb img { transform: scale(1.07); }
+.image-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(199,106,164,0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.25s;
+  gap: 10px;
+}
+.image-card:hover .image-card-overlay { opacity: 1; }
+.overlay-btn {
+  background: white;
+  border: none;
+  border-radius: 8px;
+  width: auto;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #c76aa4;
+  cursor: pointer;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  transition: background 0.15s;
+}
+.overlay-btn:hover { background: #fff0f8; }
+.overlay-btn.del { color: #e53e3e; }
+.overlay-btn.del:hover { background: #fff5f5; }
+.image-card-info {
+  padding: 10px 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.image-card-name {
+  font-size: 11px;
+  color: #999;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.image-card .badge {
+  display: inline-block;
+  padding: 3px 9px;
+  border-radius: 10px;
+  font-size: 11px;
+  background: #ffe6f2;
+  color: #c76aa4;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Image Preview Modal */
+#img-preview-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.65);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#img-preview-modal.open { display: flex; }
+#img-preview-modal img {
+  max-width: 85vw;
+  max-height: 80vh;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+}
+#img-preview-modal .close-preview {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c76aa4;
+  font-weight: 700;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
 </style>
 </head>
 <body>
@@ -127,14 +303,25 @@ tr:last-child td { border-bottom: none; }
           <option value="testimonial">Testimonials (Multiple Images)</option>
         </select>
         <input type="file" id="image-file" accept="image/*" required>
-        <button id="upload-image-btn" style="width: auto; padding: 10px 25px;">Upload Image</button>
+        <button id="upload-image-btn" style="width: auto; padding: 10px 25px;">⬆ Upload Image</button>
         <p id="upload-status" style="font-size: 14px; margin-top: 10px;"></p>
       </div>
 
-      <h3>Manage Uploaded Images</h3>
-      <div class="image-grid" id="image-grid">
-        <!-- populated by JS -->
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px;">
+        <h3 style="color:#c76aa4; font-family:'Playfair Display',serif;">📁 Manage Uploaded Images</h3>
+        <button onclick="fetchImages()" style="width:auto; padding:7px 16px; font-size:13px; background:#f0f0f0; color:#555;">↻ Refresh</button>
       </div>
+
+      <!-- Filter Chips -->
+      <div class="image-filter-bar" id="filter-bar">
+        <button class="filter-chip active" data-filter="all" onclick="applyFilter(this, 'all')">All <span class="chip-count" id="count-all">0</span></button>
+        <button class="filter-chip" data-filter="hero" onclick="applyFilter(this, 'hero')">🖼 Hero <span class="chip-count" id="count-hero">0</span></button>
+        <button class="filter-chip" data-filter="about" onclick="applyFilter(this, 'about')">👤 About <span class="chip-count" id="count-about">0</span></button>
+        <button class="filter-chip" data-filter="testimonial" onclick="applyFilter(this, 'testimonial')">💬 Testimonials <span class="chip-count" id="count-testimonial">0</span></button>
+      </div>
+
+      <!-- Section-grouped rows, populated by JS -->
+      <div id="image-grid"></div>
     </div>
 
   </div>
@@ -225,6 +412,78 @@ tr:last-child td { border-bottom: none; }
     }
   });
 
+  // Filter state
+  let allImages = [];
+  let activeFilter = 'all';
+
+  function applyFilter(chipEl, filter) {
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+    chipEl.classList.add('active');
+    activeFilter = filter;
+    renderImages();
+  }
+
+  function renderImages() {
+    const grid = document.getElementById('image-grid');
+    grid.innerHTML = '';
+
+    const sectionMeta = {
+      hero:        { label: 'Hero Section',    icon: '🖼' },
+      about:       { label: 'About Section',   icon: '👤' },
+      testimonial: { label: 'Testimonials',    icon: '💬' },
+    };
+
+    const filtered = activeFilter === 'all' ? allImages : allImages.filter(i => i.section === activeFilter);
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `<p class="empty-state" style="padding:40px 0;">No images in this section yet.</p>`;
+      return;
+    }
+
+    // Group by section
+    const groups = {};
+    filtered.forEach(img => {
+      if (!groups[img.section]) groups[img.section] = [];
+      groups[img.section].push(img);
+    });
+
+    Object.entries(groups).forEach(([section, imgs]) => {
+      const meta = sectionMeta[section] || { label: section.charAt(0).toUpperCase() + section.slice(1), icon: '📷' };
+      const row = document.createElement('div');
+      row.className = 'section-row';
+      row.innerHTML = `
+        <div class="section-row-header">
+          <span class="section-icon">${meta.icon}</span>
+          <h4>${meta.label}</h4>
+          <span class="section-count-badge">${imgs.length} image${imgs.length !== 1 ? 's' : ''}</span>
+        </div>
+        <div class="image-grid" id="grid-${section}"></div>
+      `;
+      grid.appendChild(row);
+
+      const sectionGrid = row.querySelector(`#grid-${section}`);
+      imgs.forEach(img => {
+        const shortName = img.storage_path.split('/').pop().substring(0, 18) + '...';
+        const card = document.createElement('div');
+        card.className = 'image-card';
+        card.innerHTML = `
+          <div class="image-card-thumb">
+            <img src="${img.image_url}" alt="${meta.label}" loading="lazy">
+            <div class="image-card-overlay">
+              <button class="overlay-btn" onclick="previewImage('${img.image_url}')">🔍 Preview</button>
+              <button class="overlay-btn del" onclick="deleteImage('${img.id}', '${img.storage_path}')">🗑 Delete</button>
+            </div>
+          </div>
+          <div class="image-card-info">
+            <span class="image-card-name" title="${img.storage_path}">${shortName}</span>
+            <span class="badge">${section}</span>
+          </div>
+        `;
+        sectionGrid.appendChild(card);
+      });
+    });
+  }
+
   // Fetch Logic
   async function fetchImages() {
     const grid = document.getElementById('image-grid');
@@ -243,27 +502,28 @@ tr:last-child td { border-bottom: none; }
         
       if(error) throw error;
 
-      if(!images || images.length === 0) {
-        grid.innerHTML = '<p class="empty-state">No images uploaded yet.</p>';
-        return;
-      }
+      allImages = images || [];
 
-      grid.innerHTML = '';
-      images.forEach(img => {
-        const div = document.createElement('div');
-        div.className = 'image-card';
-        div.innerHTML = `
-          <div class="badge">${img.section.toUpperCase()}</div>
-          <img src="${img.image_url}" alt="Uploaded image">
-          <button class="btn-delete" style="width:100%" onclick="deleteImage('${img.id}', '${img.storage_path}')">Delete</button>
-        `;
-        grid.appendChild(div);
+      // Update counts
+      document.getElementById('count-all').textContent = allImages.length;
+      ['hero','about','testimonial'].forEach(s => {
+        const el = document.getElementById('count-' + s);
+        if (el) el.textContent = allImages.filter(i => i.section === s).length;
       });
+
+      renderImages();
     } catch (err) {
       grid.innerHTML = '<p class="empty-state">Error loading images.</p>';
       console.error(err);
     }
   }
+
+  // Preview Modal
+  window.previewImage = (url) => {
+    const modal = document.getElementById('img-preview-modal');
+    modal.querySelector('img').src = url;
+    modal.classList.add('open');
+  };
 
   // Delete Logic
   window.deleteImage = async (id, storagePath) => {
@@ -392,5 +652,12 @@ tr:last-child td { border-bottom: none; }
   }
 
 </script>
+
+<!-- Image Preview Modal -->
+<div id="img-preview-modal" onclick="this.classList.remove('open')">
+  <button class="close-preview" onclick="document.getElementById('img-preview-modal').classList.remove('open')">&times;</button>
+  <img src="" alt="Preview">
+</div>
+
 </body>
 </html>

@@ -1690,9 +1690,11 @@
 
         function startTestiAuto() {
             stopTestiAuto();
+            const testiImages = document.querySelectorAll(".testimonial-screenshot");
+            if (testiImages.length === 0) return; // No images yet — don't start
             testiAutoTimer = setInterval(() => {
                 moveTestimonials(1);
-            }, 4000);
+            }, 3500);
         }
 
         function stopTestiAuto() {
@@ -1705,34 +1707,45 @@
             if (!testiSlider || testiImages.length === 0) return;
 
             testiIndex += step;
-            if (testiIndex >= testiImages.length) {
-                testiIndex = 0;
-            } else if (testiIndex < 0) {
-                testiIndex = testiImages.length - 1;
-            }
+            // Wrap around
+            if (testiIndex >= testiImages.length) testiIndex = 0;
+            if (testiIndex < 0) testiIndex = testiImages.length - 1;
 
             const targetImage = testiImages[testiIndex];
-            const scrollPos = targetImage.offsetLeft - (testiSlider.offsetWidth / 2) + (targetImage.offsetWidth / 2);
+            const scrollPos = targetImage.offsetLeft
+                - (testiSlider.offsetWidth / 2)
+                + (targetImage.offsetWidth / 2);
 
-            testiSlider.scrollTo({
-                left: scrollPos,
-                behavior: 'smooth'
-            });
-            startTestiAuto(); // Restarts the timer
+            testiSlider.scrollTo({ left: scrollPos, behavior: 'smooth' });
         }
 
-        document.addEventListener("DOMContentLoaded", () => {
+        // Called after any set of testimonial images is ready in the DOM
+        function initTestimonialSlider() {
+            testiIndex = 0;
             const testiSlider = document.getElementById("testimonialSlider");
-            if (testiSlider) {
-                startTestiAuto();
+            if (!testiSlider) return;
 
-                // Pause auto-scroll on interaction
-                testiSlider.addEventListener('mouseenter', stopTestiAuto);
-                testiSlider.addEventListener('mouseleave', startTestiAuto);
-                testiSlider.addEventListener('touchstart', stopTestiAuto, { passive: true });
-                testiSlider.addEventListener('touchend', startTestiAuto, { passive: true });
-            }
-        });
+            // Attach lightbox to every image (including dynamically added ones)
+            document.querySelectorAll(".testimonial-screenshot").forEach(img => {
+                img.onclick = () => {
+                    document.getElementById("lightboxImage").src = img.src;
+                    document.getElementById("testimonialLightbox").classList.add("show");
+                };
+                img.style.cursor = 'pointer';
+            });
+
+            // Restart auto-scroll fresh
+            startTestiAuto();
+
+            // Pause on hover / touch
+            testiSlider.onmouseenter = stopTestiAuto;
+            testiSlider.onmouseleave = startTestiAuto;
+            testiSlider.ontouchstart = stopTestiAuto;
+            testiSlider.ontouchend  = startTestiAuto;
+        }
+
+        // Start with whatever static images exist at page load
+        document.addEventListener("DOMContentLoaded", initTestimonialSlider);
 
         function closeLightbox(e) {
             if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {
@@ -1980,6 +1993,8 @@
               imgEl.alt = 'Review';
               track.appendChild(imgEl);
             });
+            // Re-init the slider now that dynamic images are in the DOM
+            initTestimonialSlider();
           }
 
         } catch (err) {

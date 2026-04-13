@@ -1807,31 +1807,13 @@
 
                         console.log("Supabase record created successfully.");
 
-                        // 2. Webhook Trigger for Automations (Make.com)
-                        try {
-                            await fetch("https://hook.eu1.make.com/o7lzd709z0ng4wkftbgjrvybp6m3nvib", {
-                                method: "POST",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({
-                                    name: nameInput,
-                                    email: emailInput,
-                                    phone: fullPhone,
-                                    sessionType: sessionTypeInput,
-                                    message: fullMessage,
-                                    source: "Website Booking Form"
-                                })
-                            });
-                        } catch (webhookError) {
-                            console.error("Webhook failed, but data was saved:", webhookError);
-                        }
-
                         // Success feedback
                         alert("Thank you! Your appointment request has been submitted successfully.");
                         bookingForm.reset();
 
                     } catch (error) {
                         console.error("Booking failed:", error);
-                        alert("Oops! Something went wrong. Please try again later.");
+                        alert("Error: " + (error.message || "Something went wrong. Please try again later."));
                     } finally {
                         submitBtn.textContent = "Send Message";
                         submitBtn.disabled = false;

@@ -318,7 +318,7 @@ tr:hover td { background: #fafcf8; }
           <option value="about">About Section (Multiple Images)</option>
           <option value="testimonial">Testimonials (Multiple Images)</option>
         </select>
-        <input type="file" id="image-file" accept="image/*" multiple required>
+        <input type="file" id="image-file" accept="image/*" required>
         <button id="upload-image-btn" style="width: auto; padding: 10px 25px;">⬆ Upload Image</button>
         <p id="upload-status" style="font-size: 14px; margin-top: 10px;"></p>
       </div>
@@ -351,6 +351,23 @@ tr:hover td { background: #fafcf8; }
   const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
   window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  // Dynamic Multi-select Logic
+  const sectionSelect = document.getElementById('image-section');
+  const fileInput = document.getElementById('image-file');
+  const statusText = document.getElementById('upload-status');
+
+  sectionSelect.addEventListener('change', () => {
+    if (sectionSelect.value === 'hero') {
+      fileInput.multiple = false;
+      statusText.innerText = "Hero Section: Single image only.";
+      statusText.style.color = "#6b7280";
+    } else {
+      fileInput.multiple = true;
+      statusText.innerText = "Multiple images allowed for this section.";
+      statusText.style.color = "#6b7280";
+    }
+  });
 
   // Tab switching logic
   function switchTab(tabId) {

@@ -1316,10 +1316,21 @@
 
     <section id="video-intro" class="video-intro reveal">
         <div class="video-container">
-            <video controls loop autoplay playsinline>
+            <video id="introVideo" controls loop muted autoplay playsinline>
                 <source src="assets/video/001.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
+            <script>
+                // Logic to unmute video on first user interaction (since browsers block unmuted autoplay)
+                const unmuteOnInteraction = () => {
+                    const v = document.getElementById('introVideo');
+                    if (v) {
+                        v.muted = false;
+                        document.removeEventListener('click', unmuteOnInteraction);
+                    }
+                };
+                document.addEventListener('click', unmuteOnInteraction);
+            </script>
         </div>
 
         <!-- Decoration Blob -->
@@ -1583,7 +1594,7 @@
     </div>
 
     <footer>
-        <p>© 2026 Dr. Divya Sharma | Psychologist</p>
+        <p>© 2026 Divya Sharma | Psychologist</p>
         <p style="margin-top: 10px; font-size: 13px;">
             <a href="admin.html" style="color: #c76aa4; text-decoration: none; font-weight: 500;">Admin Login</a>
         </p>

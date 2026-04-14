@@ -823,7 +823,7 @@
             <img src="${img.image_url}" alt="${meta.label}" loading="lazy">
             <div class="image-card-overlay">
               <button class="overlay-btn" onclick="previewImage('${img.image_url}')">🔍 Preview</button>
-              ${img.section === 'about' ? `<button class="overlay-btn" onclick="editCaption('${img.id}', '${(img.caption || '').replace(/'/g, "\\'")}')">📝 Edit Caption</button>` : ''}
+              ${img.section === 'about' ? `<button class="overlay-btn" onclick="triggerEdit('${img.id}', ${JSON.stringify(img.caption || '')})">📝 Edit Caption</button>` : ''}
               <button class="overlay-btn del" onclick="deleteImage('${img.id}', '${img.storage_path}')">🗑 Delete</button>
             </div>
           </div>
@@ -895,22 +895,32 @@
     };
 
     // Edit Caption Logic
-    window.editCaption = async (id, currentCaption) => {
+    window.triggerEdit = (id, current) => editCaption(id, current);
+
+    async function editCaption(id, currentCaption) {
+      console.log("Attempting to update caption for ID:", id);
       const newCaption = prompt("Update caption for this Portfolio image:", currentCaption);
       if (newCaption === null) return; 
       
       try {
-        const { error } = await window.supabaseClient
+        const { data, error } = await window.supabaseClient
           .from('site_images')
           .update({ caption: newCaption })
-          .eq('id', id);
+          .eq('id', id)
+          .select();
         
-        if (error) throw error;
+        if (error) {
+          console.error("Supabase Update Error:", error);
+          throw error;
+        }
+
+        console.log("Update successful:", data);
         fetchImages(); 
       } catch (err) {
-        alert("Error updating caption: " + err.message);
+        alert("Error updating caption: " + (err.message || "Permissions denied"));
+        console.error("Full Error Object:", err);
       }
-    };
+    }
   </script>
 
   <!-- APPOINTMENT MANAGEMENT -->

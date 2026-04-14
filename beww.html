@@ -1290,7 +1290,7 @@
                 <img id="dynamic-hero-img" src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Dr. Divya Sharma">
             </div>
             <div class="stat-card">
-                <h4>3+ Years</h4>
+                <h4>10+ Years</h4>
                 <p>Helping people <br>around the region</p>
             </div>
 
@@ -1336,12 +1336,10 @@
         <h2>Our Portfolio</h2>
         <div class="portfolio-grid" id="portfolioGrid">
             <!-- Dynamic items will load here -->
-            <p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px; font-style: italic;">Loading our
-                portfolio gallery...</p>
+            <p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px; font-style: italic;">Loading our portfolio gallery...</p>
         </div>
         <div id="load-more-container" style="margin-top: 40px; display: none; text-align: center;">
-            <button onclick="fetchPortfolioItems()" class="get-help-btn"
-                style="margin: 0 auto; display: flex; padding: 12px 30px; font-size: 14px; border-radius: 50px; background: var(--accent-green); color: var(--accent-dark-green); border: 1px solid var(--accent-green); cursor: pointer;">
+            <button onclick="fetchPortfolioItems()" class="get-help-btn" style="margin: 0 auto; display: flex; padding: 12px 30px; font-size: 14px; border-radius: 50px; background: var(--accent-green); color: var(--accent-dark-green); border: 1px solid var(--accent-green); cursor: pointer;">
                 Load More Portfolio Photos
             </button>
         </div>
@@ -1558,8 +1556,10 @@
                     <option value="+971">+971 (UAE)</option>
                     <option value="+1">+1 (CA)</option>
                 </select>
-                <input type="tel" id="bookPhone" placeholder="10-digit Phone Number" pattern="[0-9]{10}" maxlength="10"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                <input type="tel" id="bookPhone" placeholder="10-digit Phone Number" 
+                       pattern="[0-9]{10}" maxlength="10" 
+                       oninput="this.value = this.value.replace(/[^0-9]/g, '');"
+                       required>
             </div>
 
             <select id="bookSession" required>
@@ -1670,7 +1670,7 @@
             testiSlider.onmouseenter = stopTestiAuto;
             testiSlider.onmouseleave = startTestiAuto;
             testiSlider.ontouchstart = stopTestiAuto;
-            testiSlider.ontouchend = startTestiAuto;
+            testiSlider.ontouchend  = startTestiAuto;
         }
 
         // Start with whatever static images exist at page load
@@ -1740,7 +1740,7 @@
                         try {
                             const ntfyTopic = "divya_booking_alerts_79734"; // Unique secret topic
                             const message = `Name: ${nameInput}\nPhone: ${fullPhone}\nSession: ${sessionTypeInput}\n\nMessage: ${messageInput}`;
-
+                            
                             await fetch(`https://ntfy.sh/${ntfyTopic}`, {
                                 method: "POST",
                                 body: message,
@@ -1844,75 +1844,75 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
     <script>
-        let portfolioOffset = 0;
-        const portfolioLimit = 9;
+      let portfolioOffset = 0;
+      const portfolioLimit = 9;
 
-        async function fetchDynamicImages() {
-            if (!supabaseClient) return;
+      async function fetchDynamicImages() {
+        if(!supabaseClient) return;
+        
+        try {
+          // 1. Fetch Non-Portfolio Data (Hero, Testimonials) separately or in one go
+          const { data: others, error: otherError } = await supabaseClient
+            .from('site_images')
+            .select('*')
+            .not('section', 'eq', 'about');
+          
+          if (otherError) throw otherError;
 
-            try {
-                // 1. Fetch Non-Portfolio Data (Hero, Testimonials) separately or in one go
-                const { data: others, error: otherError } = await supabaseClient
-                    .from('site_images')
-                    .select('*')
-                    .not('section', 'eq', 'about');
-
-                if (otherError) throw otherError;
-
-                if (others) {
-                    // Process Hero Image
-                    const heroImages = others.filter(img => img.section === 'hero');
-                    if (heroImages.length > 0) {
-                        document.getElementById('dynamic-hero-img').src = heroImages[0].image_url;
-                    }
-
-                    // Process Testimonials
-                    const testimonialImages = others.filter(img => img.section === 'testimonial');
-                    if (testimonialImages.length > 0) {
-                        const track = document.getElementById('dynamic-testimonial-track');
-                        if (track) {
-                            track.innerHTML = '';
-                            testimonialImages.forEach(img => {
-                                const imgEl = document.createElement('img');
-                                imgEl.className = 'testimonial-screenshot';
-                                imgEl.src = img.image_url;
-                                imgEl.alt = 'Review';
-                                track.appendChild(imgEl);
-                            });
-                            if (typeof initTestimonialSlider === 'function') initTestimonialSlider();
-                        }
-                    }
-                }
-
-                // 2. Fetch Initial Portfolio Batch
-                fetchPortfolioItems();
-
-            } catch (err) {
-                console.error("Failed to load dynamic images from Supabase:", err);
+          if (others) {
+            // Process Hero Image
+            const heroImages = others.filter(img => img.section === 'hero');
+            if(heroImages.length > 0) {
+              document.getElementById('dynamic-hero-img').src = heroImages[0].image_url;
             }
+
+            // Process Testimonials
+            const testimonialImages = others.filter(img => img.section === 'testimonial');
+            if(testimonialImages.length > 0) {
+              const track = document.getElementById('dynamic-testimonial-track');
+              if (track) {
+                track.innerHTML = '';
+                testimonialImages.forEach(img => {
+                  const imgEl = document.createElement('img');
+                  imgEl.className = 'testimonial-screenshot';
+                  imgEl.src = img.image_url;
+                  imgEl.alt = 'Review';
+                  track.appendChild(imgEl);
+                });
+                if (typeof initTestimonialSlider === 'function') initTestimonialSlider();
+              }
+            }
+          }
+
+          // 2. Fetch Initial Portfolio Batch
+          fetchPortfolioItems();
+
+        } catch (err) {
+          console.error("Failed to load dynamic images from Supabase:", err);
         }
+      }
 
-        async function fetchPortfolioItems() {
-            const grid = document.getElementById('portfolioGrid');
-            const loadMoreContainer = document.getElementById('load-more-container');
+      async function fetchPortfolioItems() {
+        const grid = document.getElementById('portfolioGrid');
+        const loadMoreContainer = document.getElementById('load-more-container');
+        
+        try {
+          const { data: aboutImages, error, count } = await supabaseClient
+            .from('site_images')
+            .select('*', { count: 'exact' })
+            .eq('section', 'about')
+            .order('created_at', { ascending: false })
+            .range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
 
-            try {
-                const { data: aboutImages, error, count } = await supabaseClient
-                    .from('site_images')
-                    .select('*', { count: 'exact' })
-                    .eq('section', 'about')
-                    .order('created_at', { ascending: false })
-                    .range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
+          if (error) throw error;
 
-                if (error) throw error;
+          if (portfolioOffset === 0) grid.innerHTML = ''; // Clear loading state on first load
 
-                if (portfolioOffset === 0) grid.innerHTML = ''; // Clear loading state on first load
-
-                if (aboutImages && aboutImages.length > 0) {
-                    aboutImages.forEach(img => {
-                        const item = document.createElement('div');
-                        item.className = 'portfolio-item reveal active';
-                        item.innerHTML = `
+          if(aboutImages && aboutImages.length > 0) {
+            aboutImages.forEach(img => {
+              const item = document.createElement('div');
+              item.className = 'portfolio-item reveal active';
+              item.innerHTML = `
                 <div class="portfolio-img-wrapper">
                     <img src="${img.image_url}" alt="Portfolio" loading="lazy">
                 </div>
@@ -1921,34 +1921,33 @@
                     <p class="portfolio-caption">${img.caption}</p>
                 </div>` : ''}
               `;
-                        grid.appendChild(item);
-                    });
+              grid.appendChild(item);
+            });
 
-                    portfolioOffset += portfolioLimit;
+            portfolioOffset += portfolioLimit;
 
-                    // Show load more if there are more items
-                    if (count > portfolioOffset) {
-                        loadMoreContainer.style.display = 'block';
-                    } else {
-                        loadMoreContainer.style.display = 'none';
-                    }
-
-                    // Trigger reveal animations for new items
-                    if (window.revealObserver) {
-                        document.querySelectorAll('.portfolio-item.reveal').forEach(el => revealObserver.observe(el));
-                    }
-                } else {
-                    if (portfolioOffset === 0) grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px;">No portfolio images added yet.</p>';
-                    loadMoreContainer.style.display = 'none';
-                }
-
-            } catch (err) {
-                console.error("Error fetching portfolio:", err);
+            // Show load more if there are more items
+            if (count > portfolioOffset) {
+              loadMoreContainer.style.display = 'block';
+            } else {
+              loadMoreContainer.style.display = 'none';
             }
-        }
 
-        document.addEventListener('DOMContentLoaded', fetchDynamicImages);
+            // Trigger reveal animations for new items
+            if (window.revealObserver) {
+              document.querySelectorAll('.portfolio-item.reveal').forEach(el => revealObserver.observe(el));
+            }
+          } else {
+             if (portfolioOffset === 0) grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px;">No portfolio images added yet.</p>';
+             loadMoreContainer.style.display = 'none';
+          }
+
+        } catch (err) {
+          console.error("Error fetching portfolio:", err);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', fetchDynamicImages);
     </script>
 </body>
-
 </html>

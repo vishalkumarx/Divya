@@ -577,11 +577,12 @@
           <h3>Upload New Image</h3>
           <select id="image-section" required>
             <option value="" disabled selected>Select Website Section</option>
-            <option value="hero">Hero Section (1 Image)</option>
-            <option value="about">About Section (Multiple Images)</option>
+            <option value="hero">Hero Section (1 Image/Override)</option>
+            <option value="about">Portfolio Section (Multiple Images)</option>
             <option value="testimonial">Testimonials (Multiple Images)</option>
           </select>
           <input type="file" id="image-file" accept="image/*" required>
+          <input type="text" id="image-caption" placeholder="Enter optional caption..." style="margin-top: 5px;">
           <button id="upload-image-btn" style="width: auto; padding: 10px 25px;">⬆ Upload Image</button>
           <p id="upload-status" style="font-size: 14px; margin-top: 10px;"></p>
         </div>
@@ -654,6 +655,7 @@
     document.getElementById('upload-image-btn').addEventListener('click', async () => {
       const fileInput = document.getElementById('image-file');
       const sectionSelect = document.getElementById('image-section');
+      const captionInput = document.getElementById('image-caption');
       const statusText = document.getElementById('upload-status');
 
       if (!fileInput.files.length || !sectionSelect.value) {
@@ -661,6 +663,9 @@
         statusText.style.color = "red";
         return;
       }
+
+      const section = sectionSelect.value;
+      const caption = captionInput.value.trim();
 
       if (SUPABASE_URL === 'YOUR_SUPABASE_URL') {
         statusText.innerText = "Error: Please configure Supabase keys.";
@@ -675,6 +680,30 @@
       statusText.innerText = `Starting upload of ${totalFiles} file(s)...`;
       statusText.style.color = "blue";
       document.getElementById('upload-image-btn').disabled = true;
+
+      // --- HERO OVERRIDE LOGIC ---
+      if (section === 'hero') {
+        try {
+          statusText.innerText = "Replacing old hero image...";
+          // Find old hero images
+          const { data: oldImages, error: findError } = await window.supabaseClient
+            .from('site_images')
+            .select('id, storage_path')
+            .eq('section', 'hero');
+          
+          if (oldImages && oldImages.length > 0) {
+            for (const oldImg of oldImages) {
+              // Delete from storage
+              await window.supabaseClient.storage.from('website-images').remove([oldImg.storage_path]);
+              // Delete from DB
+              await window.supabaseClient.from('site_images').delete().eq('id', oldImg.id);
+            }
+          }
+        } catch (err) {
+          console.error("Hero override failed (non-critical):", err);
+        }
+      }
+      // ----------------------------
 
       for (let i = 0; i < totalFiles; i++) {
         const file = files[i];
@@ -702,7 +731,7 @@
           // 3. Save to Database
           const { error: dbError } = await window.supabaseClient
             .from('site_images')
-            .insert([{ section: sectionSelect.value, storage_path: filePath, image_url: publicUrl }]);
+            .insert([{ section, storage_path: filePath, image_url: publicUrl, caption: caption || null }]);
 
           if (dbError) throw dbError;
 
@@ -722,6 +751,7 @@
       }
 
       fileInput.value = '';
+      captionInput.value = '';
       document.getElementById('upload-image-btn').disabled = false;
       fetchImages(); // Refresh grid
     });

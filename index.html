@@ -1326,10 +1326,13 @@
                     const v = document.getElementById('introVideo');
                     if (v) {
                         v.muted = false;
+                        v.play().catch(e => console.log("Play failed:", e));
                         document.removeEventListener('click', unmuteOnInteraction);
+                        document.removeEventListener('touchstart', unmuteOnInteraction);
                     }
                 };
                 document.addEventListener('click', unmuteOnInteraction);
+                document.addEventListener('touchstart', unmuteOnInteraction);
             </script>
         </div>
 

@@ -1159,6 +1159,20 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
+
+            /* 3-Tile Portfolio Grid for Mobile */
+            #portfolioGrid {
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 5px !important;
+            }
+
+            .portfolio-item {
+                border-radius: 12px !important;
+            }
+
+            .portfolio-caption {
+                display: none; /* Hide captions in 3-tile mobile grid to keep it clean */
+            }
         }
 
         /* LIGHTBOX MODAL */
@@ -1346,7 +1360,7 @@
         </svg>
     </section>
 
-    <section id="portfolio" class="portfolio reveal">
+    <section id="about" class="portfolio reveal">
         <h2>Our Portfolio</h2>
         <div class="portfolio-grid" id="portfolioGrid">
             <!-- Dynamic items will load here -->
@@ -1927,7 +1941,7 @@
                         const item = document.createElement('div');
                         item.className = 'portfolio-item reveal active';
                         item.innerHTML = `
-                <div class="portfolio-img-wrapper">
+                <div class="portfolio-img-wrapper" style="cursor: pointer;" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');">
                     <img src="${img.image_url}" alt="Portfolio" loading="lazy">
                 </div>
                 ${img.caption ? `

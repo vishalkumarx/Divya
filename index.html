@@ -343,8 +343,7 @@
         }
 
 
-        /* ABOUT */
-        /* PORTFOLIO SECTION */
+        /* ABOUT SECTION (AS PORTFOLIO) */
         .portfolio {
             padding: 100px 8%;
             background: transparent;
@@ -446,31 +445,11 @@
             justify-content: space-between;
         }
 
-        .service:nth-child(odd) {
-            background: #E0F2F1;
-        }
-
-        /* Mint */
-        .service:nth-child(even) {
-            background: #F3E5F5;
-        }
-
-        /* Lavender */
-        .service:nth-child(3n) {
-            background: #FFF3E0;
-        }
-
-        /* Peach */
-        .service:nth-child(4n) {
-            background: #E3F2FD;
-        }
-
-        /* Blue */
-        .service:nth-child(5n) {
-            background: #FFEBEE;
-        }
-
-        /* Rose */
+        .service:nth-child(odd) { background: #E0F2F1; }
+        .service:nth-child(even) { background: #F3E5F5; }
+        .service:nth-child(3n) { background: #FFF3E0; }
+        .service:nth-child(4n) { background: #E3F2FD; }
+        .service:nth-child(5n) { background: #FFEBEE; }
 
         .service:hover {
             transform: translateY(-5px);
@@ -512,9 +491,7 @@
             }
         }
 
-        .highlight-content h3 {
-            font-size: 28px;
-        }
+        .highlight-content h3 { font-size: 28px; }
 
         .highlight-arrow {
             width: 50px;
@@ -557,7 +534,6 @@
             background: var(--accent-green);
             transform: translateX(5px);
         }
-
 
         /* TESTIMONIALS */
         .testimonials {
@@ -623,33 +599,14 @@
             transform: translateY(-50%) scale(1.1);
         }
 
-        .testi-nav-btn.prev {
-            left: -20px;
-        }
-
-        .testi-nav-btn.next {
-            right: -20px;
-        }
+        .testi-nav-btn.prev { left: -20px; }
+        .testi-nav-btn.next { right: -20px; }
 
         @media(max-width: 1024px) {
-            .testi-nav-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 14px;
-            }
-
-            .testi-nav-btn.prev {
-                left: 5px;
-            }
-
-            .testi-nav-btn.next {
-                right: 5px;
-            }
-
-            /* Hide on mobile/tablets to prevent overflow */
-            .testimonial-track {
-                padding: 0 45px;
-            }
+            .testi-nav-btn { width: 35px; height: 35px; font-size: 14px; }
+            .testi-nav-btn.prev { left: 5px; }
+            .testi-nav-btn.next { right: 5px; }
+            .testimonial-track { padding: 0 45px; }
         }
 
         .testimonial-screenshot {
@@ -660,10 +617,6 @@
             transition: var(--transition);
             cursor: pointer;
             scroll-snap-align: center;
-        }
-
-        .testimonial-screenshot:hover {
-            transform: scale(1.03);
         }
 
         /* BLOG */
@@ -700,39 +653,13 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         }
 
-        .blog-card img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-        }
+        .blog-card img { width: 100%; height: 240px; object-fit: cover; }
+        .blog-content { padding: 30px; }
+        .blog-content h3 { font-size: 22px; color: var(--text-main); margin-bottom: 12px; font-family: 'Playfair Display', serif; }
+        .blog-content p { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; }
+        .blog-content a { text-decoration: none; color: var(--accent-dark-green); font-weight: 600; display: flex; align-items: center; gap: 8px; }
 
-        .blog-content {
-            padding: 30px;
-        }
-
-        .blog-content h3 {
-            font-size: 22px;
-            color: var(--text-main);
-            margin-bottom: 12px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .blog-content p {
-            color: var(--text-muted);
-            font-size: 15px;
-            margin-bottom: 20px;
-        }
-
-        .blog-content a {
-            text-decoration: none;
-            color: var(--accent-dark-green);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* CONTACT */
+        /* CONTACT FORM */
         .contact {
             background: var(--bg-secondary);
             padding: 100px 8%;
@@ -754,51 +681,18 @@
             gap: 15px;
         }
 
-        input,
-        textarea {
+        input, textarea, select {
             padding: 18px;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--accent-green);
             border-radius: 15px;
             font-family: 'Poppins', sans-serif;
-            background: var(--white);
-            font-size: 15px;
-            transition: var(--transition);
-        }
-
-        .contact input,
-        .contact select,
-        .contact textarea {
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            border: 1px solid var(--accent-green);
             background: var(--bg-secondary);
-            border-radius: 15px;
-            font-family: inherit;
             font-size: 15px;
-            color: var(--text-main);
             transition: var(--transition);
+            width: 100%;
         }
 
-        .contact select {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%232d4f3c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 20px center;
-            background-size: 16px;
-            cursor: pointer;
-        }
-
-        input:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--accent-green);
-            box-shadow: 0 0 0 4px rgba(189, 225, 200, 0.2);
-        }
-
-        .contact input:focus,
-        .contact select:focus,
-        .contact textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--accent-dark-green);
             background: var(--white);
@@ -808,18 +702,10 @@
         .phone-input-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
         }
 
-        .phone-input-group select {
-            width: 100px;
-            margin-bottom: 0;
-        }
-
-        .phone-input-group input {
-            flex: 1;
-            margin-bottom: 0;
-        }
+        .phone-input-group select { width: 100px; }
+        .phone-input-group input { flex: 1; }
 
         button.submit {
             background: var(--accent-green);
@@ -839,16 +725,11 @@
             transform: scale(1.02);
         }
 
-        /* DECORATIONS & ANIMATIONS */
+        /* DECORATIONS */
         .decoration-container {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
 
         .bubble {
@@ -857,427 +738,76 @@
             filter: blur(60px);
             opacity: 0.8;
             animation: float 15s infinite alternate ease-in-out;
-            z-index: 0;
         }
 
         @keyframes float {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(100px, 50px) scale(1.2);
-            }
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(100px, 50px) scale(1.2); }
         }
 
-        .blob-decoration {
-            position: absolute;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(20px);
-        }
+        .bubble-1 { width: 400px; height: 400px; background: var(--bubble-green); top: -100px; left: -100px; }
+        .bubble-2 { width: 300px; height: 300px; background: var(--bubble-pink); bottom: 10%; right: -50px; }
+        .bubble-3 { width: 350px; height: 350px; background: var(--bubble-blue); top: 40%; left: -150px; }
 
-        /* Entrance Animations */
         .reveal {
             opacity: 0;
-            transform: translateY(30px) scale(0.9);
-            filter: blur(10px);
+            transform: translateY(30px);
             transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .reveal.active {
             opacity: 1;
-            transform: translateY(0) scale(1);
-            filter: blur(0);
-        }
-
-        .about,
-        .about-img-item {
-            visibility: hidden;
-        }
-
-        .about.active,
-        .about-img-item.active {
-            visibility: visible;
-        }
-
-        .hero,
-        .about,
-        .services,
-        .testimonials,
-        .blog,
-        .contact {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Specific Bubbles */
-        .bubble-1 {
-            width: 400px;
-            height: 400px;
-            background: var(--bubble-green);
-            top: -100px;
-            left: -100px;
-        }
-
-        .bubble-2 {
-            width: 300px;
-            height: 300px;
-            background: var(--bubble-pink);
-            bottom: 10%;
-            right: -50px;
-            animation-delay: -5s;
-        }
-
-        .bubble-3 {
-            width: 350px;
-            height: 350px;
-            background: var(--bubble-blue);
-            top: 40%;
-            left: -150px;
-            animation-delay: -10s;
-        }
-
-        /* VIDEO SECTION */
-        .video-intro {
-            padding: 80px 8%;
-            text-align: center;
-            background: transparent;
-            position: relative;
-        }
-
-        .video-container {
-            max-width: 600px;
-            margin: auto;
-            position: relative;
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-            background: var(--white);
-            aspect-ratio: 1 / 1;
-            z-index: 2;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-intro h2 {
-            font-size: 36px;
-            margin-bottom: 40px;
-            font-family: 'Playfair Display', serif;
-            color: var(--text-main);
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 40px 8%;
-            background: var(--bg-primary);
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-
-        /* MOBILE RESPONSIVE */
-
-        @media(max-width:900px) {
-
-            .hero h1 {
-                font-size: 36px;
-            }
-
-            .about {
-                grid-template-columns: 1fr;
-            }
-
-        }
-
-        @media(max-width:768px) {
-            body {
-                font-size: 14px;
-                overflow-x: hidden;
-            }
-
-            section {
-                padding: 40px 5% !important;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            nav {
-                padding: 12px 5%;
-            }
-
-            nav h2 {
-                font-size: 20px;
-            }
-
-            nav ul {
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-                flex-direction: column;
-                align-items: center;
-                max-height: 0;
-                overflow: hidden;
-                transition: 0.4s;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
-
-            nav ul.show {
-                max-height: 500px;
-                padding: 30px 0;
-            }
-
-            .hero {
-                grid-template-columns: 1fr;
-                text-align: center;
-                min-height: auto;
-                padding: 40px 5% !important;
-                gap: 30px;
-            }
-
-            .hero h1 {
-                font-size: 32px;
-                line-height: 1.2;
-            }
-
-            .hero-content {
-                text-align: center;
-            }
-
-            .hero-tags {
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .hero-actions button {
-                width: 100%;
-            }
-
-            .hero-image-container {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .hero-img-frame {
-                max-width: 100%;
-                height: auto;
-                border-radius: 20px;
-            }
-
-            .stat-card {
-                position: relative;
-                top: -20px;
-                right: 0;
-                width: 90%;
-                margin: auto;
-                transform: none !important;
-                z-index: 15;
-                /* Ensure text is above flowers */
-            }
-
-            .hero-foreground {
-                display: none;
-            }
-
-            .session-badge {
-                padding: 8px 14px;
-                font-size: 12px;
-            }
-
-            .session-badge.online {
-                left: 10px;
-                top: -30px;
-                /* Moved above image */
-            }
-
-            .session-badge.offline {
-                right: 10px;
-                bottom: -30px;
-                /* Moved below image */
-            }
-
-            .about {
-                gap: 40px;
-            }
-
-            .about-images {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-
-            .about-img-item:nth-child(2n) {
-                margin-top: 15px;
-            }
-
-            .service-box {
-                grid-template-columns: 1fr;
-            }
-
-            .service {
-                padding: 40px 25px;
-                border-radius: 30px;
-            }
-
-            .video-intro {
-                padding: 40px 5% !important;
-            }
-
-            .video-container {
-                border-radius: 20px;
-                max-width: 100%;
-            }
-
-            .video-intro h2 {
-                font-size: 28px;
-                margin-bottom: 20px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-            }
-
-            .booking-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-
-            /* 3-Tile Portfolio Grid for Mobile */
-            #portfolioGrid {
-                grid-template-columns: repeat(3, 1fr) !important;
-                gap: 5px !important;
-            }
-
-            .portfolio-item {
-                border-radius: 12px !important;
-            }
-
-            .portfolio-caption {
-                display: none; /* Hide captions in 3-tile mobile grid to keep it clean */
-            }
+            transform: translateY(0);
         }
 
         /* LIGHTBOX MODAL */
         .lightbox-modal {
             display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            justify-content: center;
-            align-items: center;
+            position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center;
         }
 
-        .lightbox-modal.show {
-            display: flex;
-        }
-
-        .lightbox-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 25px;
-            right: 35px;
-            color: var(--white);
-            font-size: 45px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .lightbox-close:hover {
-            color: var(--accent-green);
-        }
-
+        .lightbox-modal.show { display: flex; }
+        .lightbox-content { max-width: 90%; max-height: 90%; border-radius: 12px; }
+        .lightbox-close { position: absolute; top: 25px; right: 35px; color: white; font-size: 45px; cursor: pointer; }
 
         /* WHATSAPP FAB */
         .whatsapp-fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .whatsapp-fab:hover {
-            transform: scale(1.1);
-            background-color: #20b858;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: white;
+            width: 60px; height: 60px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-size: 35px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000; text-decoration: none; transition: 0.3s;
         }
 
         @media(max-width:768px) {
-            .whatsapp-fab {
-                bottom: 20px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                font-size: 28px;
-            }
+            .hero { grid-template-columns: 1fr; text-align: center; }
+            .hero-actions { flex-direction: column; }
+            .session-badge { position: relative; left: auto !important; top: auto !important; bottom: auto !important; right: auto !important; margin: 10px auto; }
+            #portfolioGrid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
+            .portfolio-caption { display: none; }
+            nav ul { display: none; } /* Simplified for recovery */
         }
     </style>
 </head>
 
 <body>
-
     <div class="decoration-container">
         <div class="bubble bubble-1"></div>
         <div class="bubble bubble-2"></div>
         <div class="bubble bubble-3"></div>
-        <div class="bubble bubble-4"></div>
     </div>
 
     <nav>
-
-        <h2>Psychologist Divya Sharma</h2>
-
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
+        <h2>Divya Sharma</h2>
         <ul id="menu">
-            <li><a href="#hero" onclick="toggleMenu()">Home</a></li>
-            <li><a href="#about" onclick="toggleMenu()">About</a></li>
-            <li><a href="#services" onclick="toggleMenu()">Specializations</a></li>
-            <li><a href="#testimonials" onclick="toggleMenu()">Testimonials</a></li>
-            <li><a href="#blog" onclick="toggleMenu()">Blog</a></li>
-            <li><a href="#contact" class="nav-btn" onclick="toggleMenu()">Book Appointment</a></li>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">Portfolio</a></li>
+            <li><a href="#blog">Blog</a></li>
+            <li><a href="#contact" class="nav-btn">Book Now</a></li>
         </ul>
-
     </nav>
 
     <section id="hero" class="hero reveal">
@@ -1285,716 +815,236 @@
             <div class="hero-tags">
                 <span class="hero-tag">Psychologist</span>
                 <span class="hero-tag">Expert Therapist</span>
-                <span class="hero-tag">Counselor</span>
             </div>
             <h1>Mental Health is not a Destination, but a <span>Process.</span></h1>
-            <p>Our work focuses on positive change, reduced barriers, and building emotional resilience through
-                evidence-based compassionate care.</p>
+            <p>Our work focuses on positive change, reduced barriers, and building emotional resilience through evidence-based compassionate care.</p>
             <div class="hero-actions">
-                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Schedule
-                    Appointment</button>
+                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Schedule Appointment</button>
                 <div class="success-rate">
                     <div class="rate-circle">95%</div>
-                    <div>We have <br><span style="color:var(--accent-dark-green)">Success rate so far</span></div>
+                    <div>Success rate so far</div>
                 </div>
             </div>
         </div>
         <div class="hero-image-container">
             <div class="hero-img-frame">
-                <img id="dynamic-hero-img" src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Dr. Divya Sharma">
+                <img id="dynamic-hero-img" src="assets/about/photo_2026-03-15_20-45-22.jpg" alt="Divya Sharma">
             </div>
-            <div class="stat-card">
-                <h4>3+ Years</h4>
-                <p>Helping people <br>around the region</p>
-            </div>
-
-            <!-- Session Availability Badges -->
-            <div class="session-badge online">
-                <i class="fa-solid fa-video"></i> Online Sessions Available
-            </div>
-            <div class="session-badge offline">
-                <i class="fa-solid fa-house-chimney-medical"></i> Offline Sessions Available
-            </div>
-
-            <!-- Foreground Decoration -->
-            <img src="assets/foreground.png" class="hero-foreground" alt="Decoration">
-            <!-- SVG Blob Illustration -->
-            <svg class="blob-decoration" style="bottom:-50px; right:-20px; width:200px; height:200px;"
-                viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#BDE1C8"
-                    d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z"
-                    transform="translate(100 100)" />
-            </svg>
+            <div class="session-badge online"><i class="fa-solid fa-video"></i> Online Available</div>
+            <div class="session-badge offline"><i class="fa-solid fa-house"></i> Offline Available</div>
         </div>
     </section>
 
-    <section id="video-intro" class="video-intro reveal">
-        <div class="video-container">
-            <video id="introVideo" controls loop muted autoplay playsinline>
+    <section id="video-intro" class="testimonials reveal" style="padding: 40px 8%;">
+        <div style="max-width: 600px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
+            <video id="introVideo" controls loop muted autoplay playsinline style="width:100%; aspect-ratio: 1; object-fit: cover;">
                 <source src="assets/video/001.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
-            <script>
-                // Logic to unmute video on first user interaction (since browsers block unmuted autoplay)
-                const unmuteOnInteraction = () => {
-                    const v = document.getElementById('introVideo');
-                    if (v) {
-                        v.muted = false;
-                        v.play().catch(e => console.log("Play failed:", e));
-                        document.removeEventListener('click', unmuteOnInteraction);
-                        document.removeEventListener('touchstart', unmuteOnInteraction);
-                    }
-                };
-                document.addEventListener('click', unmuteOnInteraction);
-                document.addEventListener('touchstart', unmuteOnInteraction);
-            </script>
         </div>
-
-        <!-- Decoration Blob -->
-        <svg class="blob-decoration"
-            style="top:50%; left:50%; width:500px; height:500px; transform: translate(-50%, -50%); opacity: 0.2; filter: blur(40px);"
-            viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-            <path fill="#BDE1C8"
-                d="M38.2,-61.8C49.1,-54.1,57.1,-43.3,64.4,-31.6C71.7,-19.9,78.2,-7.3,77.7,5.1C77.1,17.4,69.5,29.4,60.1,39.6C50.7,49.8,39.5,58.2,27.1,64.2C14.7,70.2,1,73.8,-12.3,72.2C-25.7,70.6,-38.7,63.7,-49.2,54.4C-59.7,45.1,-67.7,33.4,-72.1,20.4C-76.4,7.4,-77.2,-6.8,-73.4,-20.1C-69.6,-33.4,-61.2,-45.8,-50.2,-53.4C-39.2,-61.1,-25.6,-64,-11.9,-68.1C1.8,-72.2,15.4,-77.5,27.3,-75.4C39.2,-73.3,49.4,-63.9,38.2,-61.8Z"
-                transform="translate(100 100)" />
-        </svg>
     </section>
 
     <section id="about" class="portfolio reveal">
         <h2>Our Portfolio</h2>
         <div class="portfolio-grid" id="portfolioGrid">
-            <!-- Dynamic items will load here -->
-            <p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px; font-style: italic;">Loading our
-                portfolio gallery...</p>
+            <p>Loading portfolio...</p>
         </div>
-        <div id="load-more-container" style="margin-top: 40px; display: none; text-align: center;">
-            <button onclick="fetchPortfolioItems()" class="get-help-btn"
-                style="margin: 0 auto; display: flex; padding: 12px 30px; font-size: 14px; border-radius: 50px; background: var(--accent-green); color: var(--accent-dark-green); border: 1px solid var(--accent-green); cursor: pointer;">
-                Load More Portfolio Photos
-            </button>
+        <div id="load-more-container" style="margin-top: 40px; display: none;">
+            <button onclick="fetchPortfolioItems()" class="get-help-btn" style="margin: auto; padding: 12px 30px; background: var(--accent-green);">Load More</button>
         </div>
     </section>
 
     <section id="services" class="services reveal">
-
-        <h2>Areas of Specialization</h2>
-
+        <h2>Specializations</h2>
         <div class="service-box">
-
-            <div class="service service-highlight">
+             <div class="service service-highlight">
                 <div class="highlight-content">
                     <h3>Find Support</h3>
-                    <p>If you or someone you know is struggling, you are not alone. Professional help is just a click
-                        away.</p>
+                    <p>Professional help is just a click away.</p>
                 </div>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20am%20looking%20for%20some%20support%20regarding%20my%20mental%20health%2E"
-                    class="highlight-arrow" target="_blank">↗</a>
+                <a href="https://wa.me/917973477917" class="highlight-arrow">↗</a>
             </div>
-
-            <div class="service">
-                <i class="fa-solid fa-hands-holding-circle"></i>
-                <h3>De-addiction</h3>
-                <p>Professional support to break harmful cycles and build a healthier, independent lifestyle.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20De-addiction%20therapy%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-cloud-rain"></i>
-                <h3>Anxiety</h3>
-                <p>Explore the root causes of anxiety and develop coping strategies to restore a sense of calm.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anxiety%20management%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-brain"></i>
-                <h3>Overthinking</h3>
-                <p>Techniques to quiet a racing mind, reduce mental clutter, and improve focus and clarity.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Overthinking%20challenges%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-people-roof"></i>
-                <h3>Family Counselling</h3>
-                <p>Mediate conflicts, improve communication, and rebuild stronger, healthier family dynamics.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Family%20Counselling%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-heart-crack"></i>
-                <h3>Relationship/Separation</h3>
-                <p>Guidance for couples navigating difficulties, or individuals healing and transitioning after a
-                    breakup.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Relationship/Separation%20counselling%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-fire-flame-curved"></i>
-                <h3>Anger/Emotion Management</h3>
-                <p>Learn to process, express, and manage intense emotions in constructive and healthy ways.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anger%20or%20Emotion%20Management%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-briefcase"></i>
-                <h3>Career Counselling</h3>
-                <p>Identify your strengths and interests to make informed, fulfilling professional choices.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Career%20Counselling%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-people-group"></i>
-                <h3>Group/Individual Counselling</h3>
-                <p>Personalized 1-on-1 therapy, or finding connection and shared healing in a safe group setting.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Group%20or%20Individual%20Counselling%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3>Student Counselling</h3>
-                <p>Support for academic pressure, peer issues, and emotional changes unique to young adults.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Student%20Counselling%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-stopwatch"></i>
-                <h3>Time & Stress Management</h3>
-                <p>Practical organizational skills and mental tools to reduce burnout and improve work-life balance.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Time%20and%20Stress%20Management%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-ghost"></i>
-                <h3>Phobia Healing</h3>
-                <p>Overcome irrational fears and reclaim your freedom with personalized exposure and mindset techniques.
-                </p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Phobia%20Healing%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <div class="service">
-                <i class="fa-solid fa-arrows-rotate"></i>
-                <h3>Obsessive Compulsive Disorder</h3>
-                <p>Effective strategies to manage intrusive thoughts and repetitive behaviors, helping you find mental
-                    peace.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20OCD%20Specialization%2E"
-                    class="get-help-btn" target="_blank">Get Help ↗</a>
-            </div>
-
-            <!-- More Abstract Figures -->
-            <div
-                style="position: absolute; width:100%; height:100%; top:0; left:0; pointer-events:none; z-index: -1; overflow:hidden;">
-                <svg class="blob-decoration" style="top:10%; right:-80px; width:300px; height:300px;"
-                    viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="#DBEAFE"
-                        d="M42.7,-74.1C55.9,-68.3,67.6,-58.5,75.4,-46C83.2,-33.5,87.1,-18.2,85.7,-3.4C84.3,11.5,77.5,25.8,68.2,38.1C58.8,50.4,46.8,60.7,33.1,68.4C19.3,76.1,3.8,81.1,-11.4,79.5C-26.6,77.9,-41.5,69.7,-53.6,58.8C-65.7,47.9,-75.1,34.4,-78.7,19.6C-82.3,4.8,-80.1,-11.3,-74,-26.2C-67.8,-41.2,-57.8,-54.9,-44.6,-60.7C-31.4,-66.6,-15.7,-64.5,-0.6,-63.4C14.5,-62.4,29.5,-79.8,42.7,-74.1Z"
-                        transform="translate(100 100)" />
-                </svg>
-            </div>
-
+            <div class="service"><i class="fa-solid fa-brain"></i><h3>Anxiety</h3><p>Coping strategies to restore calm.</p></div>
+            <div class="service"><i class="fa-solid fa-heart"></i><h3>Relationships</h3><p>Healing and stronger dynamics.</p></div>
         </div>
-
     </section>
 
     <section id="testimonials" class="testimonials reveal">
-        <!-- Decoration Blob -->
-        <svg class="blob-decoration"
-            style="top:-20px; left:-50px; width:200px; height:200px; transform: rotate(180deg);" viewBox="0 0 200 200"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill="#FFF9D7"
-                d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.6,-31.3,86.9,-15.7,85.2,-0.9C83.6,13.8,77.1,27.7,68,39.4C58.9,51.1,47.3,60.6,34.2,68.4C21.1,76.2,6.5,82.3,-8.6,81.3C-23.7,80.3,-39.3,72.2,-51.9,61.9C-64.5,51.6,-74.1,39.1,-79.8,24.8C-85.4,10.6,-87,-5.4,-83.1,-19.7C-79.1,-34,-69.5,-46.6,-58,-54.6C-46.4,-62.6,-32.8,-66,-20.1,-72.2C-7.4,-78.4,4.4,-87.5,18.4,-85.5C32.4,-83.5,44.7,-76.4,44.7,-76.4Z"
-                transform="translate(100 100)" />
-        </svg>
-
         <h2>Client Reviews</h2>
-
         <div class="testimonial-slider-container">
             <button class="testi-nav-btn prev" onclick="moveTestimonials(-1)">&#10094;</button>
             <div class="testimonial-slider" id="testimonialSlider">
                 <div class="testimonial-track" id="dynamic-testimonial-track">
-                    <!-- Images will be populated dynamically -->
-                    <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review Loading...">
+                    <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review">
                 </div>
             </div>
             <button class="testi-nav-btn next" onclick="moveTestimonials(1)">&#10095;</button>
         </div>
-
     </section>
 
-    <section id="write-review" class="contact reveal" style="background: var(--bg-primary);">
-        <h2 style="margin-bottom: 10px;">Leave a Review</h2>
-        <p style="color: var(--text-muted); margin-bottom: 30px;">Your feedback helps others find the support they need.</p>
+    <section id="write-review" class="contact reveal">
+        <h2>Leave a Review</h2>
         <div id="auth-check-container" style="max-width: 500px; margin: auto;">
-            <!-- Login Button (Visible when logged out) -->
-            <div id="login-required-msg" style="text-align: center; padding: 30px; background: var(--bg-secondary); border-radius: 20px;">
-                <i class="fa-brands fa-google" style="font-size: 40px; color: #4285F4; margin-bottom: 15px;"></i>
-                <p style="margin-bottom: 20px; font-weight: 500;">Please log in with Google to leave a review.</p>
-                <button onclick="loginWithGoogle()" class="submit" style="background: #4285F4; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; margin: auto;">
-                    <i class="fa-brands fa-google"></i> Login with Google
-                </button>
+            <div id="login-required-msg">
+                <button onclick="loginWithGoogle()" class="submit"><i class="fa-brands fa-google"></i> Login with Google</button>
             </div>
-
-            <!-- Review Form (Hidden when logged out) -->
             <div id="review-form-container" style="display: none;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #e0f2fe; padding: 10px 20px; border-radius: 50px;">
-                    <span id="user-display-name" style="font-weight: 600; font-size: 14px; color: #0369a1;"></span>
-                    <button onclick="logout()" style="background: none; border: none; color: #dc2626; font-size: 13px; font-weight: 600; cursor: pointer;">Logout</button>
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #e0f2fe; padding: 10px 20px; border-radius: 50px;">
+                    <span id="user-display-name"></span>
+                    <button onclick="logout()" style="color: red; border: none; background: none; cursor: pointer;">Logout</button>
                 </div>
-                <form id="reviewForm">
+                <form id="reviewForm" style="margin-top:20px;">
                     <input type="hidden" id="revName">
-                    <div class="rating-input" style="display: flex; justify-content: center; gap: 10px; font-size: 24px; color: #f59e0b; margin-bottom: 20px;">
-                        <i class="fa-regular fa-star star-btn" data-value="1" style="cursor: pointer;"></i>
-                        <i class="fa-regular fa-star star-btn" data-value="2" style="cursor: pointer;"></i>
-                        <i class="fa-regular fa-star star-btn" data-value="3" style="cursor: pointer;"></i>
-                        <i class="fa-regular fa-star star-btn" data-value="4" style="cursor: pointer;"></i>
-                        <i class="fa-regular fa-star star-btn" data-value="5" style="cursor: pointer;"></i>
-                        <input type="hidden" id="revRating" value="5">
-                    </div>
-                    <textarea id="revComment" rows="3" placeholder="Share your experience..." required></textarea>
+                    <select id="revRating"><option value="5">5 Stars</option><option value="4">4 Stars</option></select>
+                    <textarea id="revComment" placeholder="Share your experience..." required></textarea>
                     <button type="submit" class="submit">Submit Review</button>
                 </form>
             </div>
         </div>
     </section>
-
-    <!-- Approved Reviews Display (Optional: You can also show text reviews here) -->
+    
     <section id="approved-reviews" class="testimonials reveal" style="display: none; padding-top: 0;">
-        <div id="reviews-display-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 8%;">
-            <!-- Approved text reviews will go here -->
-        </div>
+        <div id="reviews-display-container"></div>
     </section>
 
     <section id="blog" class="blog reveal">
-
         <h2>Mental Health Blog</h2>
-
-        <div class="blog-container" id="dynamic-blog-container">
-            <div class="blog-card">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773">
-                <div class="blog-content">
-                    <h3>5 Ways to Manage Anxiety</h3>
-                    <p>Simple daily practices that help reduce anxiety and restore emotional balance.</p>
-                    <a href="#">Read More →</a>
-                </div>
-            </div>
-        </div>
-
+        <div class="blog-container" id="dynamic-blog-container"></div>
     </section>
 
     <section id="contact" class="contact">
-
         <h2>Book an Appointment</h2>
-
         <form id="bookingForm">
-
-            <input type="text" id="bookName" placeholder="Your Name" required>
-
+            <input type="text" id="bookName" placeholder="Name" required>
             <input type="email" id="bookEmail" placeholder="Email" required>
-
             <div class="phone-input-group">
-                <select id="countryCode" required>
-                    <option value="+91" selected>+91 (IN)</option>
-                    <option value="+1">+1 (US)</option>
-                    <option value="+44">+44 (UK)</option>
-                    <option value="+61">+61 (AU)</option>
-                    <option value="+971">+971 (UAE)</option>
-                    <option value="+1">+1 (CA)</option>
-                </select>
-                <input type="tel" id="bookPhone" placeholder="10-digit Phone Number" pattern="[0-9]{10}" maxlength="10"
-                    oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+                <select id="countryCode"><option value="+91">+91 (IN)</option></select>
+                <input type="tel" id="bookPhone" placeholder="10-digit Phone" required>
             </div>
-
-            <select id="bookSession" required>
-                <option value="" disabled selected>Select Session Type</option>
-                <option value="Online">Online Session (Video Call)</option>
-                <option value="Offline">Offline Session (In-Person)</option>
-            </select>
-
-            <textarea id="bookMessage" rows="4" placeholder="Your Message" required></textarea>
-
+            <select id="bookSession"><option value="Online">Online</option><option value="Offline">Offline</option></select>
+            <textarea id="bookMessage" placeholder="Message" required></textarea>
             <button type="submit" class="submit">Send Message</button>
-
         </form>
-
     </section>
-
-    <!-- Lightbox Modal for Testimonials -->
-    <div id="testimonialLightbox" class="lightbox-modal" onclick="closeLightbox(event)">
-        <span class="lightbox-close" onclick="closeLightbox(event)">&times;</span>
-        <img class="lightbox-content" id="lightboxImage">
-    </div>
 
     <footer>
         <p>© 2026 Divya Sharma | Psychologist</p>
-        <p style="margin-top: 10px; font-size: 13px;">
-            <a href="admin.html" style="color: #c76aa4; text-decoration: none; font-weight: 500;">Admin Login</a>
-        </p>
+        <p style="margin-top: 10px;"><a href="admin.html" style="color: #c76aa4;">Admin Login</a></p>
     </footer>
 
-    <script>
+    <div id="testimonialLightbox" class="lightbox-modal" onclick="this.classList.remove('show')">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImage">
+    </div>
 
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            if (window.innerWidth <= 768) {
-                menu.classList.toggle("show");
-            }
-        }
-
-        let slideIndex = 0;
-
-        // Lightbox Logic
-        document.addEventListener("DOMContentLoaded", () => {
-            const screenshots = document.querySelectorAll(".testimonial-screenshot");
-            screenshots.forEach(img => {
-                img.addEventListener("click", () => {
-                    const lightbox = document.getElementById("testimonialLightbox");
-                    const lightboxImg = document.getElementById("lightboxImage");
-                    lightboxImg.src = img.src;
-                    lightbox.classList.add("show");
-                });
-            });
-        });
-
-        // Testimonial Auto-scroll & Navigation
-        let testiIndex = 0;
-        let testiAutoTimer;
-
-        function startTestiAuto() {
-            stopTestiAuto();
-            const testiImages = document.querySelectorAll(".testimonial-screenshot");
-            if (testiImages.length === 0) return; // No images yet — don't start
-            testiAutoTimer = setInterval(() => {
-                moveTestimonials(1);
-            }, 3500);
-        }
-
-        function stopTestiAuto() {
-            if (testiAutoTimer) clearInterval(testiAutoTimer);
-        }
-
-        function moveTestimonials(step) {
-            const testiSlider = document.getElementById("testimonialSlider");
-            const testiImages = document.querySelectorAll(".testimonial-screenshot");
-            if (!testiSlider || testiImages.length === 0) return;
-
-            testiIndex += step;
-            // Wrap around
-            if (testiIndex >= testiImages.length) testiIndex = 0;
-            if (testiIndex < 0) testiIndex = testiImages.length - 1;
-
-            const targetImage = testiImages[testiIndex];
-            const scrollPos = targetImage.offsetLeft
-                - (testiSlider.offsetWidth / 2)
-                + (targetImage.offsetWidth / 2);
-
-            testiSlider.scrollTo({ left: scrollPos, behavior: 'smooth' });
-        }
-
-        // Called after any set of testimonial images is ready in the DOM
-        function initTestimonialSlider() {
-            testiIndex = 0;
-            const testiSlider = document.getElementById("testimonialSlider");
-            if (!testiSlider) return;
-
-            // Attach lightbox to every image (including dynamically added ones)
-            document.querySelectorAll(".testimonial-screenshot").forEach(img => {
-                img.onclick = () => {
-                    document.getElementById("lightboxImage").src = img.src;
-                    document.getElementById("testimonialLightbox").classList.add("show");
-                };
-                img.style.cursor = 'pointer';
-            });
-
-            // Restart auto-scroll fresh
-            startTestiAuto();
-
-            // Pause on hover / touch
-            testiSlider.onmouseenter = stopTestiAuto;
-            testiSlider.onmouseleave = startTestiAuto;
-            testiSlider.ontouchstart = stopTestiAuto;
-            testiSlider.ontouchend = startTestiAuto;
-        }
-
-        // Start with whatever static images exist at page load
-        document.addEventListener("DOMContentLoaded", initTestimonialSlider);
-
-        function closeLightbox(e) {
-            if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {
-                document.getElementById("testimonialLightbox").classList.remove("show");
-            }
-        }
-
-    </script>
+    <a href="https://wa.me/917973477917" class="whatsapp-fab" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 
     <!-- SUPABASE SDK -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        // --- 1. CONFIGURATION & INITIALIZATION ---
         const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
         let testiIndex = 0;
-        let testiAutoTimer;
         let portfolioOffset = 0;
         const portfolioLimit = 9;
-        const allPhotos = [
-            "assets/about/photo_2026-03-15_20-45-08.jpg", "assets/about/photo_2026-03-15_20-45-13.jpg",
-            "assets/about/photo_2026-03-15_20-45-13 (2).jpg", "assets/about/photo_2026-03-15_20-45-14.jpg",
-            "assets/about/photo_2026-03-15_20-45-15.jpg", "assets/about/photo_2026-03-15_20-45-15 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-16.jpg", "assets/about/photo_2026-03-15_20-45-16 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-17.jpg", "assets/about/photo_2026-03-15_20-45-19.jpg",
-            "assets/about/photo_2026-03-15_20-45-20.jpg", "assets/about/photo_2026-03-15_20-45-20 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-21.jpg", "assets/about/photo_2026-03-15_20-45-22.jpg",
-            "assets/about/photo_2026-03-15_20-45-24.jpg"
-        ];
-        let availablePhotos = [...allPhotos];
         const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('active');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
 
-        // --- 2. GLOBAL FUNCTIONS ---
-        function toggleMenu() {
-            const menu = document.getElementById("menu");
-            if (window.innerWidth <= 768) menu.classList.toggle("show");
-        }
-
-        function closeLightbox(e) {
-            if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {
-                document.getElementById("testimonialLightbox").classList.remove("show");
-            }
-        }
-
-        function getNextPhoto() {
-            if (availablePhotos.length === 0) availablePhotos = [...allPhotos];
-            const randomIndex = Math.floor(Math.random() * availablePhotos.length);
-            return availablePhotos.splice(randomIndex, 1)[0];
-        }
-
-        function triggerFlip() {
-            const gridItems = document.querySelectorAll('.about-img-item');
-            if (gridItems.length === 0) return;
-            const randomItem = gridItems[Math.floor(Math.random() * gridItems.length)];
-            const inner = randomItem ? randomItem.querySelector('.flip-card-inner') : null;
-            if (!inner) return;
-            const isFlipped = inner.classList.contains('flipped');
-            const nextImg = getNextPhoto();
-            const backFace = isFlipped ? inner.querySelector('.flip-front img') : inner.querySelector('.flip-back img');
-            if (backFace) backFace.src = nextImg;
-            inner.classList.toggle('flipped');
-        }
-
-        function startTestiAuto() {
-            stopTestiAuto();
-            const testiImages = document.querySelectorAll(".testimonial-screenshot");
-            if (testiImages.length === 0) return;
-            testiAutoTimer = setInterval(() => moveTestimonials(1), 3500);
-        }
-
-        function stopTestiAuto() {
-            if (testiAutoTimer) clearInterval(testiAutoTimer);
-        }
-
         function moveTestimonials(step) {
-            const testiSlider = document.getElementById("testimonialSlider");
-            const testiImages = document.querySelectorAll(".testimonial-screenshot");
-            if (!testiSlider || testiImages.length === 0) return;
-            testiIndex = (testiIndex + step + testiImages.length) % testiImages.length;
-            const targetImage = testiImages[testiIndex];
-            const scrollPos = targetImage.offsetLeft - (testiSlider.offsetWidth / 2) + (targetImage.offsetWidth / 2);
-            testiSlider.scrollTo({ left: scrollPos, behavior: 'smooth' });
-        }
-
-        function initTestimonialSlider() {
-            testiIndex = 0;
-            const testiSlider = document.getElementById("testimonialSlider");
-            if (!testiSlider) return;
-            document.querySelectorAll(".testimonial-screenshot").forEach(img => {
-                img.onclick = () => {
-                    document.getElementById("lightboxImage").src = img.src;
-                    document.getElementById("testimonialLightbox").classList.add("show");
-                };
-                img.style.cursor = 'pointer';
-            });
-            startTestiAuto();
-            testiSlider.onmouseenter = stopTestiAuto;
-            testiSlider.onmouseleave = startTestiAuto;
-            testiSlider.ontouchstart = stopTestiAuto;
-            testiSlider.ontouchend = startTestiAuto;
+            const track = document.getElementById('testimonialSlider');
+            const images = document.querySelectorAll('.testimonial-screenshot');
+            if (!track || images.length === 0) return;
+            testiIndex = (testiIndex + step + images.length) % images.length;
+            track.scrollTo({ left: images[testiIndex].offsetLeft - track.offsetWidth/2 + images[testiIndex].offsetWidth/2, behavior: 'smooth' });
         }
 
         async function loginWithGoogle() {
-            const { error } = await supabaseClient.auth.signInWithOAuth({
-                provider: 'google',
-                options: { redirectTo: window.location.origin + window.location.pathname }
-            });
-            if (error) alert("Error: " + error.message);
+            await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
         }
-
-        async function logout() {
-            const { error } = await supabaseClient.auth.signOut();
-            if (error) alert("Error: " + error.message);
-        }
+        async function logout() { await supabaseClient.auth.signOut(); }
 
         async function fetchDynamicImages() {
-            if (!supabaseClient) return;
             try {
-                const { data: others, error: otherError } = await supabaseClient.from('site_images').select('*').not('section', 'eq', 'about');
+                const { data: others } = await supabaseClient.from('site_images').select('*').not('section', 'eq', 'about');
                 if (others) {
-                    const heroImages = others.filter(img => img.section === 'hero');
-                    if (heroImages.length > 0) document.getElementById('dynamic-hero-img').src = heroImages[0].image_url;
-                    const testimonialImages = others.filter(img => img.section === 'testimonial');
+                    const hero = others.find(img => img.section === 'hero');
+                    if (hero) document.getElementById('dynamic-hero-img').src = hero.image_url;
+                    
+                    const testimonials = others.filter(img => img.section === 'testimonial');
                     const track = document.getElementById('dynamic-testimonial-track');
-                    if (testimonialImages.length > 0 && track) {
+                    if (testimonials.length > 0 && track) {
                         track.innerHTML = '';
-                        testimonialImages.forEach(img => {
-                            const imgEl = document.createElement('img');
-                            imgEl.className = 'testimonial-screenshot';
-                            imgEl.src = img.image_url;
-                            track.appendChild(imgEl);
+                        testimonials.forEach(img => {
+                            const el = document.createElement('img'); el.className = 'testimonial-screenshot'; el.src = img.image_url;
+                            el.onclick = () => { document.getElementById('lightboxImage').src = el.src; document.getElementById('testimonialLightbox').classList.add('show'); };
+                            track.appendChild(el);
                         });
-                        initTestimonialSlider();
                     }
                 }
-                const { data: approvedReviews } = await supabaseClient.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false });
-                if (approvedReviews && approvedReviews.length > 0) {
-                    const revContainer = document.getElementById('reviews-display-container');
-                    document.getElementById('approved-reviews').style.display = 'block';
-                    revContainer.innerHTML = '';
-                    approvedReviews.forEach(rev => {
-                        const div = document.createElement('div');
-                        div.className = 'service'; div.style.background = 'white'; div.style.padding = '30px';
-                        div.innerHTML = `<div style="color:#f59e0b; margin-bottom:10px;">${'★'.repeat(rev.rating)}${'☆'.repeat(5-rev.rating)}</div><p style="font-style:italic; font-size:14px; margin-bottom:15px;">"${rev.comment}"</p><h4 style="font-family:'Playfair Display', serif; font-size:16px;">- ${rev.name}</h4>`;
-                        revContainer.appendChild(div);
-                    });
+                const { data: reviews } = await supabaseClient.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false });
+                if (reviews && reviews.length > 0) {
+                   const container = document.getElementById('reviews-display-container');
+                   document.getElementById('approved-reviews').style.display = 'block';
+                   container.innerHTML = reviews.map(r => `<div class="service" style="background:white; padding:30px;"><div>${'★'.repeat(r.rating)}</div><p>"${r.comment}"</p><h4>- ${r.name}</h4></div>`).join('');
                 }
                 const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
-                if (blogs && blogs.length > 0) {
-                    const blogGrid = document.getElementById('dynamic-blog-container');
-                    blogGrid.innerHTML = '';
-                    blogs.forEach(blog => {
-                        const card = document.createElement('div');
-                        card.className = 'blog-card';
-                        const blogLink = document.createElement('a'); blogLink.href = "#"; blogLink.innerText = "Read More →";
-                        blogLink.onclick = (e) => { e.preventDefault(); alert(`Blog: ${blog.title}\n\n${blog.content.substring(0, 200)}...`); };
-                        card.innerHTML = `<img src="${blog.image_url || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b'}"><div class="blog-content"><h3>${blog.title}</h3><p>${blog.excerpt}</p></div>`;
-                        card.querySelector('.blog-content').appendChild(blogLink);
-                        blogGrid.appendChild(card);
-                    });
+                if (blogs) {
+                    document.getElementById('dynamic-blog-container').innerHTML = blogs.map(b => `<div class="blog-card"><img src="${b.image_url || ''}"><div class="blog-content"><h3>${b.title}</h3><p>${b.excerpt}</p></div></div>`).join('');
                 }
                 fetchPortfolioItems();
-            } catch (err) { console.error("Failed to load dynamic images:", err); }
+            } catch (e) { console.error(e); }
         }
 
         async function fetchPortfolioItems() {
             const grid = document.getElementById('portfolioGrid');
-            const loadMoreContainer = document.getElementById('load-more-container');
-            const { data: aboutImages, error, count } = await supabaseClient.from('site_images').select('*', { count: 'exact' }).eq('section', 'about').order('created_at', { ascending: false }).range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
-            if (aboutImages && aboutImages.length > 0) {
+            const { data: about, count } = await supabaseClient.from('site_images').select('*', { count: 'exact' }).eq('section', 'about').order('created_at', { ascending: false }).range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
+            if (about && about.length > 0) {
                 if (portfolioOffset === 0) grid.innerHTML = '';
-                aboutImages.forEach(img => {
-                    const item = document.createElement('div');
-                    item.className = 'portfolio-item reveal active';
-                    item.innerHTML = `<div class="portfolio-img-wrapper" style="cursor: pointer;" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}" loading="lazy"></div>${img.caption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
-                    grid.appendChild(item);
+                about.forEach(img => {
+                    const div = document.createElement('div'); div.className = 'portfolio-item reveal active';
+                    div.innerHTML = `<div class="portfolio-img-wrapper" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}"></div>${img.caption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
+                    grid.appendChild(div);
                 });
                 portfolioOffset += portfolioLimit;
-                loadMoreContainer.style.display = (count > portfolioOffset) ? 'block' : 'none';
-                document.querySelectorAll('.portfolio-item.reveal').forEach(el => revealObserver.observe(el));
-            } else if (portfolioOffset === 0) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px;">No portfolio images added yet.</p>';
+                document.getElementById('load-more-container').style.display = (count > portfolioOffset) ? 'block' : 'none';
             }
         }
 
-        // --- 3. DOM READY LOGIC ---
         document.addEventListener('DOMContentLoaded', () => {
-            // Auth Check
             supabaseClient.auth.onAuthStateChange((event, session) => {
                 const loginMsg = document.getElementById("login-required-msg");
-                const formContainer = document.getElementById("review-form-container");
-                const userNameDisplay = document.getElementById("user-display-name");
-                const revNameInput = document.getElementById("revName");
-                if (session && session.user) {
+                const form = document.getElementById("review-form-container");
+                if (session) {
                     const name = session.user.user_metadata.full_name || session.user.email.split('@')[0];
-                    if (loginMsg) loginMsg.style.display = "none";
-                    if (formContainer) formContainer.style.display = "block";
-                    if (userNameDisplay) userNameDisplay.innerText = "Loged in as: " + name;
-                    if (revNameInput) revNameInput.value = name;
+                    loginMsg.style.display = "none"; form.style.display = "block";
+                    document.getElementById("user-display-name").innerText = "Logged in as: " + name;
+                    document.getElementById("revName").value = name;
                 } else {
-                    if (loginMsg) loginMsg.style.display = "block";
-                    if (formContainer) formContainer.style.display = "none";
+                    loginMsg.style.display = "block"; form.style.display = "none";
                 }
             });
 
-            // Booking Form
-            const bookingForm = document.getElementById("bookingForm");
-            if (bookingForm) {
-                bookingForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    const submitBtn = bookingForm.querySelector(".submit");
-                    submitBtn.textContent = "Sending..."; submitBtn.disabled = true;
-                    try {
-                        const name = document.getElementById("bookName").value.trim();
-                        const email = document.getElementById("bookEmail").value.trim();
-                        const phone = document.getElementById("countryCode").value + document.getElementById("bookPhone").value.trim();
-                        const session = document.getElementById("bookSession").value;
-                        const message = document.getElementById("bookMessage").value.trim();
-                        if (document.getElementById("bookPhone").value.trim().length !== 10) throw new Error("10-digit phone required.");
-                        const { error } = await supabaseClient.from('appointments').insert([{ name, email, phone, session_type: session, message: `Session Mode: ${session}\n\n${message}` }]);
-                        if (error) throw error;
-                        await fetch(`https://ntfy.sh/divya_booking_alerts_79734`, { method: "POST", body: `Name: ${name}\nPhone: ${phone}\nSession: ${session}\n\nMessage: ${message}`, headers: { "Title": "New Booking Received!", "Priority": "high", "Tags": "calendar", "Click": window.location.origin + "/admin.html" } });
-                        alert("Thank you! Appointment request submitted.");
-                        bookingForm.reset();
-                    } catch (err) { alert("Error: " + err.message); } finally { submitBtn.textContent = "Send Message"; submitBtn.disabled = false; }
-                });
-            }
+            document.getElementById("bookingForm").onsubmit = async (e) => {
+                e.preventDefault();
+                const btn = e.target.querySelector("button"); btn.disabled = true;
+                const d = { name: document.getElementById("bookName").value, email: document.getElementById("bookEmail").value, phone: document.getElementById("countryCode").value + document.getElementById("bookPhone").value, session_type: document.getElementById("bookSession").value, message: document.getElementById("bookMessage").value };
+                await supabaseClient.from('appointments').insert([d]);
+                await fetch(`https://ntfy.sh/divya_booking_alerts_79734`, { method: "POST", body: `New Booking: ${d.name} (${d.phone})` });
+                alert("Sent!"); e.target.reset(); btn.disabled = false;
+            };
 
-            // Review Form
-            const reviewForm = document.getElementById("reviewForm");
-            const starBtns = document.querySelectorAll(".star-btn");
-            const ratingInput = document.getElementById("revRating");
-            starBtns.forEach(btn => {
-                btn.onclick = () => {
-                    const val = parseInt(btn.getAttribute("data-value"));
-                    ratingInput.value = val;
-                    starBtns.forEach((s, i) => s.classList.replace(i < val ? "fa-regular" : "fa-solid", i < val ? "fa-solid" : "fa-regular"));
-                };
-            });
-            if (reviewForm) {
-                reviewForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    const submitBtn = reviewForm.querySelector(".submit");
-                    submitBtn.textContent = "Submitting..."; submitBtn.disabled = true;
-                    try {
-                        const { error } = await supabaseClient.from('reviews').insert([{ name: document.getElementById("revName").value.trim(), rating: parseInt(ratingInput.value), comment: document.getElementById("revComment").value.trim() }]);
-                        if (error) throw error;
-                        alert("Thank you! Your review has been submitted for approval.");
-                        reviewForm.reset();
-                        starBtns.forEach(s => s.classList.replace("fa-solid", "fa-regular"));
-                    } catch (err) { alert("Error: " + err.message); } finally { submitBtn.textContent = "Submit Review"; submitBtn.disabled = false; }
-                });
-            }
+            document.getElementById("reviewForm").onsubmit = async (e) => {
+                e.preventDefault();
+                const d = { name: document.getElementById("revName").value, rating: parseInt(document.getElementById("revRating").value), comment: document.getElementById("revComment").value };
+                await supabaseClient.from('reviews').insert([d]);
+                alert("Review submitted for approval!"); e.target.reset();
+            };
 
-            // Other initializations
-            initTestimonialSlider();
             fetchDynamicImages();
-            setInterval(triggerFlip, 3000);
             document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-            const video = document.querySelector('#video-intro video');
-            if (video) video.play().catch(() => console.log("Autoplay blocked."));
         });
     </script>
 </body>
-
 </html>

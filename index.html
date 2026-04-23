@@ -1533,19 +1533,37 @@
     <section id="write-review" class="contact reveal" style="background: var(--bg-primary);">
         <h2 style="margin-bottom: 10px;">Leave a Review</h2>
         <p style="color: var(--text-muted); margin-bottom: 30px;">Your feedback helps others find the support they need.</p>
-        <form id="reviewForm" style="max-width: 500px;">
-            <input type="text" id="revName" placeholder="Your Name" required>
-            <div class="rating-input" style="display: flex; justify-content: center; gap: 10px; font-size: 24px; color: #f59e0b; margin-bottom: 20px;">
-                <i class="fa-regular fa-star star-btn" data-value="1" style="cursor: pointer;"></i>
-                <i class="fa-regular fa-star star-btn" data-value="2" style="cursor: pointer;"></i>
-                <i class="fa-regular fa-star star-btn" data-value="3" style="cursor: pointer;"></i>
-                <i class="fa-regular fa-star star-btn" data-value="4" style="cursor: pointer;"></i>
-                <i class="fa-regular fa-star star-btn" data-value="5" style="cursor: pointer;"></i>
-                <input type="hidden" id="revRating" value="5">
+        <div id="auth-check-container" style="max-width: 500px; margin: auto;">
+            <!-- Login Button (Visible when logged out) -->
+            <div id="login-required-msg" style="text-align: center; padding: 30px; background: var(--bg-secondary); border-radius: 20px;">
+                <i class="fa-brands fa-google" style="font-size: 40px; color: #4285F4; margin-bottom: 15px;"></i>
+                <p style="margin-bottom: 20px; font-weight: 500;">Please log in with Google to leave a review.</p>
+                <button onclick="loginWithGoogle()" class="submit" style="background: #4285F4; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; margin: auto;">
+                    <i class="fa-brands fa-google"></i> Login with Google
+                </button>
             </div>
-            <textarea id="revComment" rows="3" placeholder="Share your experience..." required></textarea>
-            <button type="submit" class="submit">Submit Review</button>
-        </form>
+
+            <!-- Review Form (Hidden when logged out) -->
+            <div id="review-form-container" style="display: none;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #e0f2fe; padding: 10px 20px; border-radius: 50px;">
+                    <span id="user-display-name" style="font-weight: 600; font-size: 14px; color: #0369a1;"></span>
+                    <button onclick="logout()" style="background: none; border: none; color: #dc2626; font-size: 13px; font-weight: 600; cursor: pointer;">Logout</button>
+                </div>
+                <form id="reviewForm">
+                    <input type="hidden" id="revName">
+                    <div class="rating-input" style="display: flex; justify-content: center; gap: 10px; font-size: 24px; color: #f59e0b; margin-bottom: 20px;">
+                        <i class="fa-regular fa-star star-btn" data-value="1" style="cursor: pointer;"></i>
+                        <i class="fa-regular fa-star star-btn" data-value="2" style="cursor: pointer;"></i>
+                        <i class="fa-regular fa-star star-btn" data-value="3" style="cursor: pointer;"></i>
+                        <i class="fa-regular fa-star star-btn" data-value="4" style="cursor: pointer;"></i>
+                        <i class="fa-regular fa-star star-btn" data-value="5" style="cursor: pointer;"></i>
+                        <input type="hidden" id="revRating" value="5">
+                    </div>
+                    <textarea id="revComment" rows="3" placeholder="Share your experience..." required></textarea>
+                    <button type="submit" class="submit">Submit Review</button>
+                </form>
+            </div>
+        </div>
     </section>
 
     <!-- Approved Reviews Display (Optional: You can also show text reviews here) -->
@@ -1849,7 +1867,48 @@
                     }
                 });
             }
+            }
         });
+
+        // --- AUTH & GOOGLE LOGIN FOR REVIEWS ---
+        async function loginWithGoogle() {
+            const { error } = await supabaseClient.auth.signInWithOAuth({
+                provider: 'google',
+                options: {
+                    redirectTo: window.location.origin + window.location.pathname
+                }
+            });
+            if (error) alert("Error: " + error.message);
+        }
+
+        async function logout() {
+            const { error } = await supabaseClient.auth.signOut();
+            if (error) alert("Error: " + error.message);
+        }
+
+        function checkAuth() {
+            supabaseClient.auth.onAuthStateChange((event, session) => {
+                const loginMsg = document.getElementById("login-required-msg");
+                const formContainer = document.getElementById("review-form-container");
+                const userNameDisplay = document.getElementById("user-display-name");
+                const revNameInput = document.getElementById("revName");
+
+                if (session && session.user) {
+                    const user = session.user;
+                    const name = user.user_metadata.full_name || user.email.split('@')[0];
+                    
+                    loginMsg.style.display = "none";
+                    formContainer.style.display = "block";
+                    userNameDisplay.innerText = "Loged in as: " + name;
+                    revNameInput.value = name;
+                } else {
+                    loginMsg.style.display = "block";
+                    formContainer.style.display = "none";
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", checkAuth);
     </script>
 
 

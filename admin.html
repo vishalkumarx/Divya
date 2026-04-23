@@ -549,6 +549,8 @@
       <div class="tabs">
         <button class="tab-btn active" onclick="switchTab('appointments')">Appointments</button>
         <button class="tab-btn" onclick="switchTab('images')">Image Manager</button>
+        <button class="tab-btn" onclick="switchTab('reviews')">Reviews</button>
+        <button class="tab-btn" onclick="switchTab('blogs')">Blogs</button>
       </div>
 
       <!-- Appointments Tab Content -->
@@ -609,6 +611,57 @@
         <div id="image-grid"></div>
       </div>
 
+      <!-- Reviews Tab Content -->
+      <div id="reviews-tab" class="tab-content">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px;">
+          <h3 style="color:#2d4f3c; font-family:'Playfair Display',serif;">Manage Site Reviews</h3>
+          <button onclick="fetchReviews()"
+            style="width:auto; padding:7px 16px; font-size:13px; background:#f0f0f0; color:#555;">↻ Refresh</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Rating</th>
+              <th>Comment</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="reviews-list">
+            <!-- Data populated by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Blogs Tab Content -->
+      <div id="blogs-tab" class="tab-content">
+        <div class="image-upload-card">
+          <h3 id="blog-form-title">Create New Blog Post</h3>
+          <input type="hidden" id="edit-blog-id">
+          <input type="text" id="blog-title" placeholder="Blog Title" required>
+          <input type="text" id="blog-excerpt" placeholder="Short Excerpt" required>
+          <input type="text" id="blog-image" placeholder="Image URL (Unsplash or direct link)">
+          <textarea id="blog-content" placeholder="Write your blog content here..." rows="10" 
+            style="width: 100%; padding: 14px 16px; margin: 10px 0; border: 1px solid #d4e8da; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 14px; background: #f1f5e9;"></textarea>
+          <div style="display: flex; gap: 10px;">
+            <button id="save-blog-btn" onclick="saveBlog()" style="width: auto; padding: 10px 25px;">💾 Save Blog</button>
+            <button id="cancel-blog-btn" onclick="clearBlogForm()" style="width: auto; padding: 10px 25px; background: #ccc; color: #333; display: none;">Cancel</button>
+          </div>
+          <p id="blog-status" style="font-size: 14px; margin-top: 10px;"></p>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:15px;">
+          <h3 style="color:#2d4f3c; font-family:'Playfair Display',serif;">Existing Blog Posts</h3>
+          <button onclick="fetchBlogs()"
+            style="width:auto; padding:7px 16px; font-size:13px; background:#f0f0f0; color:#555;">↻ Refresh</button>
+        </div>
+        <div id="blogs-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+          <!-- Data populated by JS -->
+        </div>
+      </div>
+
     </div>
 
   </div>
@@ -656,6 +709,12 @@
 
       if (tabId === 'images') {
         fetchImages();
+      } else if (tabId === 'reviews') {
+        fetchReviews();
+      } else if (tabId === 'blogs') {
+        fetchBlogs();
+      } else if (tabId === 'appointments') {
+        fetchAppointments();
       }
     }
 
@@ -937,11 +996,13 @@
       if (session) {
         loginSection.style.display = 'none';
         dashboardSection.style.display = 'block';
-        fetchAppointments();
+        fetchAppointments(); // Default tab
       } else {
         loginSection.style.display = 'block';
         dashboardSection.style.display = 'none';
         appointmentsList.innerHTML = '';
+        document.getElementById('reviews-list').innerHTML = '';
+        document.getElementById('blogs-container').innerHTML = '';
       }
     });
 
@@ -1033,6 +1094,160 @@
         console.error("Error fetching data:", error);
         appointmentsList.innerHTML = '<tr><td colspan="7" class="empty-state" style="color:red;">Error loading data. Check console.</td></tr>';
       }
+    }
+
+    // --- REVIEWS MANAGEMENT ---
+    async function fetchReviews() {
+      const list = document.getElementById('reviews-list');
+      list.innerHTML = '<tr><td colspan="6" class="empty-state">Loading reviews...</td></tr>';
+      try {
+        const { data: reviews, error } = await window.supabaseClient
+          .from('reviews')
+          .select('*')
+          .order('created_at', { ascending: false });
+
+        if (error) throw error;
+        list.innerHTML = '';
+        if (reviews.length === 0) {
+          list.innerHTML = '<tr><td colspan="6" class="empty-state">No reviews found.</td></tr>';
+          return;
+        }
+
+        reviews.forEach(rev => {
+          const row = document.createElement('tr');
+          row.innerHTML = `
+            <td>${new Date(rev.created_at).toLocaleDateString()}</td>
+            <td><strong>${rev.name}</strong></td>
+            <td style="color:#f59e0b;">${'★'.repeat(rev.rating)}${'☆'.repeat(5-rev.rating)}</td>
+            <td>${rev.comment}</td>
+            <td><span style="color:${rev.is_approved ? 'green' : 'orange'}; font-weight:600;">${rev.is_approved ? 'Approved' : 'Pending'}</span></td>
+            <td>
+              ${!rev.is_approved ? `<button onclick="approveReview('${rev.id}')" style="width:auto; padding:5px 10px; background:#10b981; margin-right:5px;">Approve</button>` : ''}
+              <button onclick="deleteReview('${rev.id}')" class="btn-delete" style="width:auto; padding:5px 10px;">Delete</button>
+            </td>
+          `;
+          list.appendChild(row);
+        });
+      } catch (err) {
+        list.innerHTML = '<tr><td colspan="6" class="empty-state" style="color:red;">Error loading reviews.</td></tr>';
+      }
+    }
+
+    async function approveReview(id) {
+      try {
+        const { error } = await window.supabaseClient.from('reviews').update({ is_approved: true }).eq('id', id);
+        if (error) throw error;
+        fetchReviews();
+      } catch (err) { alert(err.message); }
+    }
+
+    async function deleteReview(id) {
+      if (!confirm("Delete this review?")) return;
+      try {
+        const { error } = await window.supabaseClient.from('reviews').delete().eq('id', id);
+        if (error) throw error;
+        fetchReviews();
+      } catch (err) { alert(err.message); }
+    }
+
+    // --- BLOGS MANAGEMENT ---
+    async function fetchBlogs() {
+      const container = document.getElementById('blogs-container');
+      container.innerHTML = '<p class="empty-state">Loading blogs...</p>';
+      try {
+        const { data: blogs, error } = await window.supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+        container.innerHTML = '';
+        if (blogs.length === 0) {
+          container.innerHTML = '<p class="empty-state">No blogs found.</p>';
+          return;
+        }
+        blogs.forEach(blog => {
+          const card = document.createElement('div');
+          card.className = 'image-card';
+          card.style.padding = '15px';
+          card.innerHTML = `
+            <img src="${blog.image_url || 'https://via.placeholder.com/300x200'}" style="width:100%; height:150px; object-fit:cover; border-radius:8px; margin-bottom:10px;">
+            <h4 style="margin-bottom:5px;">${blog.title}</h4>
+            <p style="font-size:12px; color:#666; margin-bottom:10px;">${blog.excerpt}</p>
+            <div style="display:flex; gap:10px;">
+              <button onclick='editBlog(${JSON.stringify(blog)})' style="width:auto; padding:5px 12px; font-size:12px; background:#3b82f6;">Edit</button>
+              <button onclick="deleteBlog('${blog.id}')" style="width:auto; padding:5px 12px; font-size:12px; background:#ef4444;">Delete</button>
+            </div>
+          `;
+          container.appendChild(card);
+        });
+      } catch (err) {
+        container.innerHTML = '<p class="empty-state" style="color:red;">Error loading blogs.</p>';
+      }
+    }
+
+    async function saveBlog() {
+      const id = document.getElementById('edit-blog-id').value;
+      const title = document.getElementById('blog-title').value;
+      const excerpt = document.getElementById('blog-excerpt').value;
+      const image_url = document.getElementById('blog-image').value;
+      const content = document.getElementById('blog-content').value;
+      const status = document.getElementById('blog-status');
+
+      if (!title || !content) {
+        status.innerText = "Title and Content are required.";
+        status.style.color = "red";
+        return;
+      }
+
+      status.innerText = "Saving...";
+      status.style.color = "blue";
+
+      try {
+        let error;
+        if (id) {
+          ({ error } = await window.supabaseClient.from('blogs').update({ title, excerpt, image_url, content }).eq('id', id));
+        } else {
+          ({ error } = await window.supabaseClient.from('blogs').insert([{ title, excerpt, image_url, content }]));
+        }
+        if (error) throw error;
+        status.innerText = "Blog saved successfully!";
+        status.style.color = "green";
+        clearBlogForm();
+        fetchBlogs();
+      } catch (err) {
+        status.innerText = "Error: " + err.message;
+        status.style.color = "red";
+      }
+    }
+
+    window.editBlog = (blog) => {
+      document.getElementById('edit-blog-id').value = blog.id;
+      document.getElementById('blog-title').value = blog.title;
+      document.getElementById('blog-excerpt').value = blog.excerpt;
+      document.getElementById('blog-image').value = blog.image_url;
+      document.getElementById('blog-content').value = blog.content;
+      document.getElementById('blog-form-title').innerText = "Edit Blog Post";
+      document.getElementById('save-blog-btn').innerText = "Update Blog";
+      document.getElementById('cancel-blog-btn').style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    window.deleteBlog = async (id) => {
+      if (!confirm("Delete this blog?")) return;
+      try {
+        const { error } = await window.supabaseClient.from('blogs').delete().eq('id', id);
+        if (error) throw error;
+        fetchBlogs();
+      } catch (err) { alert(err.message); }
+    };
+
+    function clearBlogForm() {
+      document.getElementById('edit-blog-id').value = '';
+      document.getElementById('blog-title').value = '';
+      document.getElementById('blog-excerpt').value = '';
+      document.getElementById('blog-image').value = '';
+      document.getElementById('blog-content').value = '';
+      document.getElementById('blog-form-title').innerText = "Create New Blog Post";
+      document.getElementById('save-blog-btn').innerText = "💾 Save Blog";
+      document.getElementById('cancel-blog-btn').style.display = 'none';
+      document.getElementById('blog-status').innerText = '';
     }
 
   </script>

@@ -1030,7 +1030,18 @@
                 if (reviews && reviews.length > 0) {
                    const container = document.getElementById('reviews-display-container');
                    document.getElementById('approved-reviews').style.display = 'block';
-                   container.innerHTML = reviews.map(r => `<div class="service" style="background:white; padding:30px;"><div>${'★'.repeat(r.rating)}</div><p>"${r.comment}"</p><h4>- ${r.name}</h4></div>`).join('');
+                    container.innerHTML = reviews.map(r => {
+                        const date = new Date(r.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                        return `
+                        <div class="service" style="background:white; padding:30px; position:relative;">
+                            <div style="color:#f59e0b; margin-bottom:10px;">${'★'.repeat(r.rating)}</div>
+                            <p style="font-style:italic; color:#4a4a4a; margin-bottom:15px;">"${r.comment}"</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f0f0f0; padding-top:10px;">
+                                <h4 style="margin:0; font-size:15px;">- ${r.name}</h4>
+                                <span style="font-size:11px; color:#888;">${date}</span>
+                            </div>
+                        </div>`;
+                    }).join('');
                 }
                 const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
                 if (blogs) {

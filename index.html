@@ -1738,210 +1738,43 @@
     <!-- SUPABASE SDK -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script>
-        // Global Supabase Initialization
+        // --- 1. CONFIGURATION & INITIALIZATION ---
         const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
         const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
-        // Handle Form Submission
-        document.addEventListener('DOMContentLoaded', () => {
-            const bookingForm = document.getElementById("bookingForm");
-            if (bookingForm) {
-                bookingForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-
-                    const submitBtn = document.querySelector("#bookingForm .submit");
-                    submitBtn.textContent = "Sending...";
-                    submitBtn.disabled = true;
-
-                    const nameInput = document.getElementById("bookName").value.trim();
-                    const emailInput = document.getElementById("bookEmail").value.trim();
-                    const countryCode = document.getElementById("countryCode").value;
-                    const phoneInput = document.getElementById("bookPhone").value.trim();
-                    const fullPhone = countryCode + phoneInput;
-                    const sessionTypeInput = document.getElementById("bookSession").value;
-                    const messageInput = document.getElementById("bookMessage").value.trim();
-                    const fullMessage = `Session Mode: ${sessionTypeInput}\n\n${messageInput}`;
-
-                    // Validate 10 digit phone
-                    if (phoneInput.length !== 10) {
-                        alert("Please enter a valid 10-digit phone number.");
-                        submitBtn.textContent = "Send Message";
-                        submitBtn.disabled = false;
-                        return;
-                    }
-
-                    try {
-                        // 1. Save to Supabase
-                        const { error: dbError } = await supabaseClient
-                            .from('appointments')
-                            .insert([{
-                                name: nameInput,
-                                email: emailInput,
-                                phone: fullPhone,
-                                session_type: sessionTypeInput,
-                                message: fullMessage
-                            }]);
-
-                        if (dbError) throw dbError;
-
-                        console.log("Supabase record created successfully.");
-
-                        // 2. ntfy.sh Instant Mobile Notification
-                        try {
-                            const ntfyTopic = "divya_booking_alerts_79734"; // Unique secret topic
-                            const message = `Name: ${nameInput}\nPhone: ${fullPhone}\nSession: ${sessionTypeInput}\n\nMessage: ${messageInput}`;
-
-                            await fetch(`https://ntfy.sh/${ntfyTopic}`, {
-                                method: "POST",
-                                body: message,
-                                headers: {
-                                    "Title": "New Booking Received!",
-                                    "Priority": "high",
-                                    "Tags": "calendar,sparkles",
-                                    "Click": "https://vishalkumarx.github.io/Divya/admin.html"
-                                }
-                            });
-                            console.log("ntfy.sh notification sent.");
-                        } catch (notifyError) {
-                            console.error("Notification failed:", notifyError);
-                        }
-
-                        // Success feedback
-                        alert("Thank you! Your appointment request has been submitted successfully.");
-                        bookingForm.reset();
-
-                    } catch (error) {
-                        console.error("Booking failed:", error);
-                        alert("Error: " + (error.message || "Something went wrong. Please try again later."));
-                    } finally {
-                        submitBtn.textContent = "Send Message";
-                        submitBtn.disabled = false;
-                    }
-                });
-            }
-
-            // --- REVIEW FORM HANDLING ---
-            const reviewForm = document.getElementById("reviewForm");
-            const starBtns = document.querySelectorAll(".star-btn");
-            const ratingInput = document.getElementById("revRating");
-
-            starBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const val = parseInt(btn.getAttribute("data-value"));
-                    ratingInput.value = val;
-                    starBtns.forEach((s, i) => {
-                        if (i < val) {
-                            s.classList.replace("fa-regular", "fa-solid");
-                        } else {
-                            s.classList.replace("fa-solid", "fa-regular");
-                        }
-                    });
-                });
-            });
-
-            if (reviewForm) {
-                reviewForm.addEventListener("submit", async (e) => {
-                    e.preventDefault();
-                    const submitBtn = reviewForm.querySelector(".submit");
-                    submitBtn.textContent = "Submitting...";
-                    submitBtn.disabled = true;
-
-                    try {
-                        const { error } = await supabaseClient.from('reviews').insert([{
-                            name: document.getElementById("revName").value.trim(),
-                            rating: parseInt(ratingInput.value),
-                            comment: document.getElementById("revComment").value.trim()
-                        }]);
-
-                        if (error) throw error;
-                        alert("Thank you! Your review has been submitted for approval.");
-                        reviewForm.reset();
-                        starBtns.forEach(s => s.classList.replace("fa-solid", "fa-regular"));
-                        ratingInput.value = "5";
-                    } catch (err) {
-                        alert("Error: " + err.message);
-                    } finally {
-                        submitBtn.textContent = "Submit Review";
-                        submitBtn.disabled = false;
-                    }
-                });
-            }
-        });
-
-        // --- AUTH & GOOGLE LOGIN FOR REVIEWS ---
-        async function loginWithGoogle() {
-            const { error } = await supabaseClient.auth.signInWithOAuth({
-                provider: 'google',
-                options: {
-                    redirectTo: window.location.origin + window.location.pathname
-                }
-            });
-            if (error) alert("Error: " + error.message);
-        }
-
-        async function logout() {
-            const { error } = await supabaseClient.auth.signOut();
-            if (error) alert("Error: " + error.message);
-        }
-
-        function checkAuth() {
-            supabaseClient.auth.onAuthStateChange((event, session) => {
-                const loginMsg = document.getElementById("login-required-msg");
-                const formContainer = document.getElementById("review-form-container");
-                const userNameDisplay = document.getElementById("user-display-name");
-                const revNameInput = document.getElementById("revName");
-
-                if (session && session.user) {
-                    const user = session.user;
-                    const name = user.user_metadata.full_name || user.email.split('@')[0];
-                    
-                    loginMsg.style.display = "none";
-                    formContainer.style.display = "block";
-                    userNameDisplay.innerText = "Loged in as: " + name;
-                    revNameInput.value = name;
-                } else {
-                    loginMsg.style.display = "block";
-                    formContainer.style.display = "none";
-                }
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", checkAuth);
-    </script>
-
-
-
-    <script>
-        // REVEAL ON SCROLL
+        let testiIndex = 0;
+        let testiAutoTimer;
+        let portfolioOffset = 0;
+        const portfolioLimit = 9;
+        const allPhotos = [
+            "assets/about/photo_2026-03-15_20-45-08.jpg", "assets/about/photo_2026-03-15_20-45-13.jpg",
+            "assets/about/photo_2026-03-15_20-45-13 (2).jpg", "assets/about/photo_2026-03-15_20-45-14.jpg",
+            "assets/about/photo_2026-03-15_20-45-15.jpg", "assets/about/photo_2026-03-15_20-45-15 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-16.jpg", "assets/about/photo_2026-03-15_20-45-16 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-17.jpg", "assets/about/photo_2026-03-15_20-45-19.jpg",
+            "assets/about/photo_2026-03-15_20-45-20.jpg", "assets/about/photo_2026-03-15_20-45-20 (2).jpg",
+            "assets/about/photo_2026-03-15_20-45-21.jpg", "assets/about/photo_2026-03-15_20-45-22.jpg",
+            "assets/about/photo_2026-03-15_20-45-24.jpg"
+        ];
+        let availablePhotos = [...allPhotos];
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
 
-        // INFINITE FLIP GRID LOGIC
-        const allPhotos = [
-            "assets/about/photo_2026-03-15_20-45-08.jpg",
-            "assets/about/photo_2026-03-15_20-45-13.jpg",
-            "assets/about/photo_2026-03-15_20-45-13 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-14.jpg",
-            "assets/about/photo_2026-03-15_20-45-15.jpg",
-            "assets/about/photo_2026-03-15_20-45-15 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-16.jpg",
-            "assets/about/photo_2026-03-15_20-45-16 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-17.jpg",
-            "assets/about/photo_2026-03-15_20-45-19.jpg",
-            "assets/about/photo_2026-03-15_20-45-20.jpg",
-            "assets/about/photo_2026-03-15_20-45-20 (2).jpg",
-            "assets/about/photo_2026-03-15_20-45-21.jpg",
-            "assets/about/photo_2026-03-15_20-45-22.jpg",
-            "assets/about/photo_2026-03-15_20-45-24.jpg"
-        ];
+        // --- 2. GLOBAL FUNCTIONS ---
+        function toggleMenu() {
+            const menu = document.getElementById("menu");
+            if (window.innerWidth <= 768) menu.classList.toggle("show");
+        }
 
-        let availablePhotos = [...allPhotos];
+        function closeLightbox(e) {
+            if (e.target.id === "testimonialLightbox" || e.target.classList.contains("lightbox-close")) {
+                document.getElementById("testimonialLightbox").classList.remove("show");
+            }
+        }
 
         function getNextPhoto() {
             if (availablePhotos.length === 0) availablePhotos = [...allPhotos];
@@ -1956,197 +1789,211 @@
             const inner = randomItem ? randomItem.querySelector('.flip-card-inner') : null;
             if (!inner) return;
             const isFlipped = inner.classList.contains('flipped');
-
-            // Get the face that is NOT visible
             const nextImg = getNextPhoto();
             const backFace = isFlipped ? inner.querySelector('.flip-front img') : inner.querySelector('.flip-back img');
-
-            backFace.src = nextImg;
+            if (backFace) backFace.src = nextImg;
             inner.classList.toggle('flipped');
         }
 
-        // Start the infinite sequence
-        setInterval(triggerFlip, 3000); // Flip one card every 3 seconds
-
-        // Ensure Video Autoplay
-        const introVideo = document.querySelector('#video-intro video');
-        if (introVideo) {
-            introVideo.play().catch(error => {
-                console.log("Autoplay prevented by browser, waiting for interaction or reveal.");
-            });
+        function startTestiAuto() {
+            stopTestiAuto();
+            const testiImages = document.querySelectorAll(".testimonial-screenshot");
+            if (testiImages.length === 0) return;
+            testiAutoTimer = setInterval(() => moveTestimonials(1), 3500);
         }
 
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    </script>
+        function stopTestiAuto() {
+            if (testiAutoTimer) clearInterval(testiAutoTimer);
+        }
 
-    <a href="https://wa.me/917973477917?text=Hello%20Divya%20%2C%20I%20would%20like%20to%20book%20a%20consultation%2E%20Please%20let%20me%20know%20the%20available%20time%20slots%2E"
-        class="whatsapp-fab" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <script>
-        let portfolioOffset = 0;
-        const portfolioLimit = 9;
+        function moveTestimonials(step) {
+            const testiSlider = document.getElementById("testimonialSlider");
+            const testiImages = document.querySelectorAll(".testimonial-screenshot");
+            if (!testiSlider || testiImages.length === 0) return;
+            testiIndex = (testiIndex + step + testiImages.length) % testiImages.length;
+            const targetImage = testiImages[testiIndex];
+            const scrollPos = targetImage.offsetLeft - (testiSlider.offsetWidth / 2) + (targetImage.offsetWidth / 2);
+            testiSlider.scrollTo({ left: scrollPos, behavior: 'smooth' });
+        }
+
+        function initTestimonialSlider() {
+            testiIndex = 0;
+            const testiSlider = document.getElementById("testimonialSlider");
+            if (!testiSlider) return;
+            document.querySelectorAll(".testimonial-screenshot").forEach(img => {
+                img.onclick = () => {
+                    document.getElementById("lightboxImage").src = img.src;
+                    document.getElementById("testimonialLightbox").classList.add("show");
+                };
+                img.style.cursor = 'pointer';
+            });
+            startTestiAuto();
+            testiSlider.onmouseenter = stopTestiAuto;
+            testiSlider.onmouseleave = startTestiAuto;
+            testiSlider.ontouchstart = stopTestiAuto;
+            testiSlider.ontouchend = startTestiAuto;
+        }
+
+        async function loginWithGoogle() {
+            const { error } = await supabaseClient.auth.signInWithOAuth({
+                provider: 'google',
+                options: { redirectTo: window.location.origin + window.location.pathname }
+            });
+            if (error) alert("Error: " + error.message);
+        }
+
+        async function logout() {
+            const { error } = await supabaseClient.auth.signOut();
+            if (error) alert("Error: " + error.message);
+        }
 
         async function fetchDynamicImages() {
             if (!supabaseClient) return;
-
             try {
-                // 1. Fetch Non-Portfolio Data (Hero, Testimonials) separately or in one go
-                const { data: others, error: otherError } = await supabaseClient
-                    .from('site_images')
-                    .select('*')
-                    .not('section', 'eq', 'about');
-
-                if (otherError) throw otherError;
-
+                const { data: others, error: otherError } = await supabaseClient.from('site_images').select('*').not('section', 'eq', 'about');
                 if (others) {
-                    // Process Hero Image
                     const heroImages = others.filter(img => img.section === 'hero');
-                    if (heroImages.length > 0) {
-                        document.getElementById('dynamic-hero-img').src = heroImages[0].image_url;
-                    }
-
-                    // Process Testimonials
+                    if (heroImages.length > 0) document.getElementById('dynamic-hero-img').src = heroImages[0].image_url;
                     const testimonialImages = others.filter(img => img.section === 'testimonial');
-                    if (testimonialImages.length > 0) {
-                        const track = document.getElementById('dynamic-testimonial-track');
-                        if (track) {
-                            track.innerHTML = '';
-                            testimonialImages.forEach(img => {
-                                const imgEl = document.createElement('img');
-                                imgEl.className = 'testimonial-screenshot';
-                                imgEl.src = img.image_url;
-                                imgEl.alt = 'Review';
-                                track.appendChild(imgEl);
-                            });
-                            if (typeof initTestimonialSlider === 'function') initTestimonialSlider();
-                        }
+                    const track = document.getElementById('dynamic-testimonial-track');
+                    if (testimonialImages.length > 0 && track) {
+                        track.innerHTML = '';
+                        testimonialImages.forEach(img => {
+                            const imgEl = document.createElement('img');
+                            imgEl.className = 'testimonial-screenshot';
+                            imgEl.src = img.image_url;
+                            track.appendChild(imgEl);
+                        });
+                        initTestimonialSlider();
                     }
                 }
-
-                // 2. Fetch Approved Text Reviews
-                const { data: approvedReviews, error: revError } = await supabaseClient
-                    .from('reviews')
-                    .select('*')
-                    .eq('is_approved', true)
-                    .order('created_at', { ascending: false });
-                
+                const { data: approvedReviews } = await supabaseClient.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false });
                 if (approvedReviews && approvedReviews.length > 0) {
                     const revContainer = document.getElementById('reviews-display-container');
-                    const revSection = document.getElementById('approved-reviews');
-                    revSection.style.display = 'block';
+                    document.getElementById('approved-reviews').style.display = 'block';
                     revContainer.innerHTML = '';
                     approvedReviews.forEach(rev => {
                         const div = document.createElement('div');
-                        div.className = 'service'; // Reusing service class for nice box styling
-                        div.style.background = 'white';
-                        div.style.padding = '30px';
-                        div.innerHTML = `
-                            <div style="color:#f59e0b; margin-bottom:10px;">${'★'.repeat(rev.rating)}${'☆'.repeat(5-rev.rating)}</div>
-                            <p style="font-style:italic; font-size:14px; margin-bottom:15px;">"${rev.comment}"</p>
-                            <h4 style="font-family:'Playfair Display', serif; font-size:16px;">- ${rev.name}</h4>
-                        `;
+                        div.className = 'service'; div.style.background = 'white'; div.style.padding = '30px';
+                        div.innerHTML = `<div style="color:#f59e0b; margin-bottom:10px;">${'★'.repeat(rev.rating)}${'☆'.repeat(5-rev.rating)}</div><p style="font-style:italic; font-size:14px; margin-bottom:15px;">"${rev.comment}"</p><h4 style="font-family:'Playfair Display', serif; font-size:16px;">- ${rev.name}</h4>`;
                         revContainer.appendChild(div);
                     });
                 }
-
-                // 3. Fetch Blogs
-                const { data: blogs, error: blogError } = await supabaseClient
-                    .from('blogs')
-                    .select('*')
-                    .order('created_at', { ascending: false });
-
+                const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
                 if (blogs && blogs.length > 0) {
                     const blogGrid = document.getElementById('dynamic-blog-container');
                     blogGrid.innerHTML = '';
                     blogs.forEach(blog => {
                         const card = document.createElement('div');
                         card.className = 'blog-card';
-                        
-                        const blogLink = document.createElement('a');
-                        blogLink.href = "#";
-                        blogLink.innerText = "Read More →";
-                        blogLink.onclick = (e) => {
-                            e.preventDefault();
-                            alert(`Blog reading feature coming soon!\n\nContent Preview:\n${blog.content.substring(0, 200)}...`);
-                        };
-
-                        card.innerHTML = `
-                            <img src="${blog.image_url || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b'}">
-                            <div class="blog-content">
-                                <h3>${blog.title}</h3>
-                                <p>${blog.excerpt}</p>
-                            </div>
-                        `;
+                        const blogLink = document.createElement('a'); blogLink.href = "#"; blogLink.innerText = "Read More →";
+                        blogLink.onclick = (e) => { e.preventDefault(); alert(`Blog: ${blog.title}\n\n${blog.content.substring(0, 200)}...`); };
+                        card.innerHTML = `<img src="${blog.image_url || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b'}"><div class="blog-content"><h3>${blog.title}</h3><p>${blog.excerpt}</p></div>`;
                         card.querySelector('.blog-content').appendChild(blogLink);
                         blogGrid.appendChild(card);
                     });
                 }
-
-                // 4. Fetch Initial Portfolio Batch
                 fetchPortfolioItems();
-
-            } catch (err) {
-                console.error("Failed to load dynamic images from Supabase:", err);
-            }
+            } catch (err) { console.error("Failed to load dynamic images:", err); }
         }
 
         async function fetchPortfolioItems() {
             const grid = document.getElementById('portfolioGrid');
             const loadMoreContainer = document.getElementById('load-more-container');
-
-            try {
-                const { data: aboutImages, error, count } = await supabaseClient
-                    .from('site_images')
-                    .select('*', { count: 'exact' })
-                    .eq('section', 'about')
-                    .order('created_at', { ascending: false })
-                    .range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
-
-                if (error) throw error;
-
-                if (portfolioOffset === 0) grid.innerHTML = ''; // Clear loading state on first load
-
-                if (aboutImages && aboutImages.length > 0) {
-                    aboutImages.forEach(img => {
-                        const item = document.createElement('div');
-                        item.className = 'portfolio-item reveal active';
-                        item.innerHTML = `
-                <div class="portfolio-img-wrapper" style="cursor: pointer;" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');">
-                    <img src="${img.image_url}" alt="Portfolio" loading="lazy">
-                </div>
-                ${img.caption ? `
-                <div class="portfolio-info">
-                    <p class="portfolio-caption">${img.caption}</p>
-                </div>` : ''}
-              `;
-                        grid.appendChild(item);
-                    });
-
-                    portfolioOffset += portfolioLimit;
-
-                    // Show load more if there are more items
-                    if (count > portfolioOffset) {
-                        loadMoreContainer.style.display = 'block';
-                    } else {
-                        loadMoreContainer.style.display = 'none';
-                    }
-
-                    // Trigger reveal animations for new items
-                    if (window.revealObserver) {
-                        document.querySelectorAll('.portfolio-item.reveal').forEach(el => revealObserver.observe(el));
-                    }
-                } else {
-                    if (portfolioOffset === 0) grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px;">No portfolio images added yet.</p>';
-                    loadMoreContainer.style.display = 'none';
-                }
-
-            } catch (err) {
-                console.error("Error fetching portfolio:", err);
+            const { data: aboutImages, error, count } = await supabaseClient.from('site_images').select('*', { count: 'exact' }).eq('section', 'about').order('created_at', { ascending: false }).range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
+            if (aboutImages && aboutImages.length > 0) {
+                if (portfolioOffset === 0) grid.innerHTML = '';
+                aboutImages.forEach(img => {
+                    const item = document.createElement('div');
+                    item.className = 'portfolio-item reveal active';
+                    item.innerHTML = `<div class="portfolio-img-wrapper" style="cursor: pointer;" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}" loading="lazy"></div>${img.caption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
+                    grid.appendChild(item);
+                });
+                portfolioOffset += portfolioLimit;
+                loadMoreContainer.style.display = (count > portfolioOffset) ? 'block' : 'none';
+                document.querySelectorAll('.portfolio-item.reveal').forEach(el => revealObserver.observe(el));
+            } else if (portfolioOffset === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; color: var(--text-muted); padding: 40px;">No portfolio images added yet.</p>';
             }
         }
 
-        document.addEventListener('DOMContentLoaded', fetchDynamicImages);
+        // --- 3. DOM READY LOGIC ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Auth Check
+            supabaseClient.auth.onAuthStateChange((event, session) => {
+                const loginMsg = document.getElementById("login-required-msg");
+                const formContainer = document.getElementById("review-form-container");
+                const userNameDisplay = document.getElementById("user-display-name");
+                const revNameInput = document.getElementById("revName");
+                if (session && session.user) {
+                    const name = session.user.user_metadata.full_name || session.user.email.split('@')[0];
+                    if (loginMsg) loginMsg.style.display = "none";
+                    if (formContainer) formContainer.style.display = "block";
+                    if (userNameDisplay) userNameDisplay.innerText = "Loged in as: " + name;
+                    if (revNameInput) revNameInput.value = name;
+                } else {
+                    if (loginMsg) loginMsg.style.display = "block";
+                    if (formContainer) formContainer.style.display = "none";
+                }
+            });
+
+            // Booking Form
+            const bookingForm = document.getElementById("bookingForm");
+            if (bookingForm) {
+                bookingForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const submitBtn = bookingForm.querySelector(".submit");
+                    submitBtn.textContent = "Sending..."; submitBtn.disabled = true;
+                    try {
+                        const name = document.getElementById("bookName").value.trim();
+                        const email = document.getElementById("bookEmail").value.trim();
+                        const phone = document.getElementById("countryCode").value + document.getElementById("bookPhone").value.trim();
+                        const session = document.getElementById("bookSession").value;
+                        const message = document.getElementById("bookMessage").value.trim();
+                        if (document.getElementById("bookPhone").value.trim().length !== 10) throw new Error("10-digit phone required.");
+                        const { error } = await supabaseClient.from('appointments').insert([{ name, email, phone, session_type: session, message: `Session Mode: ${session}\n\n${message}` }]);
+                        if (error) throw error;
+                        await fetch(`https://ntfy.sh/divya_booking_alerts_79734`, { method: "POST", body: `Name: ${name}\nPhone: ${phone}\nSession: ${session}\n\nMessage: ${message}`, headers: { "Title": "New Booking Received!", "Priority": "high", "Tags": "calendar", "Click": window.location.origin + "/admin.html" } });
+                        alert("Thank you! Appointment request submitted.");
+                        bookingForm.reset();
+                    } catch (err) { alert("Error: " + err.message); } finally { submitBtn.textContent = "Send Message"; submitBtn.disabled = false; }
+                });
+            }
+
+            // Review Form
+            const reviewForm = document.getElementById("reviewForm");
+            const starBtns = document.querySelectorAll(".star-btn");
+            const ratingInput = document.getElementById("revRating");
+            starBtns.forEach(btn => {
+                btn.onclick = () => {
+                    const val = parseInt(btn.getAttribute("data-value"));
+                    ratingInput.value = val;
+                    starBtns.forEach((s, i) => s.classList.replace(i < val ? "fa-regular" : "fa-solid", i < val ? "fa-solid" : "fa-regular"));
+                };
+            });
+            if (reviewForm) {
+                reviewForm.addEventListener("submit", async (e) => {
+                    e.preventDefault();
+                    const submitBtn = reviewForm.querySelector(".submit");
+                    submitBtn.textContent = "Submitting..."; submitBtn.disabled = true;
+                    try {
+                        const { error } = await supabaseClient.from('reviews').insert([{ name: document.getElementById("revName").value.trim(), rating: parseInt(ratingInput.value), comment: document.getElementById("revComment").value.trim() }]);
+                        if (error) throw error;
+                        alert("Thank you! Your review has been submitted for approval.");
+                        reviewForm.reset();
+                        starBtns.forEach(s => s.classList.replace("fa-solid", "fa-regular"));
+                    } catch (err) { alert("Error: " + err.message); } finally { submitBtn.textContent = "Submit Review"; submitBtn.disabled = false; }
+                });
+            }
+
+            // Other initializations
+            initTestimonialSlider();
+            fetchDynamicImages();
+            setInterval(triggerFlip, 3000);
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            const video = document.querySelector('#video-intro video');
+            if (video) video.play().catch(() => console.log("Autoplay blocked."));
+        });
     </script>
 </body>
 

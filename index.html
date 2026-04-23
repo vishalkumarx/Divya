@@ -66,7 +66,7 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
-        nav h2 {
+        nav h1 {
             font-family: 'Playfair Display', serif;
             color: var(--white);
             font-size: 24px;
@@ -800,7 +800,7 @@
     </div>
 
     <nav>
-        <h2>Divya Sharma Psychologist</h2>
+        <h1>Divya Sharma Psychologist</h1>
         <ul id="menu">
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
@@ -1040,9 +1040,21 @@
 
             document.getElementById("reviewForm").onsubmit = async (e) => {
                 e.preventDefault();
-                const d = { name: document.getElementById("revName").value, rating: parseInt(document.getElementById("revRating").value), comment: document.getElementById("revComment").value };
-                await supabaseClient.from('reviews').insert([d]);
-                alert("Review submitted for approval!"); e.target.reset();
+                const d = { 
+                    name: document.getElementById("revName").value, 
+                    rating: parseInt(document.getElementById("revRating").value), 
+                    comment: document.getElementById("revComment").value,
+                    is_approved: true // Set to true by default for instant posting
+                };
+                try {
+                    const { error } = await supabaseClient.from('reviews').insert([d]);
+                    if (error) throw error;
+                    alert("Thank you! Your review has been posted."); 
+                    e.target.reset();
+                    fetchDynamicImages(); // Refresh the display immediately
+                } catch (err) {
+                    alert("Error: " + err.message);
+                }
             };
 
             fetchDynamicImages();

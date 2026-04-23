@@ -1867,7 +1867,6 @@
                     }
                 });
             }
-            }
         });
 
         // --- AUTH & GOOGLE LOGIN FOR REVIEWS ---
@@ -1952,8 +1951,10 @@
 
         function triggerFlip() {
             const gridItems = document.querySelectorAll('.about-img-item');
+            if (gridItems.length === 0) return;
             const randomItem = gridItems[Math.floor(Math.random() * gridItems.length)];
-            const inner = randomItem.querySelector('.flip-card-inner');
+            const inner = randomItem ? randomItem.querySelector('.flip-card-inner') : null;
+            if (!inner) return;
             const isFlipped = inner.classList.contains('flipped');
 
             // Get the face that is NOT visible

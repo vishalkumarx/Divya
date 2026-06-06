@@ -1169,7 +1169,8 @@
                     
                     reviewsOffset += reviewsLimit;
                     if (loadMoreReviewsBtn) {
-                        loadMoreReviewsBtn.style.display = (count > reviewsOffset) ? 'block' : 'none';
+                        // Show "Load More" if we got a full batch (there may be more)
+                        loadMoreReviewsBtn.style.display = (reviews.length === reviewsLimit) ? 'block' : 'none';
                     }
                 } else {
                     if (reviewsOffset === 0) {

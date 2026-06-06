@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Divya Sharma | Psychologist – Links</title>
+  <meta name="description"
+    content="Connect with Divya Sharma – Psychologist, Mental Health Advocate. Find all her social media, resources and booking links in one place." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+  <style>
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --bg: #fdfcf6;
+      --card-bg: rgba(255, 255, 255, 0.72);
+      --card-border: rgba(189, 225, 200, 0.45);
+      --green-dark: #2d4f3c;
+      --green-mid: #4a7c5f;
+      --green-light: #bde1c8;
+      --yellow-soft: #fff9d7;
+      --text: #1d1d1d;
+      --muted: #5a6370;
+      --white: #ffffff;
+      --radius-pill: 60px;
+      --radius-card: 22px;
+      --shadow-sm: 0 4px 18px rgba(45, 79, 60, 0.10);
+      --shadow-md: 0 12px 36px rgba(45, 79, 60, 0.14);
+      --shadow-lg: 0 20px 55px rgba(45, 79, 60, 0.18);
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    /* ─── BODY / BG ──────────────────────────────────────── */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px 80px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ─── AMBIENT BLOBS ──────────────────────────────────── */
+    .blobs {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.55;
+    }
+    .blob-1 {
+      width: 520px; height: 520px;
+      background: radial-gradient(circle, #bde1c8 0%, transparent 70%);
+      top: -160px; left: -160px;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    .blob-2 {
+      width: 420px; height: 420px;
+      background: radial-gradient(circle, #ffd6e7 0%, transparent 70%);
+      bottom: 0; right: -120px;
+      animation: drift2 22s ease-in-out infinite alternate;
+    }
+    .blob-3 {
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, #c9e4ff 0%, transparent 70%);
+      top: 42%; left: -100px;
+      animation: drift1 26s ease-in-out infinite alternate;
+    }
+    .blob-4 {
+      width: 260px; height: 260px;
+      background: radial-gradient(circle, #fff9d7 0%, transparent 70%);
+      top: 30%; right: -60px;
+      animation: drift2 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift1 {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(60px, 80px) scale(1.15); }
+    }
+    @keyframes drift2 {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(-60px, -40px) scale(1.1); }
+    }
+
+    /* ─── WRAPPER ────────────────────────────────────────── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* ─── PROFILE SECTION ────────────────────────────────── */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.7s var(--ease) both;
+    }
+
+    .avatar-ring {
+      width: 114px;
+      height: 114px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(135deg, #bde1c8, #4a7c5f, #fff9d7, #bde1c8);
+      background-size: 300% 300%;
+      animation: gradShift 5s ease infinite;
+      box-shadow: var(--shadow-md);
+    }
+    @keyframes gradShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--white);
+      display: block;
+    }
+
+    /* verified badge */
+    .avatar-wrap { position: relative; }
+    .verified-badge {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 26px;
+      height: 26px;
+      background: linear-gradient(135deg, #2d4f3c, #4a7c5f);
+      border-radius: 50%;
+      border: 2px solid var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 11px;
+    }
+
+    .profile-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+      text-align: center;
+    }
+    .profile-handle {
+      font-size: 13px;
+      color: var(--green-mid);
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+    .profile-bio {
+      font-size: 14px;
+      color: var(--muted);
+      text-align: center;
+      max-width: 340px;
+      line-height: 1.7;
+    }
+
+    /* tag pills */
+    .profile-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+    .tag {
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .tag-green  { background: #dcfce7; color: #15803d; }
+    .tag-peach  { background: #fee7d1; color: #b45309; }
+    .tag-blue   { background: #dbeafe; color: #1d4ed8; }
+    .tag-purple { background: #f3e8ff; color: #7e22ce; }
+
+    /* stats row */
+    .stats-row {
+      display: flex;
+      gap: 28px;
+      margin-top: 4px;
+    }
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .stat-number {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+    .stat-divider {
+      width: 1px;
+      background: var(--card-border);
+      align-self: stretch;
+    }
+
+    /* ─── SECTION LABEL ──────────────────────────────────── */
+    .section-label {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      margin-top: 10px;
+    }
+    .section-label span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .section-label::before,
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+    }
+
+    /* ─── LINK CARDS ─────────────────────────────────────── */
+    .links-group {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 20px;
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1.5px solid var(--card-border);
+      border-radius: var(--radius-card);
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.28s var(--ease),
+                  box-shadow 0.28s var(--ease),
+                  background 0.28s var(--ease),
+                  border-color 0.28s var(--ease);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      animation: fadeUp 0.6s var(--ease) both;
+    }
+
+    /* ripple shimmer on hover */
+    .link-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg,
+        transparent 40%,
+        rgba(255,255,255,0.35) 50%,
+        transparent 60%);
+      background-size: 200% 100%;
+      background-position: -100% 0;
+      transition: background-position 0.5s ease;
+      pointer-events: none;
+    }
+    .link-card:hover::before {
+      background-position: 100% 0;
+    }
+
+    .link-card:hover {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: var(--shadow-lg);
+      background: rgba(255,255,255,0.90);
+      border-color: rgba(189,225,200,0.9);
+    }
+
+    .link-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      transition: transform 0.3s var(--ease);
+    }
+    .link-card:hover .link-icon {
+      transform: rotate(-6deg) scale(1.12);
+    }
+
+    .link-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .link-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .link-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .link-arrow {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+      transition: background 0.25s var(--ease),
+                  transform 0.25s var(--ease);
+    }
+    .link-card:hover .link-arrow {
+      background: var(--green-dark);
+      color: var(--white);
+      transform: translateX(3px);
+    }
+
+    /* Icon color themes */
+    .icon-instagram { background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7); color: #fff; }
+    .icon-youtube   { background: #ff0000; color: #fff; }
+    .icon-linkedin  { background: #0077b5; color: #fff; }
+    .icon-whatsapp  { background: #25d366; color: #fff; }
+    .icon-website   { background: linear-gradient(135deg, #2d4f3c, #4a7c5f); color: #fff; }
+    .icon-twitter   { background: #000; color: #fff; }
+    .icon-email     { background: linear-gradient(135deg, #ea4335, #fbbc05); color: #fff; }
+    .icon-podcast   { background: linear-gradient(135deg, #8b5cf6, #d946ef); color: #fff; }
+    .icon-book      { background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; }
+    .icon-spotify   { background: #1db954; color: #fff; }
+    .icon-threads   { background: #000; color: #fff; }
+    .icon-tiktok    { background: #010101; color: #fff; }
+
+    /* Featured card variant */
+    .link-card.featured {
+      background: linear-gradient(135deg, rgba(189,225,200,0.55), rgba(255,249,215,0.55));
+      border-color: rgba(189,225,200,0.7);
+    }
+
+    /* ─── QUICK SOCIALS ROW ──────────────────────────────── */
+    .quick-socials {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s var(--ease) 0.3s both;
+    }
+    .quick-social-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      text-decoration: none;
+      transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+    }
+    .quick-social-btn::after {
+      content: attr(data-tip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(29,29,29,0.88);
+      color: #fff;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .quick-social-btn:hover::after { opacity: 1; }
+    .quick-social-btn:hover {
+      transform: translateY(-5px) scale(1.12);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .page-footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      animation: fadeUp 0.6s var(--ease) 0.5s both;
+    }
+    .page-footer a {
+      color: var(--green-mid);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .page-footer a:hover { text-decoration: underline; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* stagger link cards */
+    .link-card:nth-child(1)  { animation-delay: 0.08s; }
+    .link-card:nth-child(2)  { animation-delay: 0.14s; }
+    .link-card:nth-child(3)  { animation-delay: 0.20s; }
+    .link-card:nth-child(4)  { animation-delay: 0.26s; }
+    .link-card:nth-child(5)  { animation-delay: 0.32s; }
+    .link-card:nth-child(6)  { animation-delay: 0.38s; }
+    .link-card:nth-child(7)  { animation-delay: 0.44s; }
+    .link-card:nth-child(8)  { animation-delay: 0.50s; }
+
+    /* ─── PULSE DOT (live indicator) ─────────────────────── */
+    .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      margin-right: 5px;
+      vertical-align: middle;
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+      50%       { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 540px) {
+      body { padding: 40px 16px 60px; }
+      .profile-name { font-size: 22px; }
+      .link-card { padding: 14px 16px; }
+      .link-title { font-size: 14px; }
+      .stats-row { gap: 20px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ambient blobs -->
+  <div class="blobs" aria-hidden="true">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <div class="wrapper">
+
+    <!-- ── PROFILE ─────────────────────────────────────── -->
+    <section class="profile" id="profile">
+      <div class="avatar-wrap">
+        <div class="avatar-ring">
+          <img src="assets/divya_avatar.png" alt="Divya Sharma – Psychologist" id="avatar-img" />
+        </div>
+        <span class="verified-badge" title="Verified"><i class="fas fa-check"></i></span>
+      </div>
+
+      <h1 class="profile-name">Divya Sharma</h1>
+      <p class="profile-handle">@divyasharma.psychologist</p>
+
+      <p class="profile-bio">
+        Licensed Psychologist &amp; Mental Health Advocate.<br />
+        Helping you find <em>calm, clarity &amp; confidence</em> — one session at a time. 🌿
+      </p>
+
+      <div class="profile-tags">
+        <span class="tag tag-green">Therapy</span>
+        <span class="tag tag-peach">Anxiety &amp; Stress</span>
+        <span class="tag tag-blue">Online Sessions</span>
+        <span class="tag tag-purple">Self-Growth</span>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number">500+</span>
+          <span class="stat-label">Clients Helped</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">5★</span>
+          <span class="stat-label">Rated</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <span class="stat-number">8 Yrs</span>
+          <span class="stat-label">Experience</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── QUICK ICON ROW ──────────────────────────────── -->
+    <div class="quick-socials" role="list" aria-label="Quick social links">
+      <a class="quick-social-btn icon-instagram" href="https://instagram.com/" target="_blank"
+         rel="noopener" data-tip="Instagram" id="qs-instagram" role="listitem" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a class="quick-social-btn icon-youtube" href="https://youtube.com/" target="_blank"
+         rel="noopener" data-tip="YouTube" id="qs-youtube" role="listitem" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+      </a>
+      <a class="quick-social-btn icon-linkedin" href="https://linkedin.com/" target="_blank"
+         rel="noopener" data-tip="LinkedIn" id="qs-linkedin" role="listitem" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a class="quick-social-btn icon-twitter" href="https://x.com/" target="_blank"
+         rel="noopener" data-tip="X / Twitter" id="qs-twitter" role="listitem" aria-label="X Twitter">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a class="quick-social-btn icon-threads" href="https://threads.net/" target="_blank"
+         rel="noopener" data-tip="Threads" id="qs-threads" role="listitem" aria-label="Threads">
+        <i class="fab fa-threads"></i>
+      </a>
+      <a class="quick-social-btn icon-spotify" href="https://spotify.com/" target="_blank"
+         rel="noopener" data-tip="Spotify" id="qs-spotify" role="listitem" aria-label="Spotify">
+        <i class="fab fa-spotify"></i>
+      </a>
+      <a class="quick-social-btn icon-whatsapp" href="https://wa.me/" target="_blank"
+         rel="noopener" data-tip="WhatsApp" id="qs-whatsapp" role="listitem" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a class="quick-social-btn icon-email" href="mailto:hello@divyasharma.com"
+         data-tip="Email" id="qs-email" role="listitem" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+
+    <!-- ── BOOK A SESSION ─────────────────────────────── -->
+    <div class="section-label"><span>Book a Session</span></div>
+    <div class="links-group">
+
+      <a class="link-card featured" href="https://calendly.com/" target="_blank"
+         rel="noopener" id="link-book-session">
+        <div class="link-icon icon-website">
+          <i class="fas fa-calendar-check"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Book a 1:1 Session</p>
+          <p class="link-sub"><span class="live-dot"></span>Slots available this week</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="https://wa.me/" target="_blank"
+         rel="noopener" id="link-whatsapp-consult">
+        <div class="link-icon icon-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">WhatsApp Consultation</p>
+          <p class="link-sub">Quick questions &amp; support</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ── SOCIAL MEDIA ───────────────────────────────── -->
+    <div class="section-label"><span>Social Media</span></div>
+    <div class="links-group">
+
+      <a class="link-card" href="https://instagram.com/" target="_blank"
+         rel="noopener" id="link-instagram">
+        <div class="link-icon icon-instagram">
+          <i class="fab fa-instagram"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Instagram</p>
+          <p class="link-sub">@divyasharma.psychologist</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="https://youtube.com/" target="_blank"
+         rel="noopener" id="link-youtube">
+        <div class="link-icon icon-youtube">
+          <i class="fab fa-youtube"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">YouTube Channel</p>
+          <p class="link-sub">Mental health tips &amp; talks</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="https://linkedin.com/" target="_blank"
+         rel="noopener" id="link-linkedin">
+        <div class="link-icon icon-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">LinkedIn</p>
+          <p class="link-sub">Professional updates &amp; articles</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="https://x.com/" target="_blank"
+         rel="noopener" id="link-twitter">
+        <div class="link-icon icon-twitter">
+          <i class="fab fa-x-twitter"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">X / Twitter</p>
+          <p class="link-sub">Thoughts on mental wellness</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="https://threads.net/" target="_blank"
+         rel="noopener" id="link-threads">
+        <div class="link-icon icon-threads">
+          <i class="fab fa-threads"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Threads</p>
+          <p class="link-sub">Daily reflections &amp; stories</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ── RESOURCES ──────────────────────────────────── -->
+    <div class="section-label"><span>Resources</span></div>
+    <div class="links-group">
+
+      <a class="link-card" href="https://open.spotify.com/" target="_blank"
+         rel="noopener" id="link-podcast">
+        <div class="link-icon icon-podcast">
+          <i class="fas fa-microphone-lines"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Mindful Moments Podcast</p>
+          <p class="link-sub">Listen on Spotify &amp; Apple Podcasts</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="index.html#blog" id="link-blog">
+        <div class="link-icon icon-book">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Read My Blog</p>
+          <p class="link-sub">Anxiety, growth &amp; self-care articles</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="index.html" id="link-website">
+        <div class="link-icon icon-website">
+          <i class="fas fa-globe"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Official Website</p>
+          <p class="link-sub">divyasharma.com</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ── CONTACT ────────────────────────────────────── -->
+    <div class="section-label"><span>Contact</span></div>
+    <div class="links-group">
+
+      <a class="link-card" href="mailto:hello@divyasharma.com" id="link-email">
+        <div class="link-icon icon-email">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Send an Email</p>
+          <p class="link-sub">hello@divyasharma.com</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+      <a class="link-card" href="https://spotify.com/" target="_blank"
+         rel="noopener" id="link-spotify">
+        <div class="link-icon icon-spotify">
+          <i class="fab fa-spotify"></i>
+        </div>
+        <div class="link-info">
+          <p class="link-title">Spotify — Podcast</p>
+          <p class="link-sub">Tune in on Spotify</p>
+        </div>
+        <div class="link-arrow"><i class="fas fa-arrow-right"></i></div>
+      </a>
+
+    </div>
+
+    <!-- ── FOOTER ─────────────────────────────────────── -->
+    <footer class="page-footer">
+      <p>© 2025 Divya Sharma · Psychologist &amp; Mental Health Advocate</p>
+      <p style="margin-top:6px;">
+        <a href="privacy.html">Privacy Policy</a> ·
+        <a href="index.html">Back to Website</a>
+      </p>
+    </footer>
+
+  </div><!-- /wrapper -->
+
+  <script>
+    // ── Avatar fallback ──────────────────────────────────
+    const avatarImg = document.getElementById('avatar-img');
+    avatarImg.onerror = function () {
+      // generate initials SVG fallback
+      this.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='110'%3E%3Ccircle cx='55' cy='55' r='55' fill='%23bde1c8'/%3E%3Ctext x='55' y='70' text-anchor='middle' font-family='Poppins,sans-serif' font-size='38' fill='%232d4f3c' font-weight='600'%3EDS%3C/text%3E%3C/svg%3E`;
+    };
+
+    // ── Intersection Observer for stagger-in ─────────────
+    const cards = document.querySelectorAll('.link-card');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    cards.forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = `opacity 0.5s ease ${i * 0.07}s, transform 0.5s ease ${i * 0.07}s,
+        box-shadow 0.28s cubic-bezier(0.4,0,0.2,1), background 0.28s cubic-bezier(0.4,0,0.2,1),
+        border-color 0.28s cubic-bezier(0.4,0,0.2,1)`;
+      obs.observe(card);
+    });
+
+    // ── Ripple click effect ───────────────────────────────
+    document.querySelectorAll('.link-card').forEach(card => {
+      card.addEventListener('click', function (e) {
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height) * 1.5;
+        ripple.style.cssText = `
+          position:absolute;
+          border-radius:50%;
+          width:${size}px;height:${size}px;
+          left:${e.clientX - rect.left - size/2}px;
+          top:${e.clientY - rect.top - size/2}px;
+          background:rgba(189,225,200,0.4);
+          transform:scale(0);
+          animation:ripple-anim 0.55s ease-out forwards;
+          pointer-events:none;
+          z-index:10;
+        `;
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // inject ripple keyframe
+    const style = document.createElement('style');
+    style.textContent = `@keyframes ripple-anim {
+      to { transform:scale(1); opacity:0; }
+    }`;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

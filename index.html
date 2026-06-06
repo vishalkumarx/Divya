@@ -1085,8 +1085,19 @@
                 const btn = e.target.querySelector("button"); btn.disabled = true;
                 const d = { name: document.getElementById("bookName").value, email: document.getElementById("bookEmail").value, phone: document.getElementById("countryCode").value + document.getElementById("bookPhone").value, session_type: document.getElementById("bookSession").value, message: document.getElementById("bookMessage").value };
                 await supabaseClient.from('appointments').insert([d]);
-                await fetch(`https://ntfy.sh/divya_booking_alerts_79734`, { method: "POST", body: `New Booking: ${d.name} (${d.phone})` });
-                alert("Sent!"); e.target.reset(); btn.disabled = false;
+                // Send ntfy notification with a clickable link to the admin panel
+                await fetch('https://ntfy.sh/divya_booking_alerts_79734', {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                                    title: `${d.name} (${d.phone})`,
+                     message: `Session: ${d.session_type}\nMessage: ${d.message}\nEmail: ${d.email}`,
+                     click: `${window.location.origin}/admin.html`
+                  })
+                });
+                alert("Sent!");
+                e.target.reset();
+                btn.disabled = false;
             };
 
             // Star Rating Logic

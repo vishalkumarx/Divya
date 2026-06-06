@@ -736,15 +736,11 @@
       if (action === 'delete') {
         if (!confirm("Permanently delete this review from the database?")) return;
         const { error } = await window.supabaseClient.from('reviews').delete().eq('id', id);
-         if (error) {
-           let msg = "🚫 Database Error: " + error.message;
-           if (error.message.includes("permission denied")) {
-             msg += "\n\n❗️ Delete policy may be missing. Please add a Delete RLS policy for the 'reviews' table in Supabase.";
-           }
-           alert(msg);
-         } else {
-           fetchReviews();
-         }
+        if (error) {
+          alert("🚫 Database Error: " + error.message + "\n\nTip: Check if 'Delete' policy is enabled in Supabase.");
+        } else {
+          fetchReviews();
+        }
       } else if (action === 'approve') {
         const { error } = await window.supabaseClient.from('reviews').update({ is_approved: true }).eq('id', id);
         if (error) alert("Error: " + error.message);

@@ -1210,7 +1210,15 @@
                 const btn = e.target.querySelector("button"); btn.disabled = true;
                 const d = { name: document.getElementById("bookName").value, email: document.getElementById("bookEmail").value, phone: document.getElementById("countryCode").value + document.getElementById("bookPhone").value, session_type: document.getElementById("bookSession").value, message: document.getElementById("bookMessage").value };
                 await supabaseClient.from('appointments').insert([d]);
-                await fetch(`https://ntfy.sh/divya_booking_alerts_79734`, { method: "POST", body: `New Booking: ${d.name} (${d.phone})` });
+                await fetch('https://ntfy.sh/divya_booking_alerts_79734', {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        title: "New Booking",
+                        message: `Name: ${d.name}\nPhone: ${d.phone}\nSession: ${d.session_type}\nMessage: ${d.message}`,
+                        click: `${window.location.origin}/admin.html`
+                    })
+                });
                 alert("Sent!"); e.target.reset(); btn.disabled = false;
             };
 

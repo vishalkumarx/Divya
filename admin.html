@@ -786,7 +786,7 @@
           <td>${item.email}</td>
           <td>${item.message}</td>
           <td>
-            <a href="https://wa.me/${item.phone.replace(/[^0-9]/g, '')}" target="_blank" style="display:inline-block; margin-right:5px; background:#25d366; color:white; padding:5px 10px; border-radius:8px; text-decoration:none; font-size:13px; font-weight:500;"><i class="fa-brands fa-whatsapp"></i> Chat</a>
+            <a href="https://wa.me/${(() => { let p = item.phone.replace(/[^0-9]/g, ''); return p.length === 10 ? '91' + p : p; })()}" target="_blank" style="display:inline-block; margin-right:5px; background:#25d366; color:white; padding:5px 10px; border-radius:8px; text-decoration:none; font-size:13px; font-weight:500;"><i class="fa-brands fa-whatsapp"></i> Chat</a>
             <button class="btn-delete" onclick="deleteAppointment('${item.id}')" style="width:auto; padding:5px 10px;">Delete</button>
           </td>
         </tr>

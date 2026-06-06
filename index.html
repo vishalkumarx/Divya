@@ -1104,6 +1104,20 @@
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
 
+        let testiAutoTimer;
+        function startTestiAuto() {
+            stopTestiAuto();
+            const images = document.querySelectorAll('.testimonial-screenshot');
+            if (images.length === 0) return;
+            testiAutoTimer = setInterval(() => {
+                moveTestimonials(1);
+            }, 3500);
+        }
+
+        function stopTestiAuto() {
+            if (testiAutoTimer) clearInterval(testiAutoTimer);
+        }
+
         function moveTestimonials(step) {
             const track = document.getElementById('testimonialSlider');
             const images = document.querySelectorAll('.testimonial-screenshot');
@@ -1133,6 +1147,16 @@
                             el.onclick = () => { document.getElementById('lightboxImage').src = el.src; document.getElementById('testimonialLightbox').classList.add('show'); };
                             track.appendChild(el);
                         });
+                        
+                        // Start auto scroll and add pause triggers
+                        startTestiAuto();
+                        const testiSlider = document.getElementById("testimonialSlider");
+                        if (testiSlider) {
+                            testiSlider.onmouseenter = stopTestiAuto;
+                            testiSlider.onmouseleave = startTestiAuto;
+                            testiSlider.ontouchstart = stopTestiAuto;
+                            testiSlider.ontouchend  = startTestiAuto;
+                        }
                     }
                 }
                 const { data: reviews } = await supabaseClient.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false });

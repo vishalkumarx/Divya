@@ -1214,19 +1214,61 @@
 
             document.getElementById("bookingForm").onsubmit = async (e) => {
                 e.preventDefault();
-                const btn = e.target.querySelector("button"); btn.disabled = true;
-                const d = { name: document.getElementById("bookName").value, email: document.getElementById("bookEmail").value, phone: document.getElementById("countryCode").value + document.getElementById("bookPhone").value, session_type: document.getElementById("bookSession").value, message: document.getElementById("bookMessage").value };
-                await supabaseClient.from('appointments').insert([d]);
-                await fetch('https://ntfy.sh/divya_booking_alerts_79734', {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                        title: "New Booking",
-                        message: `Name: ${d.name}\nPhone: ${d.phone}\nSession: ${d.session_type}\nMessage: ${d.message}`,
-                        click: `${window.location.origin}/admin.html`
-                    })
-                });
-                alert("Sent!"); e.target.reset(); btn.disabled = false;
+                const btn = e.target.querySelector("button");
+                btn.disabled = true;
+                btn.textContent = "Sending...";
+
+                const nameVal = document.getElementById("bookName").value.trim();
+                const emailVal = document.getElementById("bookEmail").value.trim();
+                const countryCodeVal = document.getElementById("countryCode").value;
+                const phoneVal = document.getElementById("bookPhone").value.trim();
+                const sessionVal = document.getElementById("bookSession").value;
+                const messageVal = document.getElementById("bookMessage").value.trim();
+
+                const fullPhone = countryCodeVal + phoneVal;
+
+                if (phoneVal.length !== 10) {
+                    alert("Please enter a valid 10-digit phone number.");
+                    btn.disabled = false;
+                    btn.textContent = "Send Message";
+                    return;
+                }
+
+                const d = { 
+                    name: nameVal, 
+                    email: emailVal, 
+                    phone: fullPhone, 
+                    session_type: sessionVal, 
+                    message: messageVal 
+                };
+
+                try {
+                    const { error } = await supabaseClient.from('appointments').insert([d]);
+                    if (error) throw error;
+
+                    // Send notification to ntfy.sh using headers for proper parsing
+                    const ntfyTopic = "divya_booking_alerts_79734";
+                    const ntfyMessage = `Name: ${nameVal}\nPhone: ${fullPhone}\nSession: ${sessionVal}\nMessage: ${messageVal}`;
+                    
+                    await fetch(`https://ntfy.sh/${ntfyTopic}`, {
+                        method: "POST",
+                        body: ntfyMessage,
+                        headers: {
+                            "Title": "New Booking",
+                            "Priority": "high",
+                            "Tags": "calendar,sparkles",
+                            "Click": `${window.location.origin}/admin.html`
+                        }
+                    });
+
+                    alert("Sent!");
+                    e.target.reset();
+                } catch (err) {
+                    alert("Error: " + err.message);
+                } finally {
+                    btn.disabled = false;
+                    btn.textContent = "Send Message";
+                }
             };
 
             // Star Rating Logic

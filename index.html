@@ -870,7 +870,20 @@
             }
             #portfolioGrid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
             .portfolio-caption { display: none; }
-            nav ul { display: none; }
+            .menu-toggle { display: block; }
+            nav ul { 
+                display: none; 
+                flex-direction: column; 
+                position: absolute; 
+                top: 100%; 
+                left: 0; 
+                width: 100%; 
+                background: linear-gradient(135deg, #1e3a8a, #3b82f6); 
+                padding: 20px 0; 
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            nav ul.active { display: flex; }
+            nav ul li { margin: 15px 0; text-align: center; margin-left: 0; }
             nav h1 { font-size: 18px; }
         }
 
@@ -897,6 +910,9 @@
 
     <nav>
         <h1>Divya Sharma Psychologist</h1>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fa-solid fa-bars"></i>
+        </div>
         <ul id="menu">
             <li><a href="#hero">Home</a></li>
             <li><a href="#services">Services</a></li>
@@ -1176,6 +1192,19 @@
                 moveTestimonials(1);
             }, 3500);
         }
+
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('#menu li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('menu').classList.remove('active');
+                });
+            });
+        });
+
 
         function stopTestiAuto() {
             if (testiAutoTimer) clearInterval(testiAutoTimer);

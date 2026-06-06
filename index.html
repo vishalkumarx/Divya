@@ -1141,7 +1141,7 @@
         <h2>Book an Appointment</h2>
         <form id="bookingForm">
             <input type="text" id="bookName" placeholder="Name" required>
-            <input type="email" id="bookEmail" placeholder="Email" required>
+            <input type="email" id="bookEmail" placeholder="Email Address *" required>
             <div class="phone-input-group">
                 <select id="countryCode"><option value="+91">+91 (IN)</option></select>
                 <input type="tel" id="bookPhone" placeholder="10-digit Phone" required>
@@ -1388,6 +1388,13 @@
                 const messageVal = document.getElementById("bookMessage").value.trim();
 
                 const fullPhone = countryCodeVal + phoneVal;
+
+                if (!emailVal || !emailVal.includes('@')) {
+                    alert("Please enter a valid email address.");
+                    btn.disabled = false;
+                    btn.textContent = "Send Message";
+                    return;
+                }
 
                 if (phoneVal.length !== 10) {
                     alert("Please enter a valid 10-digit phone number.");

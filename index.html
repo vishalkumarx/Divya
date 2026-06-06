@@ -1216,7 +1216,6 @@
                     }
                 }
                 fetchApprovedReviews();
-                }
                 const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
                 if (blogs && blogs.length > 0) {
                     const blogGrid = document.getElementById('dynamic-blog-container');

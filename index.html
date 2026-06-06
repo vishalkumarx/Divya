@@ -1025,7 +1025,12 @@
     </section>
     
     <section id="approved-reviews" class="testimonials reveal" style="display: none; padding-top: 0;">
-        <div id="reviews-display-container"></div>
+        <div id="reviews-display-container" class="service-box"></div>
+        <div id="load-more-reviews-container" style="margin-top: 40px; display: none; text-align: center;">
+            <button onclick="fetchApprovedReviews()" class="get-help-btn" style="margin: 0 auto; display: flex; padding: 12px 30px; font-size: 14px; border-radius: 50px; background: var(--accent-green); color: var(--accent-dark-green); border: 1px solid var(--accent-green); cursor: pointer;">
+                Load More Reviews
+            </button>
+        </div>
     </section>
 
     <section id="blog" class="blog reveal">
@@ -1100,6 +1105,8 @@
         let testiIndex = 0;
         let portfolioOffset = 0;
         const portfolioLimit = 9;
+        let reviewsOffset = 0;
+        const reviewsLimit = 6;
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
         }, { threshold: 0.1 });
@@ -1124,6 +1131,55 @@
             if (!track || images.length === 0) return;
             testiIndex = (testiIndex + step + images.length) % images.length;
             track.scrollTo({ left: images[testiIndex].offsetLeft - track.offsetWidth/2 + images[testiIndex].offsetWidth/2, behavior: 'smooth' });
+        }
+
+        async function fetchApprovedReviews() {
+            try {
+                const container = document.getElementById('reviews-display-container');
+                const loadMoreReviewsBtn = document.getElementById('load-more-reviews-container');
+                
+                const { data: reviews, count, error } = await supabaseClient
+                    .from('reviews')
+                    .select('*', { count: 'exact' })
+                    .eq('is_approved', true)
+                    .order('created_at', { ascending: false })
+                    .range(reviewsOffset, reviewsOffset + reviewsLimit - 1);
+
+                if (error) throw error;
+
+                if (reviews && reviews.length > 0) {
+                    document.getElementById('approved-reviews').style.display = 'block';
+                    if (reviewsOffset === 0) container.innerHTML = '';
+                    
+                    reviews.forEach(r => {
+                        const date = new Date(r.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+                        const div = document.createElement('div');
+                        div.className = 'service';
+                        div.style.cssText = 'background:white; padding:30px; position:relative;';
+                        div.innerHTML = `
+                            <div style="color:#f59e0b; margin-bottom:10px;">${'★'.repeat(r.rating)}</div>
+                            <p style="font-style:italic; color:#4a4a4a; margin-bottom:15px;">"${r.comment}"</p>
+                            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f0f0f0; padding-top:10px;">
+                                <h4 style="margin:0; font-size:15px;">- ${r.name}</h4>
+                                <span style="font-size:11px; color:#888;">${date}</span>
+                            </div>
+                        `;
+                        container.appendChild(div);
+                    });
+                    
+                    reviewsOffset += reviewsLimit;
+                    if (loadMoreReviewsBtn) {
+                        loadMoreReviewsBtn.style.display = (count > reviewsOffset) ? 'block' : 'none';
+                    }
+                } else {
+                    if (reviewsOffset === 0) {
+                        document.getElementById('approved-reviews').style.display = 'none';
+                    }
+                    if (loadMoreReviewsBtn) loadMoreReviewsBtn.style.display = 'none';
+                }
+            } catch (err) {
+                console.error("Error fetching approved reviews:", err);
+            }
         }
 
         async function loginWithGoogle() {
@@ -1159,22 +1215,7 @@
                         }
                     }
                 }
-                const { data: reviews } = await supabaseClient.from('reviews').select('*').eq('is_approved', true).order('created_at', { ascending: false });
-                if (reviews && reviews.length > 0) {
-                   const container = document.getElementById('reviews-display-container');
-                   document.getElementById('approved-reviews').style.display = 'block';
-                    container.innerHTML = reviews.map(r => {
-                        const date = new Date(r.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                        return `
-                        <div class="service" style="background:white; padding:30px; position:relative;">
-                            <div style="color:#f59e0b; margin-bottom:10px;">${'★'.repeat(r.rating)}</div>
-                            <p style="font-style:italic; color:#4a4a4a; margin-bottom:15px;">"${r.comment}"</p>
-                            <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f0f0f0; padding-top:10px;">
-                                <h4 style="margin:0; font-size:15px;">- ${r.name}</h4>
-                                <span style="font-size:11px; color:#888;">${date}</span>
-                            </div>
-                        </div>`;
-                    }).join('');
+                fetchApprovedReviews();
                 }
                 const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
                 if (blogs && blogs.length > 0) {

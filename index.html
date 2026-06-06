@@ -810,12 +810,59 @@
         }
 
         @media(max-width:768px) {
-            .hero { grid-template-columns: 1fr; text-align: center; }
-            .hero-actions { flex-direction: column; }
-            .session-badge { position: relative; left: auto !important; top: auto !important; bottom: auto !important; right: auto !important; margin: 10px auto; }
+            .hero {
+                display: flex !important;
+                flex-direction: column !important;
+                text-align: center;
+                min-height: auto !important;
+                padding: 30px 5% !important;
+                gap: 24px !important;
+                align-items: center;
+                opacity: 1 !important;
+                transform: none !important;
+                visibility: visible !important;
+            }
+            .hero-content {
+                order: 2;
+            }
+            .hero-image-container {
+                order: 1;
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+                width: 100% !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+                margin-bottom: 20px;
+            }
+            .hero-img-frame {
+                margin: 0 auto;
+            }
+            .hero h1 { font-size: 26px; }
+            .hero p { margin: 0 auto 20px; font-size: 15px; }
+            .hero-tags { justify-content: center; flex-wrap: wrap; }
+            .hero-actions { flex-direction: column; align-items: center; }
+            .session-badge {
+                position: relative !important;
+                left: auto !important;
+                top: auto !important;
+                bottom: auto !important;
+                right: auto !important;
+                margin: 6px auto;
+                font-size: 12px;
+                padding: 8px 14px;
+            }
+            .hero-foreground { display: none !important; }
+            .stat-card {
+                position: relative !important;
+                top: auto !important;
+                right: auto !important;
+                margin: 10px auto 0;
+            }
             #portfolioGrid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
             .portfolio-caption { display: none; }
-            nav ul { display: none; } /* Simplified for recovery */
+            nav ul { display: none; }
+            nav h1 { font-size: 18px; }
         }
 
         footer {

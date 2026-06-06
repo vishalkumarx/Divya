@@ -738,9 +738,11 @@
     window.deleteReview = async (id) => {
       if (!id || !confirm("Are you sure you want to permanently delete this review?")) return;
       try {
-        const { error } = await window.supabaseClient.from('reviews').delete().eq('id', id);
+        const { data, error } = await window.supabaseClient.from('reviews').delete().eq('id', id).select();
         if (error) {
           alert("🚫 Database Error: " + error.message + "\n\nTip: Check if 'Delete' policy is enabled in Supabase.");
+        } else if (!data || data.length === 0) {
+          alert("🚫 Permission Denied: No review was deleted.\n\nThis is because the 'DELETE' Row Level Security (RLS) policy for the 'reviews' table is missing or disabled in your Supabase dashboard.\n\nTo fix this:\n1. Log in to your Supabase Dashboard.\n2. Go to Database -> Policies.\n3. Find the 'reviews' table.\n4. Add a new policy allowing 'DELETE' operations for 'authenticated' users (or target 'true' for public deletion).");
         } else {
           await fetchReviews();
         }
@@ -792,7 +794,12 @@
 
     window.deleteAppointment = async (id) => {
       if (confirm('Delete this booking?')) {
-        await window.supabaseClient.from('appointments').delete().eq('id', id);
+        const { data, error } = await window.supabaseClient.from('appointments').delete().eq('id', id).select();
+        if (error) {
+          alert("Error: " + error.message);
+        } else if (!data || data.length === 0) {
+          alert("🚫 Permission Denied: No appointment was deleted.\n\nPlease check if 'DELETE' RLS policy is enabled for the 'appointments' table in Supabase.");
+        }
         fetchAppointments();
       }
     };
@@ -816,7 +823,12 @@
 
     window.deleteBlog = async (id) => {
       if (confirm('Delete blog?')) {
-        await window.supabaseClient.from('blogs').delete().eq('id', id);
+        const { data, error } = await window.supabaseClient.from('blogs').delete().eq('id', id).select();
+        if (error) {
+          alert("Error: " + error.message);
+        } else if (!data || data.length === 0) {
+          alert("🚫 Permission Denied: No blog was deleted.\n\nPlease check if 'DELETE' RLS policy is enabled for the 'blogs' table in Supabase.");
+        }
         fetchBlogs();
       }
     };
@@ -868,8 +880,14 @@
 
     window.deleteImage = async (id, path) => {
       if (confirm('Delete image?')) {
-        await window.supabaseClient.from('site_images').delete().eq('id', id);
-        await window.supabaseClient.storage.from('website-images').remove([path]);
+        const { data, error } = await window.supabaseClient.from('site_images').delete().eq('id', id).select();
+        if (error) {
+          alert("Error: " + error.message);
+        } else if (!data || data.length === 0) {
+          alert("🚫 Permission Denied: No site image record was deleted.\n\nPlease check if 'DELETE' RLS policy is enabled for the 'site_images' table in Supabase.");
+        } else {
+          await window.supabaseClient.storage.from('website-images').remove([path]);
+        }
         fetchImages();
       }
     };

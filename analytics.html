@@ -496,7 +496,7 @@
 
       // Visitor count from CounterAPI
       try {
-        const res = await fetch(`https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${COUNTER_KEY}`);
+        const res = await fetch(`https://api.counterapi.dev/v1/${COUNTER_NAMESPACE}/${COUNTER_KEY}/`);
         const data = await res.json();
         animateCount('stat-visitors', data.count || 0);
       } catch {

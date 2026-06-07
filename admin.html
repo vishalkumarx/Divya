@@ -520,12 +520,7 @@
 
   <nav>
     <h2>Admin Panel</h2>
-    <div style="display:flex; gap:12px; align-items:center;">
-      <a href="analytics.html" style="text-decoration:none; color:rgba(255,255,255,0.9); font-weight:500; display:flex; align-items:center; gap:6px; background:rgba(255,255,255,0.15); padding:8px 16px; border-radius:8px;">
-        <i class="fa-solid fa-chart-line"></i> Analytics
-      </a>
-      <a href="index.html" style="text-decoration:none; color:rgba(255,255,255,0.9); font-weight:500; display:flex; align-items:center; gap:6px;">← Back to Site</a>
-    </div>
+    <a href="index.html" style="text-decoration:none; color:rgba(255,255,255,0.9); font-weight:500; display:flex; align-items:center; gap:6px;">← Back to Site</a>
   </nav>
 
   <div class="container">
@@ -545,7 +540,12 @@
     <div id="dashboard-section">
       <div class="dashboard-header">
         <h1>Admin Dashboard</h1>
-        <button id="logout-btn">Log Out</button>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <a href="analytics.html" style="text-decoration:none; background:#3b82f6; color:white; font-weight:500; font-size:14px; display:flex; align-items:center; gap:6px; padding:10px 16px; border-radius:8px;">
+            <i class="fa-solid fa-chart-line"></i> View Analytics
+          </a>
+          <button id="logout-btn" style="margin-top:0;">Log Out</button>
+        </div>
       </div>
 
       <!-- Tabs -->

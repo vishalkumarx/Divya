@@ -353,16 +353,7 @@
     </div>
   </nav>
 
-  <!-- LOGIN -->
-  <div id="login-section">
-    <h2>Login to View Analytics</h2>
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="Email Address" required>
-      <input type="password" id="password" placeholder="Password" required>
-      <button type="submit">Log In</button>
-      <p id="login-error" style="color:red; font-size:14px; margin-top:10px; display:none;">Invalid credentials</p>
-    </form>
-  </div>
+  <!-- LOGIN REMOVED: Unauthenticated users are redirected -->
 
   <!-- DASHBOARD -->
   <div id="dashboard">
@@ -469,25 +460,10 @@
 
     sb.auth.onAuthStateChange((event, session) => {
       if (session) {
-        document.getElementById('login-section').style.display = 'none';
         document.getElementById('dashboard').style.display = 'block';
         loadAnalytics();
       } else {
-        document.getElementById('login-section').style.display = 'block';
-        document.getElementById('dashboard').style.display = 'none';
-      }
-    });
-
-    document.getElementById('loginForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const { error } = await sb.auth.signInWithPassword({
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value
-      });
-      if (error) {
-        const el = document.getElementById('login-error');
-        el.style.display = 'block';
-        el.innerText = error.message;
+        window.location.href = 'admin.html';
       }
     });
 

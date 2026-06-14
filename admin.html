@@ -29,7 +29,8 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: var(--bg-primary);
+      background: url('background.png') no-repeat center center fixed;
+      background-size: cover;
       color: var(--text-main);
       line-height: 1.6;
     }
@@ -520,7 +521,9 @@
 
   <nav>
     <h2>Admin Panel</h2>
-    <a href="index.html" style="text-decoration:none; color:rgba(255,255,255,0.9); font-weight:500; display:flex; align-items:center; gap:6px;">← Back to Site</a>
+    <a href="index.html"
+      style="text-decoration:none; color:rgba(255,255,255,0.9); font-weight:500; display:flex; align-items:center; gap:6px;">←
+      Back to Site</a>
   </nav>
 
   <div class="container">
@@ -541,7 +544,8 @@
       <div class="dashboard-header">
         <h1>Admin Dashboard</h1>
         <div style="display:flex; gap:10px; align-items:center;">
-          <a href="analytics.html" style="text-decoration:none; background:#3b82f6; color:white; font-weight:500; font-size:14px; display:flex; align-items:center; gap:6px; padding:10px 16px; border-radius:8px;">
+          <a href="analytics.html"
+            style="text-decoration:none; background:#3b82f6; color:white; font-weight:500; font-size:14px; display:flex; align-items:center; gap:6px; padding:10px 16px; border-radius:8px;">
             <i class="fa-solid fa-chart-line"></i> View Analytics
           </a>
           <button id="logout-btn" style="margin-top:0;">Log Out</button>
@@ -587,7 +591,8 @@
             <option value="testimonial">Testimonials (Multiple Images)</option>
           </select>
           <input type="file" id="image-file" accept="image/*" required>
-          <input type="text" id="image-caption" placeholder="Enter optional caption..." style="margin-top: 5px; display: none;">
+          <input type="text" id="image-caption" placeholder="Enter optional caption..."
+            style="margin-top: 5px; display: none;">
           <button id="upload-image-btn" style="width: auto; padding: 10px 25px;">⬆ Upload Image</button>
           <p id="upload-status" style="font-size: 14px; margin-top: 10px;"></p>
         </div>
@@ -646,11 +651,13 @@
           <input type="text" id="blog-title" placeholder="Blog Title" required>
           <input type="text" id="blog-excerpt" placeholder="Short Excerpt" required>
           <input type="text" id="blog-image" placeholder="Image URL (Unsplash or direct link)">
-          <textarea id="blog-content" placeholder="Write your blog content here..." rows="10" 
+          <textarea id="blog-content" placeholder="Write your blog content here..." rows="10"
             style="width: 100%; padding: 14px 16px; margin: 10px 0; border: 1px solid #d4e8da; border-radius: 12px; font-family: 'Poppins', sans-serif; font-size: 14px; background: #f1f5e9;"></textarea>
           <div style="display: flex; gap: 10px;">
-            <button id="save-blog-btn" onclick="saveBlog()" style="width: auto; padding: 10px 25px;">💾 Save Blog</button>
-            <button id="cancel-blog-btn" onclick="clearBlogForm()" style="width: auto; padding: 10px 25px; background: #ccc; color: #333; display: none;">Cancel</button>
+            <button id="save-blog-btn" onclick="saveBlog()" style="width: auto; padding: 10px 25px;">💾 Save
+              Blog</button>
+            <button id="cancel-blog-btn" onclick="clearBlogForm()"
+              style="width: auto; padding: 10px 25px; background: #ccc; color: #333; display: none;">Cancel</button>
           </div>
           <p id="blog-status" style="font-size: 14px; margin-top: 10px;"></p>
         </div>
@@ -660,7 +667,8 @@
           <button onclick="fetchBlogs()"
             style="width:auto; padding:7px 16px; font-size:13px; background:#f0f0f0; color:#555;">↻ Refresh</button>
         </div>
-        <div id="blogs-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+        <div id="blogs-container"
+          style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
           <!-- Data populated by JS -->
         </div>
       </div>
@@ -674,7 +682,7 @@
   <script>
     const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
-    
+
     // Initialize Supabase Globally
     window.supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -717,7 +725,7 @@
     window.switchTab = (tabId) => {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-      
+
       const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(b => b.innerText.toLowerCase().includes(tabId));
       if (activeBtn) activeBtn.classList.add('active');
       document.getElementById(tabId + '-tab').classList.add('active');
@@ -849,7 +857,7 @@
 
     window.saveBlog = async () => {
       const id = document.getElementById('edit-blog-id').value;
-      const d = { 
+      const d = {
         title: document.getElementById('blog-title').value,
         excerpt: document.getElementById('blog-excerpt').value,
         image_url: document.getElementById('blog-image').value,
@@ -896,7 +904,7 @@
         fetchImages();
       }
     };
-    
+
     // Initial fetch of appointments as default
     window.addEventListener('load', () => {
       if (window.supabaseClient.auth.getSession()) {

@@ -1149,7 +1149,7 @@
                 <div class="blog-content">
                     <h3>5 Ways to Manage Anxiety</h3>
                     <p>Simple daily practices that help reduce anxiety and restore emotional balance.</p>
-                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nSimple daily practices that help reduce anxiety and restore emotional balance....')">Read More ?</a>
+                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nSimple daily practices that help reduce anxiety and restore emotional balance....')">Read More &rarr;</a>
                 </div>
             </div>
 
@@ -1158,7 +1158,7 @@
                 <div class="blog-content">
                     <h3>The Importance of Self Care</h3>
                     <p>Why taking care of your mental wellbeing is essential in today�s fast life.</p>
-                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nWhy taking care of your mental wellbeing is essential in today�s fast life....')">Read More ?</a>
+                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nWhy taking care of your mental wellbeing is essential in today�s fast life....')">Read More &rarr;</a>
                 </div>
             </div>
 
@@ -1349,7 +1349,7 @@
                         div.className = 'service';
                         div.style.cssText = 'background:white; padding:30px; position:relative;';
                         div.innerHTML = `
-                            <div style="color:#f59e0b; margin-bottom:10px;">${'?'.repeat(r.rating)}</div>
+                            <div style="color:#f59e0b; margin-bottom:10px;">${'⭐'.repeat(r.rating)}</div>
                             <p style="font-style:italic; color:#4a4a4a; margin-bottom:15px;">"${r.comment}"</p>
                             <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f0f0f0; padding-top:10px;">
                                 <h4 style="margin:0; font-size:15px;">- ${r.name}</h4>
@@ -1419,7 +1419,7 @@
                         
                         const blogLink = document.createElement('a');
                         blogLink.href = "#";
-                        blogLink.innerText = "Read More ?";
+                        blogLink.innerText = "Read More &rarr;";
                         blogLink.onclick = (e) => {
                             e.preventDefault();
                             alert(`Blog reading feature coming soon!\n\nContent Preview:\n${blog.content.substring(0, 200)}...`);

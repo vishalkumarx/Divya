@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1139,42 +1139,40 @@
                 <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b">
                 <div class="blog-content">
                     <h3>How Therapy Helps Personal Growth</h3>
-                    <p>Therapy is not only for problems but also for building emotional strength.</p>
-                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nTherapy is not only for problems but also for building emotional strength....')">Read More ?</a>
-                </div>
-            </div>
-        </div>
     </section>
 
     <section id="contact" class="contact">
         <h2>Book an Appointment</h2>
         <style>
             .booking-card {
-                display: flex;
-                background: white;
+                background: url('booking-bg.jpg') center right / cover no-repeat;
                 border-radius: 24px;
                 overflow: hidden;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+                box-shadow: 0 15px 40px rgba(0,0,0,0.08);
                 max-width: 1000px;
                 margin: 0 auto;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 60px;
                 text-align: left;
             }
-            .booking-image-side {
-                flex: 1.2;
-                background: url('booking-bg.jpg') center center / cover no-repeat;
-                min-height: 300px;
+            .booking-form-wrapper {
+                background: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                padding: 40px;
+                border-radius: 20px;
+                max-width: 480px;
+                width: 100%;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.05);
             }
-            .booking-form-side {
-                flex: 1;
-                padding: 50px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                background: #fdfcf6;
-            }
-            .booking-form-side form {
+            .booking-form-wrapper form {
                 width: 100%;
                 margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
             }
             .contact {
                 background: transparent !important;
@@ -1182,22 +1180,18 @@
             }
             @media(max-width: 768px) {
                 .booking-card {
-                    flex-direction: column;
+                    padding: 30px 20px;
+                    background-position: 80% center;
+                    justify-content: center;
                 }
-                .booking-form-side {
+                .booking-form-wrapper {
+                    background: rgba(255, 255, 255, 0.85);
                     padding: 30px 20px;
                 }
-                .booking-image-side {
-                    min-height: 250px;
-                }
             }
-        
-    nav { background: linear-gradient(135deg, #ffc0cb, #fbc2eb) !important; box-shadow: 0 4px 15px rgba(255,192,203,0.3) !important; }
-    nav h1, nav h2, nav a { color: #2d4f3c !important; font-weight: 600 !important; }
-  </style>
+        </style>
         <div class="booking-card reveal">
-            <div class="booking-image-side"></div>
-            <div class="booking-form-side">
+            <div class="booking-form-wrapper">
                 <form id="bookingForm">
                     <input type="text" id="bookName" placeholder="Name" required>
                     <input type="email" id="bookEmail" placeholder="Email Address *" required>
@@ -1214,7 +1208,7 @@
     </section>
 
     <footer>
-        <p>� 2026 Divya Sharma | Psychologist</p>
+        <p> 2026 Divya Sharma | Psychologist</p>
         <p style="margin-top: 10px; font-size: 13px;">
             <a href="privacy.html" style="color: #c76aa4; text-decoration: none; font-weight: 500; margin-right: 15px;">Privacy Policy</a>
             <a href="admin.html" style="color: #c76aa4; text-decoration: none; font-weight: 500;">Admin Login</a>

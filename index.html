@@ -991,6 +991,16 @@
         </div>
     </section>
 
+    <section id="about" class="portfolio reveal">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-grid" id="portfolioGrid">
+            <p>Loading portfolio...</p>
+        </div>
+        <div id="load-more-container" style="margin-top: 40px; display: none;">
+            <button onclick="fetchPortfolioItems()" class="get-help-btn" style="margin: auto; padding: 12px 30px; background: var(--accent-green);">Load More</button>
+        </div>
+    </section>
+
     <section id="healing-carousel" class="reveal" style="padding: 40px 8%; background: transparent;">
         <div style="max-width: 800px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; background: var(--bg-secondary);">
             <div id="healingSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none;">
@@ -1016,16 +1026,6 @@
         <style>
             #healingSlider::-webkit-scrollbar { display: none; }
         </style>
-    </section>
-
-    <section id="about" class="portfolio reveal">
-        <h2>Our Portfolio</h2>
-        <div class="portfolio-grid" id="portfolioGrid">
-            <p>Loading portfolio...</p>
-        </div>
-        <div id="load-more-container" style="margin-top: 40px; display: none;">
-            <button onclick="fetchPortfolioItems()" class="get-help-btn" style="margin: auto; padding: 12px 30px; background: var(--accent-green);">Load More</button>
-        </div>
     </section>
 
     <section id="services" class="services reveal">

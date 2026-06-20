@@ -1002,49 +1002,54 @@
     </section>
 
     <section id="healing-carousel" class="reveal" style="padding: 40px 8%; background: transparent;">
-        <div style="max-width: 800px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; background: var(--bg-secondary);">
-            <div id="healingSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none;">
-                <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 1.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
-                <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 2.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
-                <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 3.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
+        <div style="max-width: 800px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; background: var(--bg-secondary); aspect-ratio: 1.5; display: flex; align-items: center; justify-content: center;">
+            <div id="healingSlider" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                <img class="healing-slide" src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 1.PNG" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 1; transition: opacity 1.5s ease-in-out;">
+                <img class="healing-slide" src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 2.PNG" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 1.5s ease-in-out;">
+                <img class="healing-slide" src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 3.PNG" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity 1.5s ease-in-out;">
             </div>
             <div style="position: absolute; bottom: 15px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 10;">
-                <div class="healing-dot active" style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-dark-green); transition: 0.3s;"></div>
-                <div class="healing-dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s;"></div>
-                <div class="healing-dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s;"></div>
+                <div class="healing-dot active" onclick="setHealingSlide(0)" style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-dark-green); transition: 0.3s; cursor: pointer;"></div>
+                <div class="healing-dot" onclick="setHealingSlide(1)" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s; cursor: pointer;"></div>
+                <div class="healing-dot" onclick="setHealingSlide(2)" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s; cursor: pointer;"></div>
             </div>
         </div>
         <script>
-            setInterval(() => {
-                const slider = document.getElementById('healingSlider');
-                if (slider) {
-                    let index = Math.round(slider.scrollLeft / slider.clientWidth);
-                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
-                        slider.scrollTo({ left: 0, behavior: 'smooth' });
-                        index = 0;
-                    } else {
-                        slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
-                        index = Math.min(index + 1, 2);
-                    }
-                    const dots = document.querySelectorAll('.healing-dot');
-                    dots.forEach((dot, i) => {
-                        dot.style.background = i === index ? 'var(--accent-dark-green)' : 'rgba(255,255,255,0.7)';
-                    });
-                }
-            }, 3000);
-            
-            document.getElementById('healingSlider').addEventListener('scroll', () => {
-                const slider = document.getElementById('healingSlider');
-                const index = Math.round(slider.scrollLeft / slider.clientWidth);
-                const dots = document.querySelectorAll('.healing-dot');
-                dots.forEach((dot, i) => {
-                    dot.style.background = i === index ? 'var(--accent-dark-green)' : 'rgba(255,255,255,0.7)';
-                });
-            });
+            let currentHealingSlide = 0;
+            const healingSlides = document.querySelectorAll('.healing-slide');
+            const healingDots = document.querySelectorAll('.healing-dot');
+            let healingInterval;
+
+            function setHealingSlide(index) {
+                if (!healingSlides.length) return;
+                
+                healingSlides[currentHealingSlide].style.opacity = 0;
+                healingDots[currentHealingSlide].style.background = 'rgba(255,255,255,0.7)';
+                
+                currentHealingSlide = index;
+                
+                healingSlides[currentHealingSlide].style.opacity = 1;
+                healingDots[currentHealingSlide].style.background = 'var(--accent-dark-green)';
+                
+                resetHealingInterval();
+            }
+
+            function nextHealingSlide() {
+                if (!healingSlides.length) return;
+                let nextIndex = (currentHealingSlide + 1) % healingSlides.length;
+                setHealingSlide(nextIndex);
+            }
+
+            function resetHealingInterval() {
+                clearInterval(healingInterval);
+                healingInterval = setInterval(nextHealingSlide, 4000);
+            }
+
+            // start
+            if (healingSlides.length > 0) {
+                resetHealingInterval();
+            }
         </script>
-        <style>
-            #healingSlider::-webkit-scrollbar { display: none; }
-        </style>
     </section>
 
     <section id="services" class="services reveal">

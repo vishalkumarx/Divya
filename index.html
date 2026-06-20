@@ -1008,20 +1008,39 @@
                 <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 2.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
                 <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 3.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
             </div>
-            <button onclick="document.getElementById('healingSlider').scrollBy({left: -document.getElementById('healingSlider').clientWidth, behavior: 'smooth'})" style="position: absolute; top: 50%; left: 15px; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 45px; height: 45px; border-radius: 50%; color: var(--accent-dark-green); cursor: pointer; font-size: 18px; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">&#10094;</button>
-            <button onclick="document.getElementById('healingSlider').scrollBy({left: document.getElementById('healingSlider').clientWidth, behavior: 'smooth'})" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 45px; height: 45px; border-radius: 50%; color: var(--accent-dark-green); cursor: pointer; font-size: 18px; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">&#10095;</button>
+            <div style="position: absolute; bottom: 15px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 10;">
+                <div class="healing-dot active" style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-dark-green); transition: 0.3s;"></div>
+                <div class="healing-dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s;"></div>
+                <div class="healing-dot" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s;"></div>
+            </div>
         </div>
         <script>
             setInterval(() => {
                 const slider = document.getElementById('healingSlider');
                 if (slider) {
+                    let index = Math.round(slider.scrollLeft / slider.clientWidth);
                     if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
                         slider.scrollTo({ left: 0, behavior: 'smooth' });
+                        index = 0;
                     } else {
                         slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+                        index = Math.min(index + 1, 2);
                     }
+                    const dots = document.querySelectorAll('.healing-dot');
+                    dots.forEach((dot, i) => {
+                        dot.style.background = i === index ? 'var(--accent-dark-green)' : 'rgba(255,255,255,0.7)';
+                    });
                 }
             }, 3000);
+            
+            document.getElementById('healingSlider').addEventListener('scroll', () => {
+                const slider = document.getElementById('healingSlider');
+                const index = Math.round(slider.scrollLeft / slider.clientWidth);
+                const dots = document.querySelectorAll('.healing-dot');
+                dots.forEach((dot, i) => {
+                    dot.style.background = i === index ? 'var(--accent-dark-green)' : 'rgba(255,255,255,0.7)';
+                });
+            });
         </script>
         <style>
             #healingSlider::-webkit-scrollbar { display: none; }

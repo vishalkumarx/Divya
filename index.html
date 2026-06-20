@@ -991,6 +991,33 @@
         </div>
     </section>
 
+    <section id="healing-carousel" class="reveal" style="padding: 40px 8%; background: transparent;">
+        <div style="max-width: 800px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; background: var(--bg-secondary);">
+            <div id="healingSlider" style="display: flex; overflow-x: auto; scroll-behavior: smooth; scroll-snap-type: x mandatory; -ms-overflow-style: none; scrollbar-width: none;">
+                <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 1.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
+                <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 2.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
+                <img src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 3.PNG" style="width: 100%; flex-shrink: 0; scroll-snap-align: center; object-fit: cover;">
+            </div>
+            <button onclick="document.getElementById('healingSlider').scrollBy({left: -document.getElementById('healingSlider').clientWidth, behavior: 'smooth'})" style="position: absolute; top: 50%; left: 15px; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 45px; height: 45px; border-radius: 50%; color: var(--accent-dark-green); cursor: pointer; font-size: 18px; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">&#10094;</button>
+            <button onclick="document.getElementById('healingSlider').scrollBy({left: document.getElementById('healingSlider').clientWidth, behavior: 'smooth'})" style="position: absolute; top: 50%; right: 15px; transform: translateY(-50%); background: rgba(255,255,255,0.7); border: none; width: 45px; height: 45px; border-radius: 50%; color: var(--accent-dark-green); cursor: pointer; font-size: 18px; z-index: 10; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: 0.3s;">&#10095;</button>
+        </div>
+        <script>
+            setInterval(() => {
+                const slider = document.getElementById('healingSlider');
+                if (slider) {
+                    if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+                        slider.scrollTo({ left: 0, behavior: 'smooth' });
+                    } else {
+                        slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+                    }
+                }
+            }, 3000);
+        </script>
+        <style>
+            #healingSlider::-webkit-scrollbar { display: none; }
+        </style>
+    </section>
+
     <section id="about" class="portfolio reveal">
         <h2>Our Portfolio</h2>
         <div class="portfolio-grid" id="portfolioGrid">

@@ -2,18 +2,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Divya Sharma | Clinical Psychologist & Therapist</title>
-    <meta name="description" content="Divya Sharma is an expert clinical psychologist and therapist. Book an online or offline therapy session for mental health support, anxiety, depression, and personal growth.">
-    <meta name="keywords" content="Divya Sharma, Divya Sharma psychologist, clinical psychologist, therapist, mental health, counseling, online therapy, anxiety, depression">
-    <meta name="author" content="Divya Sharma">
-    <meta property="og:title" content="Divya Sharma | Clinical Psychologist & Therapist">
-    <meta property="og:description" content="Expert clinical psychologist providing therapy for mental health, anxiety, and personal growth.">
-    <meta property="og:type" content="website">
+  <title>Divya Sharma | Clinical Psychologist & Therapist</title>
+  <meta name="description"
+    content="Divya Sharma is an expert clinical psychologist and therapist. Book an online or offline therapy session for mental health support, anxiety, depression, and personal growth.">
+  <meta name="keywords"
+    content="Divya Sharma, Divya Sharma psychologist, clinical psychologist, therapist, mental health, counseling, online therapy, anxiety, depression">
+  <meta name="author" content="Divya Sharma">
+  <meta property="og:title" content="Divya Sharma | Clinical Psychologist & Therapist">
+  <meta property="og:description"
+    content="Expert clinical psychologist providing therapy for mental health, anxiety, and personal growth.">
+  <meta property="og:type" content="website">
 
-    <script type="application/ld+json">
+  <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "MedicalBusiness",
@@ -29,1377 +32,1659 @@
     }
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-primary: #fdfcf6;
-            --bg-secondary: #f1f5e9;
-            --accent-green: #bde1c8;
-            --accent-dark-green: #2d4f3c;
-            --accent-yellow: #fff9d7;
-            --text-main: #1d1d1d;
-            --text-muted: #4a4a4a;
-            --white: #ffffff;
-            --radius: 24px;
-            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-            /* Decoration Colors */
-            --bubble-pink: rgba(255, 182, 193, 0.4);
-            --bubble-blue: rgba(173, 216, 230, 0.4);
-            --bubble-yellow: rgba(255, 253, 208, 0.6);
-            --bubble-green: rgba(189, 225, 200, 0.4);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('background.png') no-repeat center center fixed;
-            background-size: cover;
-            color: var(--text-main);
-            line-height: 1.6;
-        }
-
-        /* NAVBAR */
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 8%;
-            background: linear-gradient(135deg, #e9d4fa, #cbb4d4);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        nav h1 {
-            font-family: 'Playfair Display', serif;
-            color: var(--white);
-            font-size: 24px;
-            font-weight: 600;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.9);
-            font-weight: 500;
-            transition: var(--transition);
-            font-size: 15px;
-        }
-
-        nav a:hover {
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-
-        .nav-btn {
-            background: var(--accent-green) !important;
-            color: var(--accent-dark-green) !important;
-            padding: 12px 24px !important;
-            border-radius: 50px !important;
-            font-weight: 600;
-            box-shadow: none !important;
-        }
-
-        .nav-btn:hover {
-            background: var(--accent-dark-green) !important;
-            color: var(--white) !important;
-            transform: scale(1.05);
-        }
-
-        .menu-toggle {
-            display: none;
-            font-size: 26px;
-            cursor: pointer;
-            color: var(--white);
-        }
-
-        /* HERO */
-        .hero {
-            min-height: 85vh;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            align-items: center;
-            padding: 40px 8%;
-            background: transparent;
-            gap: 40px;
-        }
-
-        .hero-content {
-            text-align: left;
-        }
-
-        .hero-tags {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .hero-tag {
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        .hero-tag:nth-child(1) {
-            background: #fee7d1;
-            color: #b45309;
-        }
-
-        .hero-tag:nth-child(2) {
-            background: #dcfce7;
-            color: #15803d;
-        }
-
-        .hero-tag:nth-child(3) {
-            background: #dbeafe;
-            color: #1d4ed8;
-        }
-
-        .hero h1 {
-            font-size: clamp(32px, 5vw, 56px);
-            color: var(--text-main);
-            font-family: 'Playfair Display', serif;
-            line-height: 1.2;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--accent-dark-green);
-            text-decoration: underline;
-            text-decoration-color: var(--accent-green);
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-muted);
-            max-width: 500px;
-            margin-bottom: 35px;
-        }
-
-        .hero-actions {
-            display: flex;
-            align-items: center;
-            gap: 25px;
-        }
-
-        .hero button {
-            padding: 16px 32px;
-            border: none;
-            background: var(--accent-green);
-            color: var(--accent-dark-green);
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .hero button:hover {
-            background: var(--accent-dark-green);
-            color: var(--white);
-            transform: translateY(-3px);
-        }
-
-        .success-rate {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .rate-circle {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: var(--accent-green);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 12px;
-            color: var(--accent-dark-green);
-            border: 3px solid var(--white);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .hero-image-container {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-img-frame {
-            width: 100%;
-            max-width: 450px;
-            aspect-ratio: 1;
-            background: var(--bg-secondary);
-            border-radius: 40px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .hero-img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .stat-card {
-            position: absolute;
-            top: 20px;
-            right: -20px;
-            background: var(--white);
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            text-align: left;
-            z-index: 5;
-        }
-
-        .stat-card p {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin: 0;
-        }
-
-        /* Session Badges */
-        .session-badge {
-            position: absolute;
-            padding: 10px 18px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            z-index: 20;
-            animation: badge-float 4s infinite ease-in-out;
-            white-space: nowrap;
-        }
-
-        .session-badge.online {
-            background: #e0f2fe;
-            color: #0369a1;
-            top: 15%;
-            left: -100px;
-            /* Pushed further left */
-            animation-delay: 0s;
-        }
-
-        .session-badge.offline {
-            background: #fef3c7;
-            color: #b45309;
-            bottom: 25%;
-            right: -100px;
-            /* Pushed further right */
-            animation-delay: -2s;
-        }
-
-        .session-badge i {
-            font-size: 14px;
-        }
-
-        @keyframes badge-float {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-12px);
-            }
-        }
-
-        .hero-foreground {
-            position: absolute;
-            bottom: -30px;
-            left: -40px;
-            width: 180px;
-            z-index: 10;
-            pointer-events: none;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
-            animation: float-soft 6s infinite ease-in-out;
-        }
-
-        @keyframes float-soft {
-
-            0%,
-            100% {
-                transform: translateY(0) rotate(0);
-            }
-
-            50% {
-                transform: translateY(-10px) rotate(5deg);
-            }
-        }
-
-
-        /* ABOUT SECTION (AS PORTFOLIO) */
-        .portfolio {
-            padding: 100px 8%;
-            background: transparent;
-            text-align: center;
-        }
-
-        .portfolio h2 {
-            font-size: 40px;
-            color: var(--text-main);
-            margin-bottom: 50px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            width: 100%;
-        }
-
-        .portfolio-item {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            background: white;
-        }
-
-        .portfolio-img-wrapper {
-            width: 100%;
-            aspect-ratio: 4/5;
-            overflow: hidden;
-            background: #f1f5e9;
-        }
-
-        .portfolio-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .portfolio-item:hover .portfolio-img-wrapper img {
-            transform: scale(1.08);
-        }
-
-        .portfolio-info {
-            padding: 18px 20px;
-            text-align: left;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .portfolio-caption {
-            font-size: 14px;
-            color: var(--text-main);
-            margin: 0;
-            font-weight: 500;
-            line-height: 1.4;
-        }
-
-        /* SERVICES / SPECIALIZATIONS */
-        .services {
-            background: transparent;
-            padding: 40px 8%;
-            text-align: center;
-        }
-
-        .services h2 {
-            font-size: 40px;
-            color: var(--text-main);
-            margin-bottom: 50px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .service-box {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .service {
-            padding: 50px 40px;
-            border-radius: 40px;
-            text-align: left;
-            transition: var(--transition);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .service:nth-child(odd) { background: #E0F2F1; }
-        .service:nth-child(even) { background: #F3E5F5; }
-        .service:nth-child(3n) { background: #FFF3E0; }
-        .service:nth-child(4n) { background: #E3F2FD; }
-        .service:nth-child(5n) { background: #FFEBEE; }
-
-        .service:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-        }
-
-        .service i {
-            font-size: 32px;
-            color: var(--accent-dark-green);
-            margin-bottom: 20px;
-            display: inline-block;
-        }
-
-        .service h3 {
-            font-size: 22px;
-            color: var(--text-main);
-            margin-bottom: 12px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .service p {
-            font-size: 14px;
-            color: var(--text-muted);
-            line-height: 1.5;
-        }
-
-        .service-highlight {
-            background: var(--accent-yellow) !important;
-            grid-column: span 2;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        @media(max-width:900px) {
-            .service-highlight {
-                grid-column: span 1;
-                padding: 30px 20px;
-            }
-        }
-
-        .highlight-content h3 { font-size: 28px; }
-
-        .highlight-arrow {
-            width: 50px;
-            height: 50px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            color: var(--accent-dark-green);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .highlight-arrow:hover {
-            background: var(--accent-dark-green);
-            color: var(--white);
-            transform: rotate(45deg);
-        }
-
-        .get-help-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 15px;
-            padding: 6px 12px;
-            width: fit-content;
-            background: var(--white);
-            color: var(--accent-dark-green);
-            border: 1px solid var(--accent-green);
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .get-help-btn:hover {
-            background: var(--accent-green);
-            transform: translateX(5px);
-        }
-
-        .get-help-btn i, .highlight-arrow i {
-            font-size: inherit;
-            margin-bottom: 0;
-            display: inline-block;
-            color: inherit;
-        }
-
-        /* TESTIMONIALS */
-        .testimonials {
-            padding: 100px 8%;
-            text-align: center;
-            background: transparent;
-        }
-
-        .testimonials h2 {
-            font-size: 40px;
-            color: var(--text-main);
-            margin-bottom: 50px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .testimonial-slider-container {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-            display: flex;
-            align-items: center;
-        }
-
-        .testimonial-slider {
-            width: 100%;
-            overflow-x: auto;
-            position: relative;
-            padding: 20px 0;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            scroll-behavior: smooth;
-        }
-
-        .testimonial-track {
-            display: flex;
-            gap: 30px;
-            width: max-content;
-            padding: 0 60px;
-        }
-
-        .testi-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--bg-secondary);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 20px;
-            color: var(--accent-dark-green);
-            cursor: pointer;
-            z-index: 10;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: var(--transition);
-        }
-
-        .testi-nav-btn:hover {
-            background: var(--accent-green);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .testi-nav-btn.prev { left: -20px; }
-        .testi-nav-btn.next { right: -20px; }
-
-        @media(max-width: 1024px) {
-            .testi-nav-btn { width: 35px; height: 35px; font-size: 14px; }
-            .testi-nav-btn.prev { left: 5px; }
-            .testi-nav-btn.next { right: 5px; }
-            .testimonial-track { padding: 0 45px; }
-        }
-
-        .testimonial-screenshot {
-            width: 250px;
-            flex-shrink: 0;
-            border-radius: var(--radius);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
-            cursor: pointer;
-            scroll-snap-align: center;
-        }
-
-        /* BLOG */
-        .blog {
-            padding: 100px 8%;
-            background: transparent;
-            text-align: center;
-        }
-
-        .blog h2 {
-            font-size: 40px;
-            color: var(--text-main);
-            margin-bottom: 50px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .blog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .blog-card {
-            background: var(--bg-secondary);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: var(--transition);
-            text-align: left;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-10px);
-            background: var(--white);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
-        }
-
-        .blog-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-        }
-
-        /* STAR RATING */
-        .star-rating {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            font-size: 30px;
-            color: #ccc;
-            margin-bottom: 20px;
-        }
-
-        .star-rating i {
-            cursor: pointer;
-            transition: transform 0.2s, color 0.2s;
-        }
-
-        .star-rating i:hover {
-            transform: scale(1.2);
-        }
-
-        .star-rating i.active {
-            color: #f59e0b; /* Gold color */
-        }
-        .blog-content { padding: 30px; }
-        .blog-content h3 { font-size: 22px; color: var(--text-main); margin-bottom: 12px; font-family: 'Playfair Display', serif; }
-        .blog-content p { color: var(--text-muted); font-size: 15px; margin-bottom: 20px; }
-        .blog-content a { text-decoration: none; color: var(--accent-dark-green); font-weight: 600; display: flex; align-items: center; gap: 8px; }
-
-        /* CONTACT FORM */
-        .contact {
-            background: var(--bg-secondary);
-            padding: 100px 8%;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 40px;
-            color: var(--text-main);
-            margin-bottom: 40px;
-            font-family: 'Playfair Display', serif;
-        }
-
-        form {
-            max-width: 600px;
-            margin: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        input, textarea, select {
-            padding: 18px;
-            border: 1px solid var(--accent-green);
-            border-radius: 15px;
-            font-family: 'Poppins', sans-serif;
-            background: var(--bg-secondary);
-            font-size: 15px;
-            transition: var(--transition);
-            width: 100%;
-        }
-
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--accent-dark-green);
-            background: var(--white);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .phone-input-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .phone-input-group select { width: 100px; }
-        .phone-input-group input { flex: 1; }
-
-        button.submit {
-            background: var(--accent-green);
-            color: var(--accent-dark-green);
-            border: none;
-            padding: 18px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        button.submit:hover {
-            background: var(--accent-dark-green);
-            color: var(--white);
-            transform: scale(1.02);
-        }
-
-        /* DECORATIONS */
-        .decoration-container {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 0; overflow: hidden;
-        }
-
-        .bubble {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.8;
-            animation: float 15s infinite alternate ease-in-out;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.2); }
-        }
-
-        .bubble-1 { width: 400px; height: 400px; background: var(--bubble-green); top: -100px; left: -100px; }
-        .bubble-2 { width: 300px; height: 300px; background: var(--bubble-pink); bottom: 10%; right: -50px; }
-        .bubble-3 { width: 350px; height: 350px; background: var(--bubble-blue); top: 40%; left: -150px; }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* LIGHTBOX MODAL */
-        .lightbox-modal {
-            display: none;
-            position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); justify-content: center; align-items: center;
-        }
-
-        .lightbox-modal.show { display: flex; }
-        .lightbox-content { max-width: 90%; max-height: 90%; border-radius: 12px; }
-        .lightbox-close { position: absolute; top: 25px; right: 35px; color: white; font-size: 45px; cursor: pointer; }
-
-        /* WHATSAPP FAB */
-        .whatsapp-fab {
-            position: fixed; bottom: 30px; right: 30px;
-            background-color: #25d366; color: white;
-            width: 60px; height: 60px; border-radius: 50%;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 35px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            z-index: 1000; text-decoration: none; transition: 0.3s;
-        }
-
-        @media(max-width:768px) {
-            .decoration-container { display: none !important; }
-            .portfolio-item { backdrop-filter: none !important; background: rgba(255, 255, 255, 0.95) !important; }
-            .hero {
-                display: flex !important;
-                flex-direction: column !important;
-                text-align: center;
-                min-height: auto !important;
-                padding: 30px 5% !important;
-                gap: 24px !important;
-                align-items: center;
-                opacity: 1 !important;
-                transform: none !important;
-                visibility: visible !important;
-            }
-            .hero-content {
-                order: 2;
-            }
-            .hero-image-container {
-                order: 1;
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
-                width: 100% !important;
-                visibility: visible !important;
-                opacity: 1 !important;
-                margin-bottom: 20px;
-            }
-            .hero-img-frame {
-                margin: 0 auto;
-                max-width: 85% !important;
-            }
-            .hero h1 { font-size: 32px; font-weight: 700; color: #111 !important; opacity: 1 !important; }
-            .hero p { margin: 0 auto 20px; font-size: 16px; color: #333 !important; opacity: 1 !important; }
-            .hero-tags { justify-content: center; flex-wrap: wrap; }
-            .hero-actions { flex-direction: column; align-items: center; }
-            .session-badge {
-                position: relative !important;
-                left: auto !important;
-                top: auto !important;
-                bottom: auto !important;
-                right: auto !important;
-                margin: 6px auto;
-                font-size: 12px;
-                padding: 8px 14px;
-            }
-            .hero-foreground { display: none !important; }
-            .stat-card {
-                position: relative !important;
-                top: auto !important;
-                right: auto !important;
-                margin: 10px auto 0;
-            }
-            #portfolioGrid { grid-template-columns: repeat(3, 1fr) !important; gap: 5px !important; }
-            .portfolio-caption { display: none; }
-            .menu-toggle { display: block; }
-            nav ul { 
-                display: none; 
-                flex-direction: column; 
-                position: absolute; 
-                top: 100%; 
-                left: 0; 
-                width: 100%; 
-                background: linear-gradient(135deg, #e9d4fa, #cbb4d4); 
-                padding: 20px 0; 
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            }
-            nav ul.active { display: flex; }
-            nav ul li { margin: 15px 0; text-align: center; margin-left: 0; }
-            nav h1 { font-size: 18px; }
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px 8%;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('background.png') no-repeat center center fixed;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-primary: #fdfcf6;
+      --bg-secondary: #f1f5e9;
+      --accent-green: #bde1c8;
+      --accent-dark-green: #2d4f3c;
+      --accent-yellow: #fff9d7;
+      --text-main: #1d1d1d;
+      --text-muted: #4a4a4a;
+      --white: #ffffff;
+      --radius: 24px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+      /* Decoration Colors */
+      --bubble-pink: rgba(255, 182, 193, 0.4);
+      --bubble-blue: rgba(173, 216, 230, 0.4);
+      --bubble-yellow: rgba(255, 253, 208, 0.6);
+      --bubble-green: rgba(189, 225, 200, 0.4);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('background.png') no-repeat center center fixed;
       background-size: cover;
-            color: var(--text-muted);
-            font-size: 14px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-    
-    body { background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('background.png') no-repeat center center fixed !important; background-size: cover !important; }
-  
-    nav { background: linear-gradient(135deg, #e9d4fa, #cbb4d4) !important; box-shadow: 0 4px 15px rgba(203,180,212,0.3) !important; }
-    nav h1, nav h2, nav a { color: #2d4f3c !important; font-weight: 600 !important; }
-  
-    button.submit { background: linear-gradient(135deg, #e9d4fa, #cbb4d4) !important; color: #2d4f3c !important; box-shadow: 0 4px 15px rgba(216,180,226,0.3) !important; }
-    button.submit:hover { transform: scale(1.02) !important; filter: brightness(0.95); }
-  
-    nav a:hover { color: #15261d !important; text-decoration: underline; }
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* NAVBAR */
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 8%;
+      background: linear-gradient(135deg, #e9d4fa, #cbb4d4);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    nav h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      transition: var(--transition);
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .nav-btn {
+      background: var(--accent-green) !important;
+      color: var(--accent-dark-green) !important;
+      padding: 12px 24px !important;
+      border-radius: 50px !important;
+      font-weight: 600;
+      box-shadow: none !important;
+    }
+
+    .nav-btn:hover {
+      background: var(--accent-dark-green) !important;
+      color: var(--white) !important;
+      transform: scale(1.05);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: var(--white);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 85vh;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+      padding: 40px 8%;
+      background: transparent;
+      gap: 40px;
+    }
+
+    .hero-content {
+      text-align: left;
+    }
+
+    .hero-tags {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero-tag {
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .hero-tag:nth-child(1) {
+      background: #fee7d1;
+      color: #b45309;
+    }
+
+    .hero-tag:nth-child(2) {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .hero-tag:nth-child(3) {
+      background: #dbeafe;
+      color: #1d4ed8;
+    }
+
+    .hero h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      color: var(--text-main);
+      font-family: 'Playfair Display', serif;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: var(--accent-dark-green);
+      text-decoration: underline;
+      text-decoration-color: var(--accent-green);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 500px;
+      margin-bottom: 35px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .hero button {
+      padding: 16px 32px;
+      border: none;
+      background: var(--accent-green);
+      color: var(--accent-dark-green);
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .hero button:hover {
+      background: var(--accent-dark-green);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+
+    .success-rate {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .rate-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: var(--accent-green);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: var(--accent-dark-green);
+      border: 3px solid var(--white);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .hero-image-container {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-img-frame {
+      width: 100%;
+      max-width: 450px;
+      aspect-ratio: 1;
+      background: var(--bg-secondary);
+      border-radius: 40px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stat-card {
+      position: absolute;
+      top: 20px;
+      right: -20px;
+      background: var(--white);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      text-align: left;
+      z-index: 5;
+    }
+
+    .stat-card p {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Session Badges */
+    .session-badge {
+      position: absolute;
+      padding: 10px 18px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      z-index: 20;
+      animation: badge-float 4s infinite ease-in-out;
+      white-space: nowrap;
+    }
+
+    .session-badge.online {
+      background: #e0f2fe;
+      color: #0369a1;
+      top: 15%;
+      left: -100px;
+      /* Pushed further left */
+      animation-delay: 0s;
+    }
+
+    .session-badge.offline {
+      background: #fef3c7;
+      color: #b45309;
+      bottom: 25%;
+      right: -100px;
+      /* Pushed further right */
+      animation-delay: -2s;
+    }
+
+    .session-badge i {
+      font-size: 14px;
+    }
+
+    @keyframes badge-float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .hero-foreground {
+      position: absolute;
+      bottom: -30px;
+      left: -40px;
+      width: 180px;
+      z-index: 10;
+      pointer-events: none;
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+      animation: float-soft 6s infinite ease-in-out;
+    }
+
+    @keyframes float-soft {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(5deg);
+      }
+    }
+
+
+    /* ABOUT SECTION (AS PORTFOLIO) */
+    .portfolio {
+      padding: 100px 8%;
+      background: transparent;
+      text-align: center;
+    }
+
+    .portfolio h2 {
+      font-size: 40px;
+      color: var(--text-main);
+      margin-bottom: 50px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      width: 100%;
+    }
+
+    .portfolio-item {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      background: white;
+    }
+
+    .portfolio-img-wrapper {
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      background: #f1f5e9;
+    }
+
+    .portfolio-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item:hover .portfolio-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    .portfolio-info {
+      padding: 18px 20px;
+      text-align: left;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .portfolio-caption {
+      font-size: 14px;
+      color: var(--text-main);
+      margin: 0;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    /* SERVICES / SPECIALIZATIONS */
+    .services {
+      background: transparent;
+      padding: 40px 8%;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 40px;
+      color: var(--text-main);
+      margin-bottom: 50px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .service-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .service {
+      padding: 50px 40px;
+      border-radius: 40px;
+      text-align: left;
+      transition: var(--transition);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .service:nth-child(odd) {
+      background: #E0F2F1;
+    }
+
+    .service:nth-child(even) {
+      background: #F3E5F5;
+    }
+
+    .service:nth-child(3n) {
+      background: #FFF3E0;
+    }
+
+    .service:nth-child(4n) {
+      background: #E3F2FD;
+    }
+
+    .service:nth-child(5n) {
+      background: #FFEBEE;
+    }
+
+    .service:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .service i {
+      font-size: 32px;
+      color: var(--accent-dark-green);
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+
+    .service h3 {
+      font-size: 22px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .service p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .service-highlight {
+      background: var(--accent-yellow) !important;
+      grid-column: span 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @media(max-width:900px) {
+      .service-highlight {
+        grid-column: span 1;
+        padding: 30px 20px;
+      }
+    }
+
+    .highlight-content h3 {
+      font-size: 28px;
+    }
+
+    .highlight-arrow {
+      width: 50px;
+      height: 50px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: var(--accent-dark-green);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .highlight-arrow:hover {
+      background: var(--accent-dark-green);
+      color: var(--white);
+      transform: rotate(45deg);
+    }
+
+    .get-help-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 15px;
+      padding: 6px 12px;
+      width: fit-content;
+      background: var(--white);
+      color: var(--accent-dark-green);
+      border: 1px solid var(--accent-green);
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .get-help-btn:hover {
+      background: var(--accent-green);
+      transform: translateX(5px);
+    }
+
+    .get-help-btn i,
+    .highlight-arrow i {
+      font-size: inherit;
+      margin-bottom: 0;
+      display: inline-block;
+      color: inherit;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      padding: 100px 8%;
+      text-align: center;
+      background: transparent;
+    }
+
+    .testimonials h2 {
+      font-size: 40px;
+      color: var(--text-main);
+      margin-bottom: 50px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .testimonial-slider-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+      display: flex;
+      align-items: center;
+    }
+
+    .testimonial-slider {
+      width: 100%;
+      overflow-x: auto;
+      position: relative;
+      padding: 20px 0;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scroll-behavior: smooth;
+    }
+
+    .testimonial-track {
+      display: flex;
+      gap: 30px;
+      width: max-content;
+      padding: 0 60px;
+    }
+
+    .testi-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--bg-secondary);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 20px;
+      color: var(--accent-dark-green);
+      cursor: pointer;
+      z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: var(--transition);
+    }
+
+    .testi-nav-btn:hover {
+      background: var(--accent-green);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .testi-nav-btn.prev {
+      left: -20px;
+    }
+
+    .testi-nav-btn.next {
+      right: -20px;
+    }
+
+    @media(max-width: 1024px) {
+      .testi-nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+      }
+
+      .testi-nav-btn.prev {
+        left: 5px;
+      }
+
+      .testi-nav-btn.next {
+        right: 5px;
+      }
+
+      .testimonial-track {
+        padding: 0 45px;
+      }
+    }
+
+    .testimonial-screenshot {
+      width: 250px;
+      flex-shrink: 0;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      cursor: pointer;
+      scroll-snap-align: center;
+    }
+
+    /* BLOG */
+    .blog {
+      padding: 100px 8%;
+      background: transparent;
+      text-align: center;
+    }
+
+    .blog h2 {
+      font-size: 40px;
+      color: var(--text-main);
+      margin-bottom: 50px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: var(--bg-secondary);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      text-align: left;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-10px);
+      background: var(--white);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* STAR RATING */
+    .star-rating {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      font-size: 30px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .star-rating i {
+      cursor: pointer;
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .star-rating i:hover {
+      transform: scale(1.2);
+    }
+
+    .star-rating i.active {
+      color: #f59e0b;
+      /* Gold color */
+    }
+
+    .blog-content {
+      padding: 30px;
+    }
+
+    .blog-content h3 {
+      font-size: 22px;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .blog-content p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+
+    .blog-content a {
+      text-decoration: none;
+      color: var(--accent-dark-green);
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* CONTACT FORM */
+    .contact {
+      background: var(--bg-secondary);
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 40px;
+      color: var(--text-main);
+      margin-bottom: 40px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    form {
+      max-width: 600px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input,
+    textarea,
+    select {
+      padding: 18px;
+      border: 1px solid var(--accent-green);
+      border-radius: 15px;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-secondary);
+      font-size: 15px;
+      transition: var(--transition);
+      width: 100%;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      outline: none;
+      border-color: var(--accent-dark-green);
+      background: var(--white);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .phone-input-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .phone-input-group select {
+      width: 100px;
+    }
+
+    .phone-input-group input {
+      flex: 1;
+    }
+
+    button.submit {
+      background: var(--accent-green);
+      color: var(--accent-dark-green);
+      border: none;
+      padding: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    button.submit:hover {
+      background: var(--accent-dark-green);
+      color: var(--white);
+      transform: scale(1.02);
+    }
+
+    /* DECORATIONS */
+    .decoration-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.8;
+      animation: float 15s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+
+      100% {
+        transform: translate(100px, 50px) scale(1.2);
+      }
+    }
+
+    .bubble-1 {
+      width: 400px;
+      height: 400px;
+      background: var(--bubble-green);
+      top: -100px;
+      left: -100px;
+    }
+
+    .bubble-2 {
+      width: 300px;
+      height: 300px;
+      background: var(--bubble-pink);
+      bottom: 10%;
+      right: -50px;
+    }
+
+    .bubble-3 {
+      width: 350px;
+      height: 350px;
+      background: var(--bubble-blue);
+      top: 40%;
+      left: -150px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* LIGHTBOX MODAL */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-modal.show {
+      display: flex;
+    }
+
+    .lightbox-content {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: white;
+      font-size: 45px;
+      cursor: pointer;
+    }
+
+    /* WHATSAPP FAB */
+    .whatsapp-fab {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #25d366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 35px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    @media(max-width:768px) {
+      .decoration-container {
+        display: none !important;
+      }
+
+      .portfolio-item {
+        backdrop-filter: none !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+      }
+
+      .hero {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: center;
+        min-height: auto !important;
+        padding: 30px 5% !important;
+        gap: 24px !important;
+        align-items: center;
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+      }
+
+      .hero-content {
+        order: 2;
+      }
+
+      .hero-image-container {
+        order: 1;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        width: 100% !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        margin-bottom: 20px;
+      }
+
+      .hero-img-frame {
+        margin: 0 auto;
+        max-width: 85% !important;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+        font-weight: 700;
+        color: #111 !important;
+        opacity: 1 !important;
+      }
+
+      .hero p {
+        margin: 0 auto 20px;
+        font-size: 16px;
+        color: #333 !important;
+        opacity: 1 !important;
+      }
+
+      .hero-tags {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .session-badge {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        right: auto !important;
+        margin: 6px auto;
+        font-size: 12px;
+        padding: 8px 14px;
+      }
+
+      .hero-foreground {
+        display: none !important;
+      }
+
+      .stat-card {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        margin: 10px auto 0;
+      }
+
+      #portfolioGrid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 5px !important;
+      }
+
+      .portfolio-caption {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #e9d4fa, #cbb4d4);
+        padding: 20px 0;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      nav ul li {
+        margin: 15px 0;
+        text-align: center;
+        margin-left: 0;
+      }
+
+      nav h1 {
+        font-size: 18px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 8%;
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text-muted);
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    body {
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('background.png') no-repeat center center fixed !important;
+      background-size: cover !important;
+    }
+
+    nav {
+      background: linear-gradient(135deg, #e9d4fa, #cbb4d4) !important;
+      box-shadow: 0 4px 15px rgba(203, 180, 212, 0.3) !important;
+    }
+
+    nav h1,
+    nav h2,
+    nav a {
+      color: #2d4f3c !important;
+      font-weight: 600 !important;
+    }
+
+    button.submit {
+      background: linear-gradient(135deg, #e9d4fa, #cbb4d4) !important;
+      color: #2d4f3c !important;
+      box-shadow: 0 4px 15px rgba(216, 180, 226, 0.3) !important;
+    }
+
+    button.submit:hover {
+      transform: scale(1.02) !important;
+      filter: brightness(0.95);
+    }
+
+    nav a:hover {
+      color: #15261d !important;
+      text-decoration: underline;
+    }
   </style>
 </head>
 
 <body>
-    <!-- Visitor counter ping (silent) -->
-    <script>fetch('https://api.counterapi.dev/v1/divyasharma-site/visitors/up').catch(()=>{});</script>
-    <div class="decoration-container">
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
+  <!-- Visitor counter ping (silent) -->
+  <script>fetch('https://api.counterapi.dev/v1/divyasharma-site/visitors/up').catch(() => { });</script>
+  <div class="decoration-container">
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+  </div>
+
+  <nav>
+    <h1>Divya Sharma Psychologist</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <i class="fa-solid fa-bars"></i>
     </div>
+    <ul id="menu">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">Portfolio</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact" class="nav-btn">Book Now</a></li>
+    </ul>
+  </nav>
 
-    <nav>
-        <h1>Divya Sharma Psychologist</h1>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <i class="fa-solid fa-bars"></i>
+  <section id="hero" class="hero reveal">
+    <div class="hero-content">
+      <div class="hero-tags">
+        <span class="hero-tag">Psychologist</span>
+        <span class="hero-tag">Expert Therapist</span>
+      </div>
+      <h1>Mental Health is not a Destination, but a <span>Process.</span></h1>
+      <p>Our work focuses on positive change, reduced barriers, and building emotional resilience through evidence-based
+        compassionate care.</p>
+      <div class="hero-actions">
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Schedule
+          Appointment</button>
+        <div class="success-rate">
+          <div class="rate-circle">95%</div>
+          <div>Success rate so far</div>
         </div>
-        <ul id="menu">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#about">Portfolio</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#contact" class="nav-btn">Book Now</a></li>
-        </ul>
-    </nav>
-
-    <section id="hero" class="hero reveal">
-        <div class="hero-content">
-            <div class="hero-tags">
-                <span class="hero-tag">Psychologist</span>
-                <span class="hero-tag">Expert Therapist</span>
-            </div>
-            <h1>Mental Health is not a Destination, but a <span>Process.</span></h1>
-            <p>Our work focuses on positive change, reduced barriers, and building emotional resilience through evidence-based compassionate care.</p>
-            <div class="hero-actions">
-                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Schedule Appointment</button>
-                <div class="success-rate">
-                    <div class="rate-circle">95%</div>
-                    <div>Success rate so far</div>
-                </div>
-            </div>
-        </div>
-        <div class="hero-image-container">
-            <div class="hero-img-frame" style="max-width: 400px; background: transparent; aspect-ratio: auto; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 85%); mask-image: linear-gradient(to bottom, black 55%, transparent 85%);">
-                <img id="dynamic-hero-img" src="assets/Untitled design.PNG" alt="Divya Sharma" style="width: 100%; height: auto; display: block;">
-            </div>
-            <div class="session-badge online"><i class="fa-solid fa-video"></i> Online Available</div>
-            <div class="session-badge offline"><i class="fa-solid fa-house"></i> Offline Available</div>
-        </div>
-    </section>
-
-    <section id="video-intro" class="testimonials reveal" style="padding: 40px 8%;">
-        <div style="max-width: 600px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
-            <video id="introVideo" controls loop muted autoplay playsinline style="width:100%; aspect-ratio: 1; object-fit: cover;">
-                <source src="assets/video/001.mp4" type="video/mp4">
-            </video>
-        </div>
-    </section>
-
-    <section id="about" class="portfolio reveal">
-        <h2>Our Portfolio</h2>
-        <div class="portfolio-grid" id="portfolioGrid">
-            <p>Loading portfolio...</p>
-        </div>
-        <div id="load-more-container" style="margin-top: 40px; display: none;">
-            <button onclick="fetchPortfolioItems()" class="get-help-btn" style="margin: auto; padding: 12px 30px; background: var(--accent-green);">Load More</button>
-        </div>
-    </section>
-
-    <section id="healing-carousel" class="reveal" style="padding: 40px 8%; background: transparent;">
-        <div style="max-width: 800px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; background: var(--bg-secondary);">
-            <div id="healingSlider" style="display: flex; width: 100%; transition: transform 0.5s ease-in-out;">
-                <img class="healing-slide" src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 1.PNG" style="width: 100%; flex-shrink: 0; height: auto; display: block; object-fit: cover;">
-                <img class="healing-slide" src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 2.PNG" style="width: 100%; flex-shrink: 0; height: auto; display: block; object-fit: cover;">
-                <img class="healing-slide" src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 3.PNG" style="width: 100%; flex-shrink: 0; height: auto; display: block; object-fit: cover;">
-            </div>
-            <div style="position: absolute; bottom: 15px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 10;">
-                <div class="healing-dot active" onclick="setHealingSlide(0)" style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-dark-green); transition: 0.3s; cursor: pointer;"></div>
-                <div class="healing-dot" onclick="setHealingSlide(1)" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s; cursor: pointer;"></div>
-                <div class="healing-dot" onclick="setHealingSlide(2)" style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s; cursor: pointer;"></div>
-            </div>
-        </div>
-        <script>
-            let currentHealingSlide = 0;
-            const healingSlider = document.getElementById('healingSlider');
-            const healingSlides = document.querySelectorAll('.healing-slide');
-            const healingDots = document.querySelectorAll('.healing-dot');
-            let healingInterval;
-
-            function setHealingSlide(index) {
-                if (!healingSlides.length) return;
-                
-                healingDots[currentHealingSlide].style.background = 'rgba(255,255,255,0.7)';
-                currentHealingSlide = index;
-                healingDots[currentHealingSlide].style.background = 'var(--accent-dark-green)';
-                
-                healingSlider.style.transform = `translateX(-${currentHealingSlide * 100}%)`;
-                
-                resetHealingInterval();
-            }
-
-            function nextHealingSlide() {
-                if (!healingSlides.length) return;
-                let nextIndex = (currentHealingSlide + 1) % healingSlides.length;
-                setHealingSlide(nextIndex);
-            }
-
-            function resetHealingInterval() {
-                clearInterval(healingInterval);
-                healingInterval = setInterval(nextHealingSlide, 4000);
-            }
-
-            // start
-            if (healingSlides.length > 0) {
-                resetHealingInterval();
-            }
-        </script>
-    </section>
-
-    <section id="services" class="services reveal">
-        <h2>Areas of Specialization</h2>
-        <div class="service-box">
-            <div class="service service-highlight reveal">
-                <div class="highlight-content">
-                    <h3>Find Support</h3>
-                    <p>If you or someone you know is struggling, you are not alone. Professional help is just a click away.</p>
-                </div>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20am%20looking%20for%20some%20support%20regarding%20my%20mental%20health%2E" class="highlight-arrow" target="_blank"><i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-hands-holding-circle"></i>
-                <h3>De-addiction</h3>
-                <p>Professional support to break harmful cycles and build a healthier, independent lifestyle.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20De-addiction%20therapy%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-cloud-rain"></i>
-                <h3>Anxiety</h3>
-                <p>Explore the root causes of anxiety and develop coping strategies to restore a sense of calm.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anxiety%20management%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-brain"></i>
-                <h3>Overthinking</h3>
-                <p>Techniques to quiet a racing mind, reduce mental clutter, and improve focus and clarity.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Overthinking%20challenges%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-people-roof"></i>
-                <h3>Family Counselling</h3>
-                <p>Mediate conflicts, improve communication, and rebuild stronger, healthier family dynamics.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Family%20Counselling%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-heart-crack"></i>
-                <h3>Relationship/Separation</h3>
-                <p>Guidance for couples navigating difficulties, or individuals healing and transitioning after a breakup.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Relationship/Separation%20counselling%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-fire-flame-curved"></i>
-                <h3>Anger/Emotion Management</h3>
-                <p>Learn to process, express, and manage intense emotions in constructive and healthy ways.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anger%20or%20Emotion%20Management%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-briefcase"></i>
-                <h3>Career Counselling</h3>
-                <p>Identify your strengths and interests to make informed, fulfilling professional choices.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Career%20Counselling%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-people-group"></i>
-                <h3>Group/Individual Counselling</h3>
-                <p>Personalized 1-on-1 therapy, or finding connection and shared healing in a safe group setting.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Group%20or%20Individual%20Counselling%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-graduation-cap"></i>
-                <h3>Student Counselling</h3>
-                <p>Support for academic pressure, peer issues, and emotional changes unique to young adults.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Student%20Counselling%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-stopwatch"></i>
-                <h3>Time & Stress Management</h3>
-                <p>Practical organizational skills and mental tools to reduce burnout and improve work-life balance.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Time%20and%20Stress%20Management%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-            <div class="service reveal">
-                <i class="fa-solid fa-ghost"></i>
-                <h3>Phobia Healing</h3>
-                <p>Overcome irrational fears and reclaim your freedom with personalized exposure and mindset techniques.</p>
-                <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Phobia%20Healing%2E" class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section id="testimonials" class="testimonials reveal">
-        <h2>Client Reviews</h2>
-        <div class="testimonial-slider-container">
-            <button class="testi-nav-btn prev" onclick="moveTestimonials(-1)">&#10094;</button>
-            <div class="testimonial-slider" id="testimonialSlider">
-                <div class="testimonial-track" id="dynamic-testimonial-track">
-                    <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review">
-                </div>
-            </div>
-            <button class="testi-nav-btn next" onclick="moveTestimonials(1)">&#10095;</button>
-        </div>
-    </section>
-
-    <section id="write-review" class="contact reveal">
-        <h2>Leave a Review</h2>
-        <div id="auth-check-container" style="max-width: 500px; margin: auto;">
-            <div id="login-required-msg">
-                <button onclick="loginWithGoogle()" class="submit"><i class="fa-brands fa-google"></i> Login with Google</button>
-            </div>
-            <div id="review-form-container" style="display: none;">
-                <div style="display: flex; justify-content: space-between; align-items: center; background: #e0f2fe; padding: 10px 20px; border-radius: 50px;">
-                    <span id="user-display-name"></span>
-                    <button onclick="logout()" style="color: red; border: none; background: none; cursor: pointer;">Logout</button>
-                </div>
-                <form id="reviewForm" style="margin-top:20px;">
-                    <input type="hidden" id="revName">
-                    <div class="star-rating" id="starRating">
-                        <i class="fa-solid fa-star" data-value="1"></i>
-                        <i class="fa-solid fa-star" data-value="2"></i>
-                        <i class="fa-solid fa-star" data-value="3"></i>
-                        <i class="fa-solid fa-star" data-value="4"></i>
-                        <i class="fa-solid fa-star" data-value="5"></i>
-                    </div>
-                    <input type="hidden" id="revRating" value="0">
-                    <textarea id="revComment" placeholder="Share your experience..." required></textarea>
-                    <button type="submit" class="submit">Submit Review</button>
-                </form>
-            </div>
-        </div>
-    </section>
-    
-    <section id="approved-reviews" class="testimonials reveal" style="display: none; padding-top: 0;">
-        <div id="reviews-display-container" class="service-box"></div>
-        <div id="load-more-reviews-container" style="margin-top: 40px; display: none; text-align: center;">
-            <button onclick="fetchApprovedReviews()" class="get-help-btn" style="margin: 0 auto; display: flex; padding: 12px 30px; font-size: 14px; border-radius: 50px; background: var(--accent-green); color: var(--accent-dark-green); border: 1px solid var(--accent-green); cursor: pointer;">
-                Load More Reviews
-            </button>
-        </div>
-    </section>
-
-    <section id="blog" class="blog reveal">
-        <h2>Mental Health Blog</h2>
-        <div class="blog-container" id="dynamic-blog-container">
-            <div class="blog-card">
-                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773" alt="Understanding Anxiety Therapy - Divya Sharma Psychologist">
-                <div class="blog-content">
-                    <h3>5 Ways to Manage Anxiety</h3>
-                    <p>Simple daily practices that help reduce anxiety and restore emotional balance.</p>
-                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nSimple daily practices that help reduce anxiety and restore emotional balance....')">Read More &rarr;</a>
-                </div>
-            </div>
-
-            <div class="blog-card">
-                <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2" alt="Importance of Self Care - Mental Health Blog">
-                <div class="blog-content">
-                    <h3>The Importance of Self Care</h3>
-                    <p>Why taking care of your mental wellbeing is essential in today�s fast life.</p>
-                    <a href="#" onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nWhy taking care of your mental wellbeing is essential in today�s fast life....')">Read More &rarr;</a>
-                </div>
-            </div>
-
-            <div class="blog-card">
-                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" alt="Therapy for Personal Growth and Emotional Strength">
-                <div class="blog-content">
-                    <h3>How Therapy Helps Personal Growth</h3>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Book an Appointment</h2>
-        <style>
-            .booking-card {
-                background: url('booking-bg.jpg') center right / cover no-repeat;
-                border-radius: 24px;
-                overflow: hidden;
-                box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-                max-width: 1000px;
-                margin: 0 auto;
-                display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                padding: 60px;
-                text-align: left;
-            }
-            .booking-form-wrapper {
-                background: rgba(255, 255, 255, 0.15);
-                backdrop-filter: blur(20px);
-                -webkit-backdrop-filter: blur(20px);
-                border: 1px solid rgba(255, 255, 255, 0.3);
-                padding: 40px;
-                border-radius: 20px;
-                max-width: 480px;
-                width: 100%;
-                box-shadow: 0 8px 32px rgba(0,0,0,0.05);
-            }
-            .booking-form-wrapper form {
-                width: 100%;
-                margin: 0;
-                display: flex;
-                flex-direction: column;
-                gap: 15px;
-            }
-            .contact {
-                background: transparent !important;
-                padding: 80px 8%;
-            }
-            @media(max-width: 768px) {
-                .booking-card {
-                    padding: 30px 0;
-                    background: none;
-                    box-shadow: none;
-                    justify-content: center;
-                }
-                .booking-form-wrapper {
-                    background: rgba(255, 255, 255, 0.6);
-                    backdrop-filter: blur(15px);
-                    -webkit-backdrop-filter: blur(15px);
-                    padding: 30px 20px;
-                    border: 1px solid rgba(255, 255, 255, 0.4);
-                }
-            }
-        
-    button.submit { background: linear-gradient(135deg, #e9d4fa, #cbb4d4) !important; color: #2d4f3c !important; box-shadow: 0 4px 15px rgba(216,180,226,0.3) !important; }
-    button.submit:hover { transform: scale(1.02) !important; filter: brightness(0.95); }
-  
-    nav a:hover { color: #15261d !important; text-decoration: underline; }
-  </style>
-        <div class="booking-card reveal">
-            <div class="booking-form-wrapper">
-                <form id="bookingForm">
-                    <input type="text" id="bookName" placeholder="Name" required>
-                    <input type="email" id="bookEmail" placeholder="Email Address *" required>
-                    <div class="phone-input-group">
-                        <select id="countryCode"><option value="+91">+91 (IN)</option></select>
-                        <input type="tel" id="bookPhone" placeholder="10-digit Phone" required>
-                    </div>
-                    <select id="bookSession"><option value="Online Session">Online Session</option><option value="Offline Session">Offline Session</option></select>
-                    <textarea id="bookMessage" placeholder="Message" required></textarea>
-                    <button type="submit" class="submit">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <p> 2026 Divya Sharma | Psychologist</p>
-        <p style="margin-top: 10px; font-size: 13px;">
-            <a href="privacy.html" style="color: #c76aa4; text-decoration: none; font-weight: 500; margin-right: 15px;">Privacy Policy</a>
-            <a href="admin.html" style="color: #c76aa4; text-decoration: none; font-weight: 500;">Admin Login</a>
-        </p>
-        <p style="margin-top: 25px; font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px;">
-            Website designed by <a href="https://instagram.com/vishalkumarx" target="_blank" style="color: var(--text-muted); text-decoration: none; border-bottom: 1px dotted var(--text-muted); padding-bottom: 1px; transition: color 0.2s;"><i class="fa-brands fa-instagram" style="margin-right: 4px; font-size: 12px;"></i>vishalkumarx</a>
-        </p>
-    </footer>
-
-    <div id="testimonialLightbox" class="lightbox-modal" onclick="this.classList.remove('show')">
-        <span class="lightbox-close">&times;</span>
-        <img class="lightbox-content" id="lightboxImage">
+      </div>
     </div>
-
-    <div id="bookingSuccessModal" class="lightbox-modal" style="z-index: 3000;">
-        <div style="background: white; padding: 40px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; position: relative;">
-            <span onclick="document.getElementById('bookingSuccessModal').classList.remove('show')" style="position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #888;">&times;</span>
-            <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #10b981; margin-bottom: 20px;"></i>
-            <h2 style="font-family: 'Playfair Display', serif; color: var(--text-main); margin-bottom: 10px;">Booking Sent!</h2>
-            <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 25px;">Your appointment request has been submitted successfully. Please message Divya on WhatsApp to confirm your slot.</p>
-            <a href="https://wa.me/917973477917" target="_blank" class="submit" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 25px; font-size: 16px; width: auto;">
-                <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Message on WhatsApp
-            </a>
-        </div>
+    <div class="hero-image-container">
+      <div class="hero-img-frame"
+        style="max-width: 400px; background: transparent; aspect-ratio: auto; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 95%); mask-image: linear-gradient(to bottom, black 75%, transparent 95%);">
+        <img id="dynamic-hero-img" src="assets/Untitled design.PNG" alt="Divya Sharma"
+          style="width: 100%; height: auto; display: block;">
+      </div>
+      <div class="session-badge online"><i class="fa-solid fa-video"></i> Online Available</div>
+      <div class="session-badge offline"><i class="fa-solid fa-house"></i> Offline Available</div>
     </div>
+  </section>
 
-    <a href="https://wa.me/917973477917" class="whatsapp-fab" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+  <section id="video-intro" class="testimonials reveal" style="padding: 40px 8%;">
+    <div
+      style="max-width: 600px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
+      <video id="introVideo" controls loop muted autoplay playsinline
+        style="width:100%; aspect-ratio: 1; object-fit: cover;">
+        <source src="assets/video/001.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
 
-    <!-- SUPABASE SDK -->
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <section id="about" class="portfolio reveal">
+    <h2>Our Portfolio</h2>
+    <div class="portfolio-grid" id="portfolioGrid">
+      <p>Loading portfolio...</p>
+    </div>
+    <div id="load-more-container" style="margin-top: 40px; display: none;">
+      <button onclick="fetchPortfolioItems()" class="get-help-btn"
+        style="margin: auto; padding: 12px 30px; background: var(--accent-green);">Load More</button>
+    </div>
+  </section>
+
+  <section id="healing-carousel" class="reveal" style="padding: 40px 8%; background: transparent;">
+    <div
+      style="max-width: 800px; margin: auto; border-radius: 40px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.15); position: relative; background: var(--bg-secondary);">
+      <div id="healingSlider" style="display: flex; width: 100%; transition: transform 0.5s ease-in-out;">
+        <img class="healing-slide"
+          src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 1.PNG"
+          style="width: 100%; flex-shrink: 0; height: auto; display: block; object-fit: cover;">
+        <img class="healing-slide"
+          src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 2.PNG"
+          style="width: 100%; flex-shrink: 0; height: auto; display: block; object-fit: cover;">
+        <img class="healing-slide"
+          src="assets/Healing isn’t about fixing what is broken. It’s about uncovering what was always there. - 3.PNG"
+          style="width: 100%; flex-shrink: 0; height: auto; display: block; object-fit: cover;">
+      </div>
+      <div
+        style="position: absolute; bottom: 15px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 10;">
+        <div class="healing-dot active" onclick="setHealingSlide(0)"
+          style="width: 10px; height: 10px; border-radius: 50%; background: var(--accent-dark-green); transition: 0.3s; cursor: pointer;">
+        </div>
+        <div class="healing-dot" onclick="setHealingSlide(1)"
+          style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s; cursor: pointer;">
+        </div>
+        <div class="healing-dot" onclick="setHealingSlide(2)"
+          style="width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.7); transition: 0.3s; cursor: pointer;">
+        </div>
+      </div>
+    </div>
     <script>
-        const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
-        const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      let currentHealingSlide = 0;
+      const healingSlider = document.getElementById('healingSlider');
+      const healingSlides = document.querySelectorAll('.healing-slide');
+      const healingDots = document.querySelectorAll('.healing-dot');
+      let healingInterval;
 
-        let testiIndex = 0;
-        let portfolioOffset = 0;
-        const portfolioLimit = 9;
-        let reviewsOffset = 0;
-        const reviewsLimit = 6;
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
+      function setHealingSlide(index) {
+        if (!healingSlides.length) return;
 
-        let testiAutoTimer;
-        function startTestiAuto() {
-            stopTestiAuto();
-            const images = document.querySelectorAll('.testimonial-screenshot');
-            if (images.length === 0) return;
-            testiAutoTimer = setInterval(() => {
-                moveTestimonials(1);
-            }, 3500);
+        healingDots[currentHealingSlide].style.background = 'rgba(255,255,255,0.7)';
+        currentHealingSlide = index;
+        healingDots[currentHealingSlide].style.background = 'var(--accent-dark-green)';
+
+        healingSlider.style.transform = `translateX(-${currentHealingSlide * 100}%)`;
+
+        resetHealingInterval();
+      }
+
+      function nextHealingSlide() {
+        if (!healingSlides.length) return;
+        let nextIndex = (currentHealingSlide + 1) % healingSlides.length;
+        setHealingSlide(nextIndex);
+      }
+
+      function resetHealingInterval() {
+        clearInterval(healingInterval);
+        healingInterval = setInterval(nextHealingSlide, 4000);
+      }
+
+      // start
+      if (healingSlides.length > 0) {
+        resetHealingInterval();
+      }
+    </script>
+  </section>
+
+  <section id="services" class="services reveal">
+    <h2>Areas of Specialization</h2>
+    <div class="service-box">
+      <div class="service service-highlight reveal">
+        <div class="highlight-content">
+          <h3>Find Support</h3>
+          <p>If you or someone you know is struggling, you are not alone. Professional help is just a click away.</p>
+        </div>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20am%20looking%20for%20some%20support%20regarding%20my%20mental%20health%2E"
+          class="highlight-arrow" target="_blank"><i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-hands-holding-circle"></i>
+        <h3>De-addiction</h3>
+        <p>Professional support to break harmful cycles and build a healthier, independent lifestyle.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20De-addiction%20therapy%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-cloud-rain"></i>
+        <h3>Anxiety</h3>
+        <p>Explore the root causes of anxiety and develop coping strategies to restore a sense of calm.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anxiety%20management%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-brain"></i>
+        <h3>Overthinking</h3>
+        <p>Techniques to quiet a racing mind, reduce mental clutter, and improve focus and clarity.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Overthinking%20challenges%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-people-roof"></i>
+        <h3>Family Counselling</h3>
+        <p>Mediate conflicts, improve communication, and rebuild stronger, healthier family dynamics.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Family%20Counselling%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-heart-crack"></i>
+        <h3>Relationship/Separation</h3>
+        <p>Guidance for couples navigating difficulties, or individuals healing and transitioning after a breakup.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Relationship/Separation%20counselling%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <h3>Anger/Emotion Management</h3>
+        <p>Learn to process, express, and manage intense emotions in constructive and healthy ways.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Anger%20or%20Emotion%20Management%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-briefcase"></i>
+        <h3>Career Counselling</h3>
+        <p>Identify your strengths and interests to make informed, fulfilling professional choices.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Career%20Counselling%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-people-group"></i>
+        <h3>Group/Individual Counselling</h3>
+        <p>Personalized 1-on-1 therapy, or finding connection and shared healing in a safe group setting.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Group%20or%20Individual%20Counselling%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h3>Student Counselling</h3>
+        <p>Support for academic pressure, peer issues, and emotional changes unique to young adults.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Student%20Counselling%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-stopwatch"></i>
+        <h3>Time & Stress Management</h3>
+        <p>Practical organizational skills and mental tools to reduce burnout and improve work-life balance.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Time%20and%20Stress%20Management%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="service reveal">
+        <i class="fa-solid fa-ghost"></i>
+        <h3>Phobia Healing</h3>
+        <p>Overcome irrational fears and reclaim your freedom with personalized exposure and mindset techniques.</p>
+        <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20consult%20regarding%20Phobia%20Healing%2E"
+          class="get-help-btn" target="_blank">Get Help <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="testimonials reveal">
+    <h2>Client Reviews</h2>
+    <div class="testimonial-slider-container">
+      <button class="testi-nav-btn prev" onclick="moveTestimonials(-1)">&#10094;</button>
+      <div class="testimonial-slider" id="testimonialSlider">
+        <div class="testimonial-track" id="dynamic-testimonial-track">
+          <img class="testimonial-screenshot" src="assets/01.jpg" alt="Review">
+        </div>
+      </div>
+      <button class="testi-nav-btn next" onclick="moveTestimonials(1)">&#10095;</button>
+    </div>
+  </section>
+
+  <section id="write-review" class="contact reveal">
+    <h2>Leave a Review</h2>
+    <div id="auth-check-container" style="max-width: 500px; margin: auto;">
+      <div id="login-required-msg">
+        <button onclick="loginWithGoogle()" class="submit"><i class="fa-brands fa-google"></i> Login with
+          Google</button>
+      </div>
+      <div id="review-form-container" style="display: none;">
+        <div
+          style="display: flex; justify-content: space-between; align-items: center; background: #e0f2fe; padding: 10px 20px; border-radius: 50px;">
+          <span id="user-display-name"></span>
+          <button onclick="logout()"
+            style="color: red; border: none; background: none; cursor: pointer;">Logout</button>
+        </div>
+        <form id="reviewForm" style="margin-top:20px;">
+          <input type="hidden" id="revName">
+          <div class="star-rating" id="starRating">
+            <i class="fa-solid fa-star" data-value="1"></i>
+            <i class="fa-solid fa-star" data-value="2"></i>
+            <i class="fa-solid fa-star" data-value="3"></i>
+            <i class="fa-solid fa-star" data-value="4"></i>
+            <i class="fa-solid fa-star" data-value="5"></i>
+          </div>
+          <input type="hidden" id="revRating" value="0">
+          <textarea id="revComment" placeholder="Share your experience..." required></textarea>
+          <button type="submit" class="submit">Submit Review</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="approved-reviews" class="testimonials reveal" style="display: none; padding-top: 0;">
+    <div id="reviews-display-container" class="service-box"></div>
+    <div id="load-more-reviews-container" style="margin-top: 40px; display: none; text-align: center;">
+      <button onclick="fetchApprovedReviews()" class="get-help-btn"
+        style="margin: 0 auto; display: flex; padding: 12px 30px; font-size: 14px; border-radius: 50px; background: var(--accent-green); color: var(--accent-dark-green); border: 1px solid var(--accent-green); cursor: pointer;">
+        Load More Reviews
+      </button>
+    </div>
+  </section>
+
+  <section id="blog" class="blog reveal">
+    <h2>Mental Health Blog</h2>
+    <div class="blog-container" id="dynamic-blog-container">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773"
+          alt="Understanding Anxiety Therapy - Divya Sharma Psychologist">
+        <div class="blog-content">
+          <h3>5 Ways to Manage Anxiety</h3>
+          <p>Simple daily practices that help reduce anxiety and restore emotional balance.</p>
+          <a href="#"
+            onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nSimple daily practices that help reduce anxiety and restore emotional balance....')">Read
+            More &rarr;</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1493836512294-502baa1986e2"
+          alt="Importance of Self Care - Mental Health Blog">
+        <div class="blog-content">
+          <h3>The Importance of Self Care</h3>
+          <p>Why taking care of your mental wellbeing is essential in today�s fast life.</p>
+          <a href="#"
+            onclick="alert('Blog reading feature coming soon!\n\nContent Preview:\nWhy taking care of your mental wellbeing is essential in today�s fast life....')">Read
+            More &rarr;</a>
+        </div>
+      </div>
+
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b"
+          alt="Therapy for Personal Growth and Emotional Strength">
+        <div class="blog-content">
+          <h3>How Therapy Helps Personal Growth</h3>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Book an Appointment</h2>
+    <style>
+      .booking-card {
+        background: url('booking-bg.jpg') center right / cover no-repeat;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 60px;
+        text-align: left;
+      }
+
+      .booking-form-wrapper {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 40px;
+        border-radius: 20px;
+        max-width: 480px;
+        width: 100%;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+      }
+
+      .booking-form-wrapper form {
+        width: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .contact {
+        background: transparent !important;
+        padding: 80px 8%;
+      }
+
+      @media(max-width: 768px) {
+        .booking-card {
+          padding: 30px 0;
+          background: none;
+          box-shadow: none;
+          justify-content: center;
         }
 
-        function toggleMenu() {
-            document.getElementById('menu').classList.toggle('active');
+        .booking-form-wrapper {
+          background: rgba(255, 255, 255, 0.6);
+          backdrop-filter: blur(15px);
+          -webkit-backdrop-filter: blur(15px);
+          padding: 30px 20px;
+          border: 1px solid rgba(255, 255, 255, 0.4);
         }
+      }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('#menu li a').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.getElementById('menu').classList.remove('active');
-                });
-            });
+      button.submit {
+        background: linear-gradient(135deg, #e9d4fa, #cbb4d4) !important;
+        color: #2d4f3c !important;
+        box-shadow: 0 4px 15px rgba(216, 180, 226, 0.3) !important;
+      }
+
+      button.submit:hover {
+        transform: scale(1.02) !important;
+        filter: brightness(0.95);
+      }
+
+      nav a:hover {
+        color: #15261d !important;
+        text-decoration: underline;
+      }
+    </style>
+    <div class="booking-card reveal">
+      <div class="booking-form-wrapper">
+        <form id="bookingForm">
+          <input type="text" id="bookName" placeholder="Name" required>
+          <input type="email" id="bookEmail" placeholder="Email Address *" required>
+          <div class="phone-input-group">
+            <select id="countryCode">
+              <option value="+91">+91 (IN)</option>
+            </select>
+            <input type="tel" id="bookPhone" placeholder="10-digit Phone" required>
+          </div>
+          <select id="bookSession">
+            <option value="Online Session">Online Session</option>
+            <option value="Offline Session">Offline Session</option>
+          </select>
+          <textarea id="bookMessage" placeholder="Message" required></textarea>
+          <button type="submit" class="submit">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p> 2026 Divya Sharma | Psychologist</p>
+    <p style="margin-top: 10px; font-size: 13px;">
+      <a href="privacy.html"
+        style="color: #c76aa4; text-decoration: none; font-weight: 500; margin-right: 15px;">Privacy Policy</a>
+      <a href="admin.html" style="color: #c76aa4; text-decoration: none; font-weight: 500;">Admin Login</a>
+    </p>
+    <p style="margin-top: 25px; font-size: 11px; color: var(--text-muted); letter-spacing: 0.5px;">
+      Website designed by <a href="https://instagram.com/vishalkumarx" target="_blank"
+        style="color: var(--text-muted); text-decoration: none; border-bottom: 1px dotted var(--text-muted); padding-bottom: 1px; transition: color 0.2s;"><i
+          class="fa-brands fa-instagram" style="margin-right: 4px; font-size: 12px;"></i>vishalkumarx</a>
+    </p>
+  </footer>
+
+  <div id="testimonialLightbox" class="lightbox-modal" onclick="this.classList.remove('show')">
+    <span class="lightbox-close">&times;</span>
+    <img class="lightbox-content" id="lightboxImage">
+  </div>
+
+  <div id="bookingSuccessModal" class="lightbox-modal" style="z-index: 3000;">
+    <div
+      style="background: white; padding: 40px; border-radius: 24px; text-align: center; max-width: 400px; width: 90%; position: relative;">
+      <span onclick="document.getElementById('bookingSuccessModal').classList.remove('show')"
+        style="position: absolute; top: 15px; right: 20px; font-size: 30px; cursor: pointer; color: #888;">&times;</span>
+      <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #10b981; margin-bottom: 20px;"></i>
+      <h2 style="font-family: 'Playfair Display', serif; color: var(--text-main); margin-bottom: 10px;">Booking Sent!
+      </h2>
+      <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 25px;">Your appointment request has been
+        submitted successfully. Please message Divya on WhatsApp to confirm your slot.</p>
+      <a href="https://wa.me/917973477917" target="_blank" class="submit"
+        style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 12px 25px; font-size: 16px; width: auto;">
+        <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Message on WhatsApp
+      </a>
+    </div>
+  </div>
+
+  <a href="https://wa.me/917973477917" class="whatsapp-fab" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+
+  <!-- SUPABASE SDK -->
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+  <script>
+    const SUPABASE_URL = 'https://uuuxprwukdgqnkuqcviw.supabase.co';
+    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1dXhwcnd1a2RncW5rdXFjdml3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzYwODM4NTksImV4cCI6MjA5MTY1OTg1OX0.LtDv4KsbS2bYKifSMIWHW1Gkdm_xkJy0OfxDUKwPr08';
+    const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    let testiIndex = 0;
+    let portfolioOffset = 0;
+    const portfolioLimit = 9;
+    let reviewsOffset = 0;
+    const reviewsLimit = 6;
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+    }, { threshold: 0.1 });
+
+    let testiAutoTimer;
+    function startTestiAuto() {
+      stopTestiAuto();
+      const images = document.querySelectorAll('.testimonial-screenshot');
+      if (images.length === 0) return;
+      testiAutoTimer = setInterval(() => {
+        moveTestimonials(1);
+      }, 3500);
+    }
+
+    function toggleMenu() {
+      document.getElementById('menu').classList.toggle('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('#menu li a').forEach(link => {
+        link.addEventListener('click', () => {
+          document.getElementById('menu').classList.remove('active');
         });
+      });
+    });
 
 
-        function stopTestiAuto() {
-            if (testiAutoTimer) clearInterval(testiAutoTimer);
-        }
+    function stopTestiAuto() {
+      if (testiAutoTimer) clearInterval(testiAutoTimer);
+    }
 
-        function moveTestimonials(step) {
-            const track = document.getElementById('testimonialSlider');
-            const images = document.querySelectorAll('.testimonial-screenshot');
-            if (!track || images.length === 0) return;
-            testiIndex = (testiIndex + step + images.length) % images.length;
-            track.scrollTo({ left: images[testiIndex].offsetLeft - track.offsetWidth/2 + images[testiIndex].offsetWidth/2, behavior: 'smooth' });
-        }
+    function moveTestimonials(step) {
+      const track = document.getElementById('testimonialSlider');
+      const images = document.querySelectorAll('.testimonial-screenshot');
+      if (!track || images.length === 0) return;
+      testiIndex = (testiIndex + step + images.length) % images.length;
+      track.scrollTo({ left: images[testiIndex].offsetLeft - track.offsetWidth / 2 + images[testiIndex].offsetWidth / 2, behavior: 'smooth' });
+    }
 
-        async function fetchApprovedReviews() {
-            try {
-                const container = document.getElementById('reviews-display-container');
-                const loadMoreReviewsBtn = document.getElementById('load-more-reviews-container');
-                
-                const { data: reviews, count, error } = await supabaseClient
-                    .from('reviews')
-                    .select('*', { count: 'exact' })
-                    .eq('is_approved', true)
-                    .order('created_at', { ascending: false })
-                    .range(reviewsOffset, reviewsOffset + reviewsLimit - 1);
+    async function fetchApprovedReviews() {
+      try {
+        const container = document.getElementById('reviews-display-container');
+        const loadMoreReviewsBtn = document.getElementById('load-more-reviews-container');
 
-                if (error) throw error;
+        const { data: reviews, count, error } = await supabaseClient
+          .from('reviews')
+          .select('*', { count: 'exact' })
+          .eq('is_approved', true)
+          .order('created_at', { ascending: false })
+          .range(reviewsOffset, reviewsOffset + reviewsLimit - 1);
 
-                if (reviews && reviews.length > 0) {
-                    document.getElementById('approved-reviews').style.display = 'block';
-                    if (reviewsOffset === 0) container.innerHTML = '';
-                    
-                    reviews.forEach(r => {
-                        const date = new Date(r.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-                        const div = document.createElement('div');
-                        div.className = 'service';
-                        div.style.cssText = 'background:white; padding:30px; position:relative;';
-                        div.innerHTML = `
+        if (error) throw error;
+
+        if (reviews && reviews.length > 0) {
+          document.getElementById('approved-reviews').style.display = 'block';
+          if (reviewsOffset === 0) container.innerHTML = '';
+
+          reviews.forEach(r => {
+            const date = new Date(r.created_at).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            const div = document.createElement('div');
+            div.className = 'service';
+            div.style.cssText = 'background:white; padding:30px; position:relative;';
+            div.innerHTML = `
                             <div style="color:#f59e0b; margin-bottom:10px;">${'⭐'.repeat(r.rating)}</div>
                             <p style="font-style:italic; color:#4a4a4a; margin-bottom:15px;">"${r.comment}"</p>
                             <div style="display:flex; justify-content:space-between; align-items:center; border-top:1px solid #f0f0f0; padding-top:10px;">
@@ -1407,231 +1692,232 @@
                                 <span style="font-size:11px; color:#888;">${date}</span>
                             </div>
                         `;
-                        container.appendChild(div);
-                    });
-                    
-                    reviewsOffset += reviewsLimit;
-                    if (loadMoreReviewsBtn) {
-                        // Show "Load More" if we got a full batch (there may be more)
-                        loadMoreReviewsBtn.style.display = (reviews.length === reviewsLimit) ? 'block' : 'none';
-                    }
-                } else {
-                    if (reviewsOffset === 0) {
-                        document.getElementById('approved-reviews').style.display = 'none';
-                    }
-                    if (loadMoreReviewsBtn) loadMoreReviewsBtn.style.display = 'none';
-                }
-            } catch (err) {
-                console.error("Error fetching approved reviews:", err);
+            container.appendChild(div);
+          });
+
+          reviewsOffset += reviewsLimit;
+          if (loadMoreReviewsBtn) {
+            // Show "Load More" if we got a full batch (there may be more)
+            loadMoreReviewsBtn.style.display = (reviews.length === reviewsLimit) ? 'block' : 'none';
+          }
+        } else {
+          if (reviewsOffset === 0) {
+            document.getElementById('approved-reviews').style.display = 'none';
+          }
+          if (loadMoreReviewsBtn) loadMoreReviewsBtn.style.display = 'none';
+        }
+      } catch (err) {
+        console.error("Error fetching approved reviews:", err);
+      }
+    }
+
+    async function loginWithGoogle() {
+      await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
+    }
+    async function logout() { await supabaseClient.auth.signOut(); }
+
+    async function fetchDynamicImages() {
+      try {
+        const { data: others } = await supabaseClient.from('site_images').select('*').not('section', 'eq', 'about');
+        if (others) {
+          const hero = others.find(img => img.section === 'hero');
+          // if (hero) document.getElementById('dynamic-hero-img').src = hero.image_url; // Disabled to use local divya_trans.png
+
+          const testimonials = others.filter(img => img.section === 'testimonial');
+          const track = document.getElementById('dynamic-testimonial-track');
+          if (testimonials.length > 0 && track) {
+            track.innerHTML = '';
+            testimonials.forEach(img => {
+              const el = document.createElement('img'); el.className = 'testimonial-screenshot'; el.src = img.image_url;
+              el.onclick = () => { document.getElementById('lightboxImage').src = el.src; document.getElementById('testimonialLightbox').classList.add('show'); };
+              track.appendChild(el);
+            });
+
+            // Start auto scroll and add pause triggers
+            startTestiAuto();
+            const testiSlider = document.getElementById("testimonialSlider");
+            if (testiSlider) {
+              testiSlider.onmouseenter = stopTestiAuto;
+              testiSlider.onmouseleave = startTestiAuto;
+              testiSlider.ontouchstart = stopTestiAuto;
+              testiSlider.ontouchend = startTestiAuto;
             }
+          }
         }
+        fetchApprovedReviews();
+        const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
+        if (blogs && blogs.length > 0) {
+          const blogGrid = document.getElementById('dynamic-blog-container');
+          blogGrid.innerHTML = '';
+          blogs.forEach(blog => {
+            const card = document.createElement('div');
+            card.className = 'blog-card';
 
-        async function loginWithGoogle() {
-            await supabaseClient.auth.signInWithOAuth({ provider: 'google', options: { redirectTo: window.location.origin + window.location.pathname } });
-        }
-        async function logout() { await supabaseClient.auth.signOut(); }
+            const blogLink = document.createElement('a');
+            blogLink.href = "#";
+            blogLink.innerText = "Read More &rarr;";
+            blogLink.onclick = (e) => {
+              e.preventDefault();
+              alert(`Blog reading feature coming soon!\n\nContent Preview:\n${blog.content.substring(0, 200)}...`);
+            };
 
-        async function fetchDynamicImages() {
-            try {
-                const { data: others } = await supabaseClient.from('site_images').select('*').not('section', 'eq', 'about');
-                if (others) {
-                    const hero = others.find(img => img.section === 'hero');
-                    // if (hero) document.getElementById('dynamic-hero-img').src = hero.image_url; // Disabled to use local divya_trans.png
-                    
-                    const testimonials = others.filter(img => img.section === 'testimonial');
-                    const track = document.getElementById('dynamic-testimonial-track');
-                    if (testimonials.length > 0 && track) {
-                        track.innerHTML = '';
-                        testimonials.forEach(img => {
-                            const el = document.createElement('img'); el.className = 'testimonial-screenshot'; el.src = img.image_url;
-                            el.onclick = () => { document.getElementById('lightboxImage').src = el.src; document.getElementById('testimonialLightbox').classList.add('show'); };
-                            track.appendChild(el);
-                        });
-                        
-                        // Start auto scroll and add pause triggers
-                        startTestiAuto();
-                        const testiSlider = document.getElementById("testimonialSlider");
-                        if (testiSlider) {
-                            testiSlider.onmouseenter = stopTestiAuto;
-                            testiSlider.onmouseleave = startTestiAuto;
-                            testiSlider.ontouchstart = stopTestiAuto;
-                            testiSlider.ontouchend  = startTestiAuto;
-                        }
-                    }
-                }
-                fetchApprovedReviews();
-                const { data: blogs } = await supabaseClient.from('blogs').select('*').order('created_at', { ascending: false });
-                if (blogs && blogs.length > 0) {
-                    const blogGrid = document.getElementById('dynamic-blog-container');
-                    blogGrid.innerHTML = '';
-                    blogs.forEach(blog => {
-                        const card = document.createElement('div');
-                        card.className = 'blog-card';
-                        
-                        const blogLink = document.createElement('a');
-                        blogLink.href = "#";
-                        blogLink.innerText = "Read More &rarr;";
-                        blogLink.onclick = (e) => {
-                            e.preventDefault();
-                            alert(`Blog reading feature coming soon!\n\nContent Preview:\n${blog.content.substring(0, 200)}...`);
-                        };
-
-                        card.innerHTML = `
+            card.innerHTML = `
                             <img src="${blog.image_url || 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b'}">
                             <div class="blog-content">
                                 <h3>${blog.title}</h3>
                                 <p>${blog.excerpt}</p>
                             </div>
                         `;
-                        card.querySelector('.blog-content').appendChild(blogLink);
-                        blogGrid.appendChild(card);
-                    });
-                }
-                fetchPortfolioItems();
-            } catch (e) { console.error(e); }
+            card.querySelector('.blog-content').appendChild(blogLink);
+            blogGrid.appendChild(card);
+          });
         }
+        fetchPortfolioItems();
+      } catch (e) { console.error(e); }
+    }
 
-        async function fetchPortfolioItems() {
-            const grid = document.getElementById('portfolioGrid');
-            const { data: about, count } = await supabaseClient.from('site_images').select('*', { count: 'exact' }).eq('section', 'about').order('created_at', { ascending: false }).range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
-            if (about && about.length > 0) {
-                if (portfolioOffset === 0) grid.innerHTML = '';
-                about.forEach(img => {
-                    const div = document.createElement('div'); div.className = 'portfolio-item reveal active';
-                    div.innerHTML = `<div class="portfolio-img-wrapper" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}"></div>${img.caption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
-                    grid.appendChild(div);
-                });
-                portfolioOffset += portfolioLimit;
-                document.getElementById('load-more-container').style.display = (count > portfolioOffset) ? 'block' : 'none';
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            supabaseClient.auth.onAuthStateChange((event, session) => {
-                const loginMsg = document.getElementById("login-required-msg");
-                const form = document.getElementById("review-form-container");
-                if (session) {
-                    const name = session.user.user_metadata.full_name || session.user.email.split('@')[0];
-                    loginMsg.style.display = "none"; form.style.display = "block";
-                    document.getElementById("user-display-name").innerText = "Logged in as: " + name;
-                    document.getElementById("revName").value = name;
-                } else {
-                    loginMsg.style.display = "block"; form.style.display = "none";
-                }
-            });
-
-            document.getElementById("bookingForm").onsubmit = async (e) => {
-                e.preventDefault();
-                const btn = e.target.querySelector("button");
-                btn.disabled = true;
-                btn.textContent = "Sending...";
-
-                const nameVal = document.getElementById("bookName").value.trim();
-                const emailVal = document.getElementById("bookEmail").value.trim();
-                const countryCodeVal = document.getElementById("countryCode").value;
-                const phoneVal = document.getElementById("bookPhone").value.trim();
-                const sessionVal = document.getElementById("bookSession").value;
-                const messageVal = document.getElementById("bookMessage").value.trim();
-
-                const fullPhone = countryCodeVal + phoneVal;
-
-                if (!emailVal || !emailVal.includes('@')) {
-                    alert("Please enter a valid email address.");
-                    btn.disabled = false;
-                    btn.textContent = "Send Message";
-                    return;
-                }
-
-                if (phoneVal.length !== 10) {
-                    alert("Please enter a valid 10-digit phone number.");
-                    btn.disabled = false;
-                    btn.textContent = "Send Message";
-                    return;
-                }
-
-                const d = { 
-                    name: nameVal, 
-                    email: emailVal, 
-                    phone: fullPhone, 
-                    session_type: sessionVal, 
-                    message: messageVal 
-                };
-
-                try {
-                    const { error } = await supabaseClient.from('appointments').insert([d]);
-                    if (error) throw error;
-
-                    // Send notification to ntfy.sh using headers for proper parsing
-                    const ntfyTopic = "divya_booking_alerts_79734";
-                    const ntfyMessage = `Name: ${nameVal}\nPhone: ${fullPhone}\nSession: ${sessionVal}\nMessage: ${messageVal}`;
-                    
-                    await fetch(`https://ntfy.sh/${ntfyTopic}`, {
-                        method: "POST",
-                        body: ntfyMessage,
-                        headers: {
-                            "Title": "New Booking",
-                            "Priority": "high",
-                            "Tags": "calendar,sparkles",
-                            "Click": `${window.location.origin}/admin.html`
-                        }
-                    });
-
-                    document.getElementById("bookingSuccessModal").classList.add("show");
-                    e.target.reset();
-                } catch (err) {
-                    alert("Error: " + err.message);
-                } finally {
-                    btn.disabled = false;
-                    btn.textContent = "Send Message";
-                }
-            };
-
-            // Star Rating Logic
-            const stars = document.querySelectorAll('#starRating i');
-            const ratingInput = document.getElementById('revRating');
-            stars.forEach(star => {
-                star.onclick = () => {
-                    const val = star.getAttribute('data-value');
-                    ratingInput.value = val;
-                    stars.forEach(s => {
-                        if (s.getAttribute('data-value') <= val) {
-                            s.classList.add('active');
-                        } else {
-                            s.classList.remove('active');
-                        }
-                    });
-                };
-            });
-
-            document.getElementById("reviewForm").onsubmit = async (e) => {
-                e.preventDefault();
-                const rating = parseInt(ratingInput.value);
-                if (rating === 0) {
-                    alert("Please select a star rating!");
-                    return;
-                }
-                const d = { 
-                    name: document.getElementById("revName").value, 
-                    rating: rating, 
-                    comment: document.getElementById("revComment").value,
-                    is_approved: true
-                };
-                try {
-                    const { error } = await supabaseClient.from('reviews').insert([d]);
-                    if (error) throw error;
-                    alert("Thank you! Your review has been posted."); 
-                    e.target.reset();
-                    stars.forEach(s => s.classList.remove('active')); // Reset stars
-                    ratingInput.value = 0;
-                    fetchDynamicImages();
-                } catch (err) {
-                    alert("Error: " + err.message);
-                }
-            };
-
-            fetchDynamicImages();
-            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    async function fetchPortfolioItems() {
+      const grid = document.getElementById('portfolioGrid');
+      const { data: about, count } = await supabaseClient.from('site_images').select('*', { count: 'exact' }).eq('section', 'about').order('created_at', { ascending: false }).range(portfolioOffset, portfolioOffset + portfolioLimit - 1);
+      if (about && about.length > 0) {
+        if (portfolioOffset === 0) grid.innerHTML = '';
+        about.forEach(img => {
+          const div = document.createElement('div'); div.className = 'portfolio-item reveal active';
+          div.innerHTML = `<div class="portfolio-img-wrapper" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}"></div>${img.caption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
+          grid.appendChild(div);
         });
-    </script>
+        portfolioOffset += portfolioLimit;
+        document.getElementById('load-more-container').style.display = (count > portfolioOffset) ? 'block' : 'none';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      supabaseClient.auth.onAuthStateChange((event, session) => {
+        const loginMsg = document.getElementById("login-required-msg");
+        const form = document.getElementById("review-form-container");
+        if (session) {
+          const name = session.user.user_metadata.full_name || session.user.email.split('@')[0];
+          loginMsg.style.display = "none"; form.style.display = "block";
+          document.getElementById("user-display-name").innerText = "Logged in as: " + name;
+          document.getElementById("revName").value = name;
+        } else {
+          loginMsg.style.display = "block"; form.style.display = "none";
+        }
+      });
+
+      document.getElementById("bookingForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const btn = e.target.querySelector("button");
+        btn.disabled = true;
+        btn.textContent = "Sending...";
+
+        const nameVal = document.getElementById("bookName").value.trim();
+        const emailVal = document.getElementById("bookEmail").value.trim();
+        const countryCodeVal = document.getElementById("countryCode").value;
+        const phoneVal = document.getElementById("bookPhone").value.trim();
+        const sessionVal = document.getElementById("bookSession").value;
+        const messageVal = document.getElementById("bookMessage").value.trim();
+
+        const fullPhone = countryCodeVal + phoneVal;
+
+        if (!emailVal || !emailVal.includes('@')) {
+          alert("Please enter a valid email address.");
+          btn.disabled = false;
+          btn.textContent = "Send Message";
+          return;
+        }
+
+        if (phoneVal.length !== 10) {
+          alert("Please enter a valid 10-digit phone number.");
+          btn.disabled = false;
+          btn.textContent = "Send Message";
+          return;
+        }
+
+        const d = {
+          name: nameVal,
+          email: emailVal,
+          phone: fullPhone,
+          session_type: sessionVal,
+          message: messageVal
+        };
+
+        try {
+          const { error } = await supabaseClient.from('appointments').insert([d]);
+          if (error) throw error;
+
+          // Send notification to ntfy.sh using headers for proper parsing
+          const ntfyTopic = "divya_booking_alerts_79734";
+          const ntfyMessage = `Name: ${nameVal}\nPhone: ${fullPhone}\nSession: ${sessionVal}\nMessage: ${messageVal}`;
+
+          await fetch(`https://ntfy.sh/${ntfyTopic}`, {
+            method: "POST",
+            body: ntfyMessage,
+            headers: {
+              "Title": "New Booking",
+              "Priority": "high",
+              "Tags": "calendar,sparkles",
+              "Click": `${window.location.origin}/admin.html`
+            }
+          });
+
+          document.getElementById("bookingSuccessModal").classList.add("show");
+          e.target.reset();
+        } catch (err) {
+          alert("Error: " + err.message);
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Send Message";
+        }
+      };
+
+      // Star Rating Logic
+      const stars = document.querySelectorAll('#starRating i');
+      const ratingInput = document.getElementById('revRating');
+      stars.forEach(star => {
+        star.onclick = () => {
+          const val = star.getAttribute('data-value');
+          ratingInput.value = val;
+          stars.forEach(s => {
+            if (s.getAttribute('data-value') <= val) {
+              s.classList.add('active');
+            } else {
+              s.classList.remove('active');
+            }
+          });
+        };
+      });
+
+      document.getElementById("reviewForm").onsubmit = async (e) => {
+        e.preventDefault();
+        const rating = parseInt(ratingInput.value);
+        if (rating === 0) {
+          alert("Please select a star rating!");
+          return;
+        }
+        const d = {
+          name: document.getElementById("revName").value,
+          rating: rating,
+          comment: document.getElementById("revComment").value,
+          is_approved: true
+        };
+        try {
+          const { error } = await supabaseClient.from('reviews').insert([d]);
+          if (error) throw error;
+          alert("Thank you! Your review has been posted.");
+          e.target.reset();
+          stars.forEach(s => s.classList.remove('active')); // Reset stars
+          ratingInput.value = 0;
+          fetchDynamicImages();
+        } catch (err) {
+          alert("Error: " + err.message);
+        }
+      };
+
+      fetchDynamicImages();
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+    });
+  </script>
 </body>
+
 </html>

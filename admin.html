@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -316,14 +316,70 @@
     }
 
     .filter-chip .chip-count {
-      display: inline-block;
-      background: #2d4f3c;
-      color: white;
+      background: #e2e8f0;
+      padding: 2px 6px;
       border-radius: 10px;
       font-size: 11px;
-      padding: 1px 7px;
       margin-left: 5px;
-      font-weight: 600;
+    }
+
+    /* Custom Dialog Modal */
+    #custom-dialog-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    #custom-dialog-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .custom-dialog-content {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+    }
+    #custom-dialog-modal.open .custom-dialog-content {
+      transform: translateY(0);
+    }
+    .custom-dialog-title {
+      font-size: 20px;
+      font-family: 'Playfair Display', serif;
+      color: #2d4f3c;
+      margin-bottom: 10px;
+    }
+    .custom-dialog-text {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    .custom-dialog-btn {
+      background: #2d4f3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+    .custom-dialog-btn:hover {
+      background: #1e3629;
     }
 
     /* Section Row */
@@ -913,6 +969,79 @@
       }
     };
 
+    // Upload Image Logic
+    const uploadBtn = document.getElementById('upload-image-btn');
+    if(uploadBtn) {
+      uploadBtn.addEventListener('click', async () => {
+        const section = document.getElementById('image-section').value;
+        const fileInput = document.getElementById('image-file');
+        const caption = document.getElementById('image-caption').value;
+        const statusEl = document.getElementById('upload-status');
+        
+        if (!section || !fileInput.files[0]) {
+          showCustomDialog("Upload Failed", "Please select a section and a file.");
+          return;
+        }
+        
+        const file = fileInput.files[0];
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
+        const filePath = `${section}/${fileName}`;
+
+        statusEl.innerText = "Uploading...";
+        statusEl.style.color = "blue";
+        uploadBtn.disabled = true;
+
+        try {
+          const { error: uploadError } = await window.supabaseClient.storage
+            .from('website-images')
+            .upload(filePath, file);
+
+          if (uploadError) throw uploadError;
+
+          const { data: urlData } = window.supabaseClient.storage
+            .from('website-images')
+            .getPublicUrl(filePath);
+          
+          const imageUrl = urlData.publicUrl;
+
+          const { error: dbError } = await window.supabaseClient.from('site_images').insert([{
+            section: section,
+            image_url: imageUrl,
+            storage_path: filePath,
+            caption: caption
+          }]);
+
+          if (dbError) throw dbError;
+
+          showCustomDialog("Success!", `Image successfully uploaded to the ${section} section.`);
+          
+          statusEl.innerText = "";
+          
+          // Reset form
+          fileInput.value = "";
+          document.getElementById('image-section').value = "";
+          document.getElementById('image-caption').value = "";
+          
+          fetchImages();
+        } catch (err) {
+          showCustomDialog("Error", err.message);
+          statusEl.innerText = "";
+        } finally {
+          uploadBtn.disabled = false;
+        }
+      });
+    }
+
+    function showCustomDialog(title, text) {
+      document.getElementById('dialog-title').innerText = title;
+      document.getElementById('dialog-text').innerText = text;
+      document.getElementById('custom-dialog-modal').classList.add('open');
+    }
+    window.closeCustomDialog = function() {
+      document.getElementById('custom-dialog-modal').classList.remove('open');
+    }
+
     // Initial fetch of appointments as default
     window.addEventListener('load', () => {
       if (window.supabaseClient.auth.getSession()) {
@@ -926,6 +1055,15 @@
     <button class="close-preview"
       onclick="document.getElementById('img-preview-modal').classList.remove('open')">&times;</button>
     <img src="" alt="Preview">
+  </div>
+
+  <!-- Custom Dialog Modal -->
+  <div id="custom-dialog-modal">
+    <div class="custom-dialog-content">
+      <div class="custom-dialog-title" id="dialog-title">Title</div>
+      <div class="custom-dialog-text" id="dialog-text">Text content goes here...</div>
+      <button class="custom-dialog-btn" onclick="closeCustomDialog()">OK</button>
+    </div>
   </div>
 
 </body>

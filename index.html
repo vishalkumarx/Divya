@@ -1152,8 +1152,6 @@
     .hero-slider-container {
       position: relative;
       width: 100%;
-      height: 100%;
-      min-height: 400px;
     }
     
     .hero-slider-img {
@@ -1161,7 +1159,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: auto;
       object-fit: cover;
       object-position: center bottom;
       opacity: 0;
@@ -1170,6 +1168,7 @@
     }
 
     .hero-slider-img.active {
+      position: relative;
       opacity: 1;
       z-index: 2;
     }

@@ -1147,6 +1147,56 @@
       color: #15261d !important;
       text-decoration: underline;
     }
+
+    /* Hero Slider CSS */
+    .hero-slider-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+    }
+    
+    .hero-slider-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center bottom;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 1;
+    }
+
+    .hero-slider-img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    
+    .slider-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+    }
+    
+    .slider-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    
+    .slider-dot.active {
+      background: white;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 
@@ -1192,9 +1242,9 @@
       </div>
     </div>
     <div class="hero-image-container">
-      <div class="hero-img-frame"
+      <div id="hero-slider" class="hero-img-frame hero-slider-container"
         style="max-width: 600px; background: transparent; aspect-ratio: auto; overflow: hidden; -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 95%); mask-image: linear-gradient(to bottom, black 75%, transparent 95%);">
-        <img id="dynamic-hero-img" src="assets/divya_trans_new.png" alt="Divya Sharma"
+        <img class="hero-slider-img active" src="assets/divya_trans_new.png" alt="Divya Sharma"
           style="width: 100%; height: auto; display: block; margin-top: -10%;">
       </div>
       <div class="session-badge online"><i class="fa-solid fa-video"></i> Online Available</div>
@@ -1722,9 +1772,41 @@
       try {
         const { data: others } = await supabaseClient.from('site_images').select('*').not('section', 'eq', 'about');
         if (others) {
-          const hero = others.find(img => img.section === 'hero');
-          // if (hero) document.getElementById('dynamic-hero-img').src = hero.image_url; // Disabled to use local divya_trans.png
+          const heroImages = others.filter(img => img.section === 'hero');
+          if (heroImages.length > 0) {
+            const slider = document.getElementById('hero-slider');
+            slider.innerHTML = heroImages.map((img, i) => 
+              `<img class="hero-slider-img ${i === 0 ? 'active' : ''}" src="${img.image_url}" alt="Hero Image">`
+            ).join('');
+            
+            if (heroImages.length > 1) {
+              const dotsContainer = document.createElement('div');
+              dotsContainer.className = 'slider-dots';
+              dotsContainer.innerHTML = heroImages.map((_, i) => `<div class="slider-dot ${i === 0 ? 'active' : ''}" data-index="${i}"></div>`).join('');
+              slider.appendChild(dotsContainer);
 
+              let currentSlide = 0;
+              const slides = slider.querySelectorAll('.hero-slider-img');
+              const dots = slider.querySelectorAll('.slider-dot');
+
+              const showSlide = (index) => {
+                slides[currentSlide].classList.remove('active');
+                dots[currentSlide].classList.remove('active');
+                currentSlide = index;
+                slides[currentSlide].classList.add('active');
+                dots[currentSlide].classList.add('active');
+              };
+
+              dots.forEach((dot, idx) => {
+                dot.onclick = () => showSlide(idx);
+              });
+
+              setInterval(() => {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+              }, 4000);
+            }
+          }
           const testimonials = others.filter(img => img.section === 'testimonial');
           const track = document.getElementById('dynamic-testimonial-track');
           if (testimonials.length > 0 && track) {

@@ -942,9 +942,22 @@
       }
     }
 
+    let currentImageFilter = 'all';
+
     function renderImages() {
       const grid = document.getElementById('image-grid');
-      grid.innerHTML = allImages.map(img => `
+      
+      // Update counts
+      document.getElementById('count-all').innerText = allImages.length;
+      document.getElementById('count-hero').innerText = allImages.filter(img => img.section === 'hero').length;
+      document.getElementById('count-about').innerText = allImages.filter(img => img.section === 'about').length;
+      document.getElementById('count-testimonial').innerText = allImages.filter(img => img.section === 'testimonial').length;
+
+      const filteredImages = currentImageFilter === 'all' 
+        ? allImages 
+        : allImages.filter(img => img.section === currentImageFilter);
+
+      grid.innerHTML = filteredImages.map(img => `
         <div class="image-card">
           <img src="${img.image_url}" style="width:100%; aspect-ratio:4/3; object-fit:cover;">
           <div style="padding:10px; display:flex; justify-content:space-between; align-items:center;">
@@ -952,8 +965,16 @@
             <button onclick="deleteImage('${img.id}', '${img.storage_path}')" style="width:auto; margin-top:0; background:#fee2e2; color:#dc2626; border:none; padding:4px 8px; border-radius:4px; font-size:11px; cursor:pointer;">Delete</button>
           </div>
         </div>
-      `).join('');
+      `).join('') || '<p class="empty-state">No images found for this category.</p>';
     }
+
+    window.applyFilter = (btn, filter) => {
+      document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+      btn.classList.add('active');
+      currentImageFilter = filter;
+      renderImages();
+    };
+
 
     window.deleteImage = async (id, path) => {
       if (confirm('Delete image?')) {

@@ -1785,7 +1785,8 @@
         if (portfolioOffset === 0) grid.innerHTML = '';
         about.forEach(img => {
           const div = document.createElement('div'); div.className = 'portfolio-item reveal active';
-          div.innerHTML = `<div class="portfolio-img-wrapper" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}"></div>${img.caption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
+          const hasCaption = img.caption && img.caption.trim() !== '';
+          div.innerHTML = `<div class="portfolio-img-wrapper" onclick="document.getElementById('lightboxImage').src='${img.image_url}'; document.getElementById('testimonialLightbox').classList.add('show');"><img src="${img.image_url}"></div>${hasCaption ? `<div class="portfolio-info"><p class="portfolio-caption">${img.caption}</p></div>` : ''}`;
           grid.appendChild(div);
         });
         portfolioOffset += portfolioLimit;

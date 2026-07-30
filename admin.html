@@ -657,7 +657,7 @@
           <input type="file" id="image-file" accept="image/*" required>
           <input type="text" id="image-caption" placeholder="Enter optional caption..."
             style="margin-top: 5px; display: none;">
-          <button id="upload-image-btn" style="width: auto; padding: 10px 25px;">⬆ Upload Image</button>
+          <button type="button" id="upload-image-btn" style="width: auto; padding: 10px 25px;">⬆ Upload Image</button>
           <p id="upload-status" style="font-size: 14px; margin-top: 10px;"></p>
         </div>
 
@@ -970,10 +970,12 @@
     };
 
     // Upload Image Logic
-    const uploadBtn = document.getElementById('upload-image-btn');
-    if(uploadBtn) {
-      uploadBtn.addEventListener('click', async () => {
-        const section = document.getElementById('image-section').value;
+    document.addEventListener("DOMContentLoaded", () => {
+      const uploadBtn = document.getElementById('upload-image-btn');
+      if(uploadBtn) {
+        uploadBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          const section = document.getElementById('image-section').value;
         const fileInput = document.getElementById('image-file');
         const caption = document.getElementById('image-caption').value;
         const statusEl = document.getElementById('upload-status');
@@ -1025,13 +1027,15 @@
           
           fetchImages();
         } catch (err) {
-          showCustomDialog("Error", err.message);
+          console.error("Upload error:", err);
+          showCustomDialog("Error", err.message || "Something went wrong during upload.");
           statusEl.innerText = "";
         } finally {
           uploadBtn.disabled = false;
         }
       });
     }
+  });
 
     function showCustomDialog(title, text) {
       document.getElementById('dialog-title').innerText = title;

@@ -990,8 +990,7 @@
         const fileName = `${Date.now()}_${Math.random().toString(36).substring(7)}.${fileExt}`;
         const filePath = `${section}/${fileName}`;
 
-        statusEl.innerText = "Uploading...";
-        statusEl.style.color = "blue";
+        showCustomDialog("Uploading...", "Please wait while your image is being uploaded.");
         uploadBtn.disabled = true;
 
         try {

@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="assets/manotaaj_3d_logo.png">
 
   <title>Divya Sharma | Clinical Psychologist & Therapist</title>
   <meta name="description"
@@ -96,10 +97,13 @@
       width: 240px;
       max-width: 80%;
       height: auto;
-      border-radius: 18px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      background: transparent;
       display: block;
       margin-bottom: 20px;
+    }
+
+    .hero-mobile-logo {
+      display: none;
     }
 
     nav h1 {
@@ -274,36 +278,40 @@
     }
 
     .hero-photo-label {
-      background: linear-gradient(135deg, rgba(253, 252, 246, 0.95), rgba(241, 245, 233, 0.95));
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(45, 79, 60, 0.16);
-      border-bottom: 3px solid #9e6b4f;
-      padding: 12px 34px;
-      border-radius: 20px;
-      box-shadow: 0 14px 30px rgba(45, 79, 60, 0.1);
+      background: transparent;
+      padding: 6px 12px 0;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
-      margin-top: -10px;
+      gap: 4px;
+      margin-top: 2px;
       z-index: 15;
+    }
+
+    .hero-photo-label::before {
+      content: "";
+      width: 48px;
+      height: 2px;
+      background: #9e6b4f;
+      border-radius: 2px;
+      margin-bottom: 4px;
     }
 
     .hero-photo-label .label-name {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
+      font-size: 24px;
       font-weight: 700;
       color: var(--accent-dark-green);
-      letter-spacing: 0.3px;
+      letter-spacing: 0.4px;
+      line-height: 1.2;
     }
 
     .hero-photo-label .label-role {
       font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 1.8px;
+      letter-spacing: 2.2px;
       color: #9e6b4f;
     }
 
@@ -1144,7 +1152,16 @@
       }
 
       .hero-content-logo {
-        margin: 0 auto 20px;
+        display: none !important;
+      }
+
+      .hero-mobile-logo {
+        display: block;
+        width: 200px;
+        max-width: 65%;
+        height: auto;
+        background: transparent;
+        margin: 4px auto 4px;
       }
 
       nav h1 {
@@ -1259,7 +1276,10 @@
   </div>
 
   <nav>
-    <h1>Mantaaj Mental Health Care</h1>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img src="assets/manotaaj_3d_logo.png" alt="Mantaaj Logo" style="height: 36px; width: auto; display: block;">
+      <h1>Mantaaj Mental Health Care</h1>
+    </div>
     <div class="menu-toggle" onclick="toggleMenu()">
       <i class="fa-solid fa-bars"></i>
     </div>
@@ -1274,7 +1294,7 @@
 
   <section id="hero" class="hero reveal">
     <div class="hero-content">
-      <img class="hero-content-logo" src="assets/manotaaj_logo.jpg" alt="Mantaaj Mental Health Care">
+      <img class="hero-content-logo" src="assets/manotaaj_logo.png" alt="Mantaaj Mental Health Care">
       <div class="hero-tags">
         <span class="hero-tag">Psychologist</span>
         <span class="hero-tag">Expert Therapist</span>
@@ -1293,6 +1313,7 @@
       </div>
     </div>
     <div class="hero-image-container">
+      <img class="hero-mobile-logo" src="assets/manotaaj_logo.png" alt="Mantaaj Mental Health Care">
       <div id="hero-slider" class="hero-img-frame hero-slider-container"
         style="max-width: 600px; background: transparent; aspect-ratio: auto; overflow: hidden;">
         <img class="hero-slider-img active" src="assets/divya_trans_new.png" alt="Divya Sharma"
@@ -1571,7 +1592,7 @@
     <div class="affordable-shell">
       <div class="affordable-left">
         <div class="affordable-eyebrow">
-          <i class="fa-solid fa-leaf"></i> Divyapsychologist.com &bull; Online Therapy &amp; Psychiatric Services
+          <img src="assets/manotaaj_3d_logo.png" alt="Mantaaj" style="height: 18px; width: auto; display: block;"> Divyapsychologist.com &bull; Online Therapy &amp; Psychiatric Services
         </div>
         <h2>Accessible Care, <span>Affordable Therapy</span></h2>
         <p class="affordable-subtitle">We believe mental health support should be within reach for more people.</p>
@@ -1990,6 +2011,7 @@
   </section>
 
   <footer>
+    <img src="assets/manotaaj_3d_logo.png" alt="Mantaaj Mental Health Care" style="height: 44px; width: auto; display: block;">
     <p> 2026 Divya Sharma | Psychologist</p>
     <p style="margin-top: 10px; font-size: 13px;">
       <a href="privacy.html"

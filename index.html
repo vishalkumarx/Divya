@@ -257,8 +257,31 @@
     .hero-image-container {
       position: relative;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 14px;
+    }
+
+    .hero-brand-logo {
+      width: 170px;
+      max-width: 60%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      display: block;
+    }
+
+    .hero-photo-label {
+      background: var(--white);
+      color: var(--accent-dark-green);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 10px 24px;
+      border-radius: 50px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+      letter-spacing: 0.3px;
+      text-align: center;
     }
 
     .hero-img-frame {
@@ -1209,7 +1232,7 @@
   </div>
 
   <nav>
-    <h1>Manotaj Mental Health Care</h1>
+    <h1>Mantaaj Mental Health Care</h1>
     <div class="menu-toggle" onclick="toggleMenu()">
       <i class="fa-solid fa-bars"></i>
     </div>
@@ -1227,6 +1250,7 @@
       <div class="hero-tags">
         <span class="hero-tag">Psychologist</span>
         <span class="hero-tag">Expert Therapist</span>
+        <span class="hero-tag">Online Therapy &amp; Psychiatric Services</span>
       </div>
       <h1>Mental Health is not a Destination, but a <span>Process.</span></h1>
       <p>Our work focuses on positive change, reduced barriers, and building emotional resilience through evidence-based
@@ -1241,11 +1265,13 @@
       </div>
     </div>
     <div class="hero-image-container">
+      <img class="hero-brand-logo" src="assets/manotaaj_logo.jpg" alt="Mantaaj Mental Health Care">
       <div id="hero-slider" class="hero-img-frame hero-slider-container"
         style="max-width: 600px; background: transparent; aspect-ratio: auto; overflow: hidden;">
         <img class="hero-slider-img active" src="assets/divya_trans_new.png" alt="Divya Sharma"
           style="width: 100%; height: auto; display: block; margin-top: -10%;">
       </div>
+      <div class="hero-photo-label">Divya Sharma Psychologist</div>
       <div class="session-badge online"><i class="fa-solid fa-video"></i> Online Available</div>
       <div class="session-badge offline"><i class="fa-solid fa-house"></i> Offline Available</div>
     </div>
@@ -1438,6 +1464,254 @@
     </div>
   </section>
 
+  <section id="affordable-care" class="reveal" style="padding: 80px 8%; text-align: center;">
+    <style>
+      .affordable-care-wrapper {
+        max-width: 980px;
+        margin: 0 auto;
+        background: var(--bg-primary);
+        border: 1px solid rgba(45, 79, 60, 0.12);
+        border-radius: 28px;
+        padding: 48px 36px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .affordable-eyebrow {
+        display: inline-block;
+        background: var(--bg-secondary);
+        color: var(--accent-dark-green);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        padding: 8px 18px;
+        border-radius: 50px;
+        margin-bottom: 16px;
+      }
+
+      .affordable-care-wrapper h2 {
+        font-size: 36px;
+        color: #9e6b4f;
+        margin-bottom: 12px;
+      }
+
+      .affordable-subtitle {
+        font-size: 16px;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0 auto 32px;
+      }
+
+      .care-pillars {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        background: var(--bg-secondary);
+        padding: 26px 24px;
+        border-radius: 20px;
+        margin-bottom: 32px;
+      }
+
+      .care-pillar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+      }
+
+      .care-pillar i {
+        font-size: 28px;
+        color: var(--accent-dark-green);
+      }
+
+      .care-pillar span {
+        font-weight: 600;
+        font-size: 15px;
+        color: var(--text-main);
+      }
+
+      .sliding-scale-card {
+        background: var(--accent-dark-green);
+        color: var(--white);
+        border-radius: 22px;
+        padding: 36px 28px;
+        margin-bottom: 28px;
+        box-shadow: 0 12px 30px rgba(45, 79, 60, 0.18);
+      }
+
+      .sliding-scale-card h3 {
+        font-size: 28px;
+        margin-bottom: 8px;
+        color: var(--white);
+      }
+
+      .sliding-scale-card p {
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 24px;
+      }
+
+      .sliding-scale-list {
+        background: var(--bg-primary);
+        color: var(--text-main);
+        border-radius: 16px;
+        padding: 24px 28px;
+        max-width: 560px;
+        margin: 0 auto;
+        list-style: none;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .sliding-scale-list li {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 15px;
+        font-weight: 500;
+      }
+
+      .sliding-scale-list li i {
+        color: #b67b5b;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .affordable-cta-bar {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .affordable-cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #b67b5b;
+        color: var(--white);
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 15px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 8px 20px rgba(182, 123, 91, 0.25);
+      }
+
+      .affordable-cta-btn:hover {
+        transform: translateY(-2px);
+        background: #9e6b4f;
+      }
+
+      .affordable-contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text-main);
+      }
+
+      .affordable-wa-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--accent-dark-green);
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 50px;
+        background: #e8f8ee;
+        transition: var(--transition);
+      }
+
+      .affordable-wa-link i {
+        color: #25d366;
+        font-size: 18px;
+      }
+
+      .affordable-wa-link:hover {
+        background: #d3f2df;
+      }
+
+      @media (max-width: 768px) {
+        .affordable-care-wrapper {
+          padding: 32px 20px;
+        }
+
+        .affordable-care-wrapper h2 {
+          font-size: 28px;
+        }
+
+        .care-pillars {
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .sliding-scale-card {
+          padding: 28px 18px;
+        }
+
+        .sliding-scale-list {
+          padding: 18px 16px;
+        }
+      }
+    </style>
+
+    <div class="affordable-care-wrapper">
+      <div class="affordable-eyebrow">Divyapsychologist.com &bull; Online Therapy &amp; Psychiatric Services</div>
+      <h2>Accessible Care, Affordable Therapy</h2>
+      <p class="affordable-subtitle">We believe mental health support should be within reach for more people.</p>
+
+      <div class="care-pillars">
+        <div class="care-pillar">
+          <i class="fa-solid fa-laptop-medical"></i>
+          <span>Online &amp; Convenient</span>
+        </div>
+        <div class="care-pillar">
+          <i class="fa-solid fa-hand-holding-heart"></i>
+          <span>Supportive &amp; Inclusive</span>
+        </div>
+        <div class="care-pillar">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Flexible Scheduling</span>
+        </div>
+      </div>
+
+      <div class="sliding-scale-card">
+        <h3>Sliding Scale Options</h3>
+        <p>Therapy at a cost that fits your current financial situation.</p>
+        <ul class="sliding-scale-list">
+          <li><i class="fa-solid fa-circle-check"></i> A flexible fee structure</li>
+          <li><i class="fa-solid fa-circle-check"></i> Based on your financial comfort and need</li>
+          <li><i class="fa-solid fa-circle-check"></i> The same quality, professional care</li>
+        </ul>
+      </div>
+
+      <div class="affordable-cta-bar">
+        <button class="affordable-cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+          <i class="fa-regular fa-calendar"></i>
+          Explore affordable care options and book a session on our website
+        </button>
+        <div class="affordable-contact-links">
+          <span>Divyapsychologist.com</span>
+          <a class="affordable-wa-link"
+            href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20explore%20affordable%20care%20options%20and%20book%20a%20session."
+            target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp - 7973477917 for bookings
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="testimonials" class="testimonials reveal">
     <h2>Client Reviews</h2>
     <div class="testimonial-slider-container">
@@ -1528,6 +1802,11 @@
 
   <section id="contact" class="contact">
     <h2>Book an Appointment</h2>
+    <p style="max-width: 640px; margin: 0 auto 30px; color: var(--text-muted); font-size: 15px;">
+      Explore affordable care options including sliding scale fees and book your session online or offline, or message us on
+      <a href="https://wa.me/917973477917?text=Hello%20Divya%2C%20I%20would%20like%20to%20book%20a%20session." target="_blank"
+        style="color: var(--accent-dark-green); font-weight: 600; text-decoration: underline;">WhatsApp (7973477917)</a>.
+    </p>
     <style>
       .booking-card {
         background: url('booking-bg.jpg') center right / cover no-repeat;

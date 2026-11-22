@@ -1363,19 +1363,28 @@
         text-align: left;
       }
 
+      .affordable-left,
+      .sliding-scale-card {
+        min-width: 0;
+      }
+
       .affordable-eyebrow {
         display: inline-flex;
+        flex-wrap: wrap;
         align-items: center;
+        justify-content: center;
         gap: 8px;
         background: rgba(189, 225, 200, 0.45);
         color: var(--accent-dark-green);
         font-size: 12px;
         font-weight: 600;
-        letter-spacing: 0.8px;
+        letter-spacing: 0.6px;
         text-transform: uppercase;
-        padding: 8px 16px;
-        border-radius: 50px;
+        padding: 8px 14px;
+        border-radius: 20px;
         margin-bottom: 18px;
+        max-width: 100%;
+        line-height: 1.4;
       }
 
       .affordable-left h2 {
@@ -1387,7 +1396,7 @@
       }
 
       .affordable-left h2 span {
-        color: #9e6b4f;
+        color: var(--accent-dark-green);
       }
 
       .affordable-subtitle {
@@ -1452,8 +1461,8 @@
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        background: #9e6b4f;
-        color: var(--white);
+        background: linear-gradient(135deg, #e9d4fa, #cbb4d4);
+        color: var(--accent-dark-green);
         padding: 14px 24px;
         border-radius: 50px;
         font-weight: 600;
@@ -1461,12 +1470,12 @@
         border: none;
         cursor: pointer;
         transition: var(--transition);
-        box-shadow: 0 8px 20px rgba(158, 107, 79, 0.28);
+        box-shadow: 0 6px 18px rgba(203, 180, 212, 0.35);
       }
 
       .affordable-cta-btn:hover {
         transform: translateY(-2px);
-        background: #875940;
+        filter: brightness(0.96);
       }
 
       .affordable-wa-link {
@@ -1541,56 +1550,101 @@
         flex-direction: column;
         gap: 14px;
         margin-bottom: 18px;
+        text-align: left;
       }
 
       .sliding-scale-list li {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 12px;
         font-size: 14px;
         font-weight: 500;
+        line-height: 1.45;
+        text-align: left;
       }
 
       .sliding-scale-list li i {
-        color: #9e6b4f;
+        color: var(--accent-dark-green);
         font-size: 17px;
         flex-shrink: 0;
+        margin-top: 2px;
       }
 
       .sliding-scale-footer {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
+        gap: 8px;
         font-size: 13px;
         color: rgba(255, 255, 255, 0.82);
         padding-top: 6px;
       }
 
       @media (max-width: 900px) {
+        #affordable-care {
+          padding: 36px 5% !important;
+        }
+
         .affordable-shell {
           grid-template-columns: 1fr;
-          padding: 32px 22px;
-          gap: 28px;
+          padding: 26px 18px;
+          gap: 24px;
           text-align: center;
+          border-radius: 24px;
+        }
+
+        .affordable-eyebrow {
+          font-size: 11px;
+          padding: 8px 12px;
         }
 
         .affordable-subtitle {
           margin-left: auto;
           margin-right: auto;
+          font-size: 15px;
         }
 
         .care-pillars-grid {
           grid-template-columns: 1fr;
+          gap: 10px;
         }
 
         .care-pillar-card {
           flex-direction: row;
           align-items: center;
           text-align: left;
+          padding: 14px 16px;
         }
 
         .affordable-actions {
           justify-content: center;
+          flex-direction: column;
+        }
+
+        .affordable-cta-btn,
+        .affordable-wa-link {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .sliding-scale-card {
+          padding: 26px 18px;
+          text-align: left;
+        }
+
+        .sliding-scale-card h3 {
+          font-size: 24px;
+        }
+
+        .sliding-scale-list {
+          padding: 16px;
+          gap: 12px;
+        }
+
+        .sliding-scale-footer {
+          justify-content: center;
+          text-align: center;
         }
       }
     </style>
